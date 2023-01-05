@@ -4,7 +4,8 @@ import AuthModel from "../Auth/authModel";
 import Preloader from "../preLoader/preloader";
 import PersonCard from "./personCard/personCard";
 
-
+import dotenv from "dotenv";
+dotenv.config();
 const People = () => {
     const [loading, setLoading] = useState(false);
     const [auth, setAuth] = useState('');

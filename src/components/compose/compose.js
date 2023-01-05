@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import dotenv from "dotenv";
+dotenv.config();
 const Compose = () => {
     const navigate = useNavigate();
     const [post, setPost] = useState({

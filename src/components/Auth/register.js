@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Nav from "../Header/header";
 
+import dotenv from "dotenv";
+dotenv.config();
 const Register = () => {
   const navigate = useNavigate()
   const [name, setName] = useState({

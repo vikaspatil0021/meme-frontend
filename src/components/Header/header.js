@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./header.css";
+import dotenv from "dotenv";
+dotenv.config();
 
 const Nav = () => {
     const [checkAuth, setCheckAuth] = useState(false);

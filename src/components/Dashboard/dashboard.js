@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 const Dashboard = (props) => {
     const navigate = useNavigate();
     const [accountStories, setAccountStories] = useState({
