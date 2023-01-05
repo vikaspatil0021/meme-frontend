@@ -18,7 +18,7 @@ const Comments = (props) => {
 
 
     useEffect(() => {
-        axios.get(REACT_APP_SERVER_URL+ "/comments/" + props.storyId, { withCredentials: true })
+        axios.get(process.env.REACT_APP_SERVER_URL+ "/comments/" + props.storyId, { withCredentials: true })
             .then((res) => {
                 setSentComments(res.data);
             }).catch((err) => {
@@ -40,7 +40,7 @@ const Comments = (props) => {
         }
         if (newComment !== '') {
 
-            axios.post(REACT_APP_SERVER_URL + '/comment', sendComment, { withCredentials: true })
+            axios.post(process.env.REACT_APP_SERVER_URL + '/comment', sendComment, { withCredentials: true })
                 .then((res) => {
                     console.log(res.data);
 
@@ -74,7 +74,7 @@ const Comments = (props) => {
 
         if (replyContent !== '') {
 
-            axios.put(REACT_APP_SERVER_URL + '/replyComment', replyCommentObject, { withCredentials: true })
+            axios.put(process.env.REACT_APP_SERVER_URL + '/replyComment', replyCommentObject, { withCredentials: true })
                 .then((res) => {
                     console.log(res.data);
 
@@ -89,7 +89,7 @@ const Comments = (props) => {
     }
     const deleteComment = (commentId) => {
         console.log(commentId);
-        axios.delete(REACT_APP_SERVER_URL + "/deletecomment", { data: { Id: commentId }, withCredentials: true })
+        axios.delete(process.env.REACT_APP_SERVER_URL + "/deletecomment", { data: { Id: commentId }, withCredentials: true })
             .then((res) => {
                 console.log(res.data);
             }).catch((err) => {
@@ -107,7 +107,7 @@ const Comments = (props) => {
 
 
         }
-        axios.put(REACT_APP_SERVER_URL + "/replyComment", replyCommentObject, {withCredentials: true })
+        axios.put(process.env.REACT_APP_SERVER_URL + "/replyComment", replyCommentObject, {withCredentials: true })
             .then((res) => {
                 console.log(res.data);
             }).catch((err) => {

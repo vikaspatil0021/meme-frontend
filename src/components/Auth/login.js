@@ -13,7 +13,7 @@ const Login = () => {
 
     //-----------Current Auth status-----------
     useEffect(() => {
-        axios.get(REACT_APP_SERVER_URL + "/isauth", { withCredentials: true })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: true })
             .then((res) => {
                 if (res.data.isAuth) {
                     navigate("/stories")
@@ -26,7 +26,7 @@ const Login = () => {
     //--------Confirm User and Login
     const loginRequest = (e) => {
         e.preventDefault();
-        axios.post(REACT_APP_SERVER_URL + '/login', user, { withCredentials: true })
+        axios.post(process.env.REACT_APP_SERVER_URL + '/login', user, { withCredentials: true })
             .then((res) => {
                 // console.log(user.data);
                 if (res.data.isAuth) {

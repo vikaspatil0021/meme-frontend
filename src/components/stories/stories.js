@@ -16,7 +16,7 @@ const Stories = () => {
     const [storiesData, setStoriesData] = useState([])
     useEffect(() => {
 
-        axios.get(REACT_APP_SERVER_URL + "/stories", { withCredentials: true })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/stories", { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 setLoading(true)
@@ -28,7 +28,7 @@ const Stories = () => {
 
             });
 
-        axios.get(REACT_APP_SERVER_URL + "/isauth", { withCredentials: true })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: true })
             .then((res) => {
                 setAuth(res.data.isAuth)
             }).catch((err) => {

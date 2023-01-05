@@ -3,6 +3,7 @@ import Nav from "../../Header/header";
 
 import dotenv from "dotenv";
 dotenv.config();
+
 const Person = () => {
     return (
         <div>
