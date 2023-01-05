@@ -13,7 +13,7 @@ const Stories = () => {
     const [storiesData, setStoriesData] = useState([])
     useEffect(() => {
 
-        axios.get("http://localhost:5000/stories", { withCredentials: true })
+        axios.get(SERVER_URL + "/stories", { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 setLoading(true)
@@ -25,7 +25,7 @@ const Stories = () => {
 
             });
 
-        axios.get("http://localhost:5000/isauth", { withCredentials: true })
+        axios.get(SERVER_URL + "/isauth", { withCredentials: true })
             .then((res) => {
                 setAuth(res.data.isAuth)
             }).catch((err) => {

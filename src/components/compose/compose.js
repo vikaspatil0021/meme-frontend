@@ -14,7 +14,7 @@ const Compose = () => {
 
     //--------------Current Auth status----------
     useEffect(() => {
-        axios.get("http://localhost:5000/isauth", { withCredentials: true })
+        axios.get(SERVER_URL + "/isauth", { withCredentials: true })
             .then((res) => {
                 if (!(res.data.isAuth)) {
                     navigate("/login")
@@ -53,7 +53,7 @@ const Compose = () => {
         if (post.title !== "" && post.content !== '' && post.imageURL!=='') {
             console.log(post)
         //post request to send post data to backend----------------------
-            axios.post('http://localhost:5000/compose', post, { withCredentials: true })
+            axios.post(SERVER_URL + '/compose', post, { withCredentials: true })
                 .then((res) => {
                     console.log(res.data);
                     navigate("/stories")

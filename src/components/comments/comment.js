@@ -17,7 +17,7 @@ const Comments = (props) => {
 
 
     useEffect(() => {
-        axios.get("http://localhost:5000/comments/" + props.storyId, { withCredentials: true })
+        axios.get(SERVER_URL + "/comments/" + props.storyId, { withCredentials: true })
             .then((res) => {
                 setSentComments(res.data);
             }).catch((err) => {
@@ -39,7 +39,7 @@ const Comments = (props) => {
         }
         if (newComment !== '') {
 
-            axios.post('http://localhost:5000/comment', sendComment, { withCredentials: true })
+            axios.post(SERVER_URL + '/comment', sendComment, { withCredentials: true })
                 .then((res) => {
                     console.log(res.data);
 
@@ -73,7 +73,7 @@ const Comments = (props) => {
 
         if (replyContent !== '') {
 
-            axios.put('http://localhost:5000/replyComment', replyCommentObject, { withCredentials: true })
+            axios.put(SERVER_URL + '/replyComment', replyCommentObject, { withCredentials: true })
                 .then((res) => {
                     console.log(res.data);
 
@@ -88,7 +88,7 @@ const Comments = (props) => {
     }
     const deleteComment = (commentId) => {
         console.log(commentId);
-        axios.delete("http://localhost:5000/deletecomment", { data: { Id: commentId }, withCredentials: true })
+        axios.delete(SERVER_URL + "/deletecomment", { data: { Id: commentId }, withCredentials: true })
             .then((res) => {
                 console.log(res.data);
             }).catch((err) => {
@@ -106,7 +106,7 @@ const Comments = (props) => {
 
 
         }
-        axios.put("http://localhost:5000/replyComment", replyCommentObject, {withCredentials: true })
+        axios.put(SERVER_URL + "/replyComment", replyCommentObject, {withCredentials: true })
             .then((res) => {
                 console.log(res.data);
             }).catch((err) => {

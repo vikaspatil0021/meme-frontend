@@ -18,7 +18,7 @@ const Register = () => {
 
   //--------------Current Auth status------------
   useEffect(() => {
-    axios.get("http://localhost:5000/isauth", { withCredentials: true })
+    axios.get(SERVER_URL + "/isauth", { withCredentials: true })
       .then((res) => {
         if (res.data.isAuth) {
           navigate("/stories")
@@ -38,7 +38,7 @@ const Register = () => {
       password: Input.password
     }
 
-    axios.post('http://localhost:5000/register', user, { withCredentials: true })
+    axios.post(SERVER_URL + '/register', user, { withCredentials: true })
       .then((res) => {
         if (res.data.isAuth) {
           navigate("/dashboard");
