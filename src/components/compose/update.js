@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import dotenv from "dotenv";
-dotenv.config();
+
 const UpdateStory = (props) => {
     const navigate = useNavigate();
     console.log(props.rStory)

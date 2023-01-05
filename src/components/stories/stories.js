@@ -6,8 +6,7 @@ import AuthModel from "../Auth/authModel";
 import StoryCard from "./storyCard/storyCard.js";
 import Preloader from "../preLoader/preloader";
 
-import dotenv from "dotenv";
-dotenv.config();
+
 const Stories = () => {
     const [loading, setLoading] = useState(false);
     const [auth, setAuth] = useState('');

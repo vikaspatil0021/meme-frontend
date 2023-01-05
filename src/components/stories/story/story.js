@@ -5,8 +5,7 @@ import Preloader from "../../preLoader/preloader";
 import Comments from "../../comments/comment";
 import "./story.css"
 
-import dotenv from "dotenv";
-dotenv.config();
+
 
 const Story = () => {
     const location = useLocation()

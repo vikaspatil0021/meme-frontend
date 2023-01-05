@@ -1,8 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AuthModel from "../Auth/authModel";
-import dotenv from "dotenv";
-dotenv.config();
+
 
 const Comments = (props) => {
 
