@@ -14,7 +14,7 @@ const People = () => {
     const [peopleData, setPeopleData] = useState([])
     useEffect(() => {
 
-        axios.get(SERVER_URL + "/people", { withCredentials: true })
+        axios.get(REACT_APP_SERVER_URL + "/people", { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 console.log(res.data);
@@ -24,7 +24,7 @@ const People = () => {
                 console.log(error);
 
             });
-        axios.get(SERVER_URL + "/isauth", { withCredentials: true })
+        axios.get(REACT_APP_SERVER_URL + "/isauth", { withCredentials: true })
             .then((res) => {
                 setAuth(res.data.isAuth)
             }).catch((err) => {

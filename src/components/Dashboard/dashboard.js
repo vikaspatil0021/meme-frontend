@@ -14,7 +14,7 @@ const Dashboard = (props) => {
 
     //--------------Current Auth status----------
     useEffect(() => {
-        axios.get(SERVER_URL + "/isauth", { withCredentials: true })
+        axios.get(REACT_APP_SERVER_URL + "/isauth", { withCredentials: true })
             .then((res) => {
                 if (!(res.data.isAuth)) {
                     navigate("/login")
@@ -23,7 +23,7 @@ const Dashboard = (props) => {
                 console.log(err);
             });
 
-        axios.get(SERVER_URL + "/dash", { withCredentials: true })
+        axios.get(REACT_APP_SERVER_URL + "/dash", { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
                 setAccountStories(res.data);
@@ -34,7 +34,7 @@ const Dashboard = (props) => {
     }, [])
 
     const deleteStory = (storyId) => {
-        axios.delete(SERVER_URL + "/delete", { data: { Id: storyId }, withCredentials: true })
+        axios.delete(REACT_APP_SERVER_URL + "/delete", { data: { Id: storyId }, withCredentials: true })
             .then((res) => {
                 console.log(res.data);
             }).catch((err) => {

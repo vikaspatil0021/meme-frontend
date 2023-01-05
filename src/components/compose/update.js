@@ -20,7 +20,7 @@ const UpdateStory = (props) => {
             navigate("/dashboard")
         }
         
-        axios.get(SERVER_URL + "/isauth", { withCredentials: true })
+        axios.get(REACT_APP_SERVER_URL + "/isauth", { withCredentials: true })
             .then((res) => {
                 if (!(res.data.isAuth)) {
                     navigate("/login")
@@ -34,7 +34,7 @@ const UpdateStory = (props) => {
     const updatePost = (e) => {
 
         if (updatepost.title !== "" && updatepost.content !== '') {
-            axios.put(SERVER_URL + '/updateStory', { Id: _id, ...updatepost }, { withCredentials: true })
+            axios.put(REACT_APP_SERVER_URL + '/updateStory', { Id: _id, ...updatepost }, { withCredentials: true })
                 .then((res) => {
                     console.log(res.data);
                 })

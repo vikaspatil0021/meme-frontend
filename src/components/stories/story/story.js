@@ -17,7 +17,7 @@ const Story = () => {
     var [c, setCount] = useState(0);
     useEffect(() => {
 
-        axios.get(SERVER_URL+ location.pathname, { withCredentials: true })
+        axios.get(REACT_APP_SERVER_URL+ location.pathname, { withCredentials: true })
             .then((res) => {
                 setStoryContent(res.data)
                 setLoading(true);
@@ -27,7 +27,7 @@ const Story = () => {
 
             });
 
-        axios.get(SERVER_URL + "/isauth", { withCredentials: true })
+        axios.get(REACT_APP_SERVER_URL + "/isauth", { withCredentials: true })
             .then((res) => {
                 setAuth(res.data.isAuth)
             }).catch((err) => {
@@ -69,7 +69,7 @@ const Story = () => {
 
     const updatePostLikes = (message) => {
         console.log(likes);
-        axios.put(SERVER_URL + '/updateLikes', { storyId: storyId, likesArray: likes, msg: message }, { withCredentials: true })
+        axios.put(REACT_APP_SERVER_URL + '/updateLikes', { storyId: storyId, likesArray: likes, msg: message }, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
             })
