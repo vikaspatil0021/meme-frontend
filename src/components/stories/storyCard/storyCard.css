@@ -1,0 +1,40 @@
+.overflow-text {
+  /* display: block; */
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /* white-space: nowrap; */
+  text-overflow: ellipsis;
+}
+
+.cropped{
+  object-fit: cover;
+  object-position: 50% 10%;
+}
+
+
+@keyframes slowMoveup {
+  0%   {top:50px}
+  100%  {top:0px}
+}
+
+.card-link{
+  all:unset;
+  cursor:pointer;
+  position: relative;
+  animation-name: slowMoveup ;
+  animation-duration: 1s;
+  
+}
+.Storycard{
+  transition: transform .5s;
+
+}
+.Storycard:hover{
+  transform: scale(1.01);
+  box-shadow: 0 4px 8px 0 rgba(113, 112, 112, 0.2), 0 6px 20px 0 rgba(147, 146, 146, 0.19);
+
+
+}

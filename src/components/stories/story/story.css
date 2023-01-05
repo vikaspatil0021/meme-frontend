@@ -1,0 +1,55 @@
+.storyimagecropped{
+    object-fit: cover;
+    object-position: 50% 5%;
+    height: 700px;
+
+}
+
+@media (max-width: 767.98px) {
+    .storyimagecropped{
+        height: 450px;
+    }
+}
+@media (max-width:575.98px) {
+    .storyimagecropped{
+        height: 300px;
+    }
+}
+
+
+@keyframes slowMoveup {
+    0%   {top:50px}
+    100%  {top:0px}
+}
+.storyPage{
+    animation-name: slowMoveup ;
+    animation-duration: 1s;
+    border: 0;
+}
+
+.colorChange{
+    color: #6c757d;
+
+}
+.colorChange:hover{
+    color: blue;
+
+}
+
+.overflow-text-storytitle {
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* Like and dislike button  */
+
+.likeBorder{
+    border: .5px solid #d9dbde;
+    cursor: pointer;
+
+}
