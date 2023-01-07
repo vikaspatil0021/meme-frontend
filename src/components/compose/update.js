@@ -30,10 +30,10 @@ const UpdateStory = (props) => {
     }, [])
 
     //----------create a story post by posting the recieved data---------
-    const updatePost = (e) => {
+    const updatePost = async (e) => {
 
         if (updatepost.title !== "" && updatepost.content !== '') {
-            axios.put(process.env.REACT_APP_SERVER_URL + '/updateStory', { Id: _id, ...updatepost }, { withCredentials: true })
+            await axios.put(process.env.REACT_APP_SERVER_URL + '/updateStory', { Id: _id, ...updatepost }, { withCredentials: true })
                 .then((res) => {
                     console.log(res.data);
                 })

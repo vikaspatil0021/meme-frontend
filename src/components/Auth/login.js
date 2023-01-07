@@ -22,9 +22,9 @@ const Login = () => {
     }, [])
 
     //--------Confirm User and Login
-    const loginRequest = (e) => {
+    const loginRequest = async (e) => {
         e.preventDefault();
-        axios.post(process.env.REACT_APP_SERVER_URL + '/login', user, { withCredentials: true })
+        await axios.post(process.env.REACT_APP_SERVER_URL + '/login', user, { withCredentials: true })
             .then((res) => {
                 // console.log(user.data);
                 if (res.data.isAuth) {

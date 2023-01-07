@@ -25,7 +25,7 @@ const Comments = (props) => {
             })
     }, [])
 
-    const saveComment = () => {
+    const saveComment = async () => {
         const sendComment = {
             user: {
                 userId: userId,
@@ -39,7 +39,7 @@ const Comments = (props) => {
         }
         if (newComment !== '') {
 
-            axios.post(process.env.REACT_APP_SERVER_URL + '/comment', sendComment, { withCredentials: true })
+            await axios.post(process.env.REACT_APP_SERVER_URL + '/comment', sendComment, { withCredentials: true })
                 .then((res) => {
                     console.log(res.data);
 
@@ -55,7 +55,7 @@ const Comments = (props) => {
 
     }
 
-    const replyCommentHandller = ({ commentId, replyArray }) => {
+    const replyCommentHandller = async ({ commentId, replyArray }) => {
         console.log(commentId);
         const replyCommentObject = {
             user: {
@@ -73,7 +73,7 @@ const Comments = (props) => {
 
         if (replyContent !== '') {
 
-            axios.put(process.env.REACT_APP_SERVER_URL + '/replyComment', replyCommentObject, { withCredentials: true })
+            await axios.put(process.env.REACT_APP_SERVER_URL + '/replyComment', replyCommentObject, { withCredentials: true })
                 .then((res) => {
                     console.log(res.data);
 
@@ -86,9 +86,9 @@ const Comments = (props) => {
         }
 
     }
-    const deleteComment = (commentId) => {
+    const deleteComment = async (commentId) => {
         console.log(commentId);
-        axios.delete(process.env.REACT_APP_SERVER_URL + "/deletecomment", { data: { Id: commentId }, withCredentials: true })
+        await axios.delete(process.env.REACT_APP_SERVER_URL + "/deletecomment", { data: { Id: commentId }, withCredentials: true })
             .then((res) => {
                 console.log(res.data);
             }).catch((err) => {
@@ -96,7 +96,7 @@ const Comments = (props) => {
             });
 
     }
-    const deleteReplyComment = ({commentId,replyId}) =>{
+    const deleteReplyComment = async ({commentId,replyId}) =>{
 
         const replyCommentObject = {
             
@@ -106,7 +106,7 @@ const Comments = (props) => {
 
 
         }
-        axios.put(process.env.REACT_APP_SERVER_URL + "/replyComment", replyCommentObject, {withCredentials: true })
+        await axios.put(process.env.REACT_APP_SERVER_URL + "/replyComment", replyCommentObject, {withCredentials: true })
             .then((res) => {
                 console.log(res.data);
             }).catch((err) => {

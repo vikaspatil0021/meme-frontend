@@ -26,13 +26,13 @@ const Compose = () => {
     }, [])
 
     //post request to image upload to cloudinary ------------------
-    const uploadImage =()=>{
+    const uploadImage =async()=>{
 
     
         const formData = new FormData();
         formData.append("file", fileSelected[0]);
         formData.append("upload_preset","ne5lxezf")
-        axios.post("https://api.cloudinary.com/v1_1/dt55mivpf/image/upload", formData)
+        await axios.post("https://api.cloudinary.com/v1_1/dt55mivpf/image/upload", formData)
             .then((res) => {
                 console.log(res.data.url);
                 setPost({ title: post.title, content: post.content, imageURL:res.data.url})
@@ -48,13 +48,13 @@ const Compose = () => {
     }
 
     //----------create a story post by posting the recieved data---------
-    const createPost = (e) => {
+    const createPost = async (e) => {
 
         e.preventDefault();
         if (post.title !== "" && post.content !== '' && post.imageURL!=='') {
             console.log(post)
         //post request to send post data to backend----------------------
-            axios.post(process.env.REACT_APP_SERVER_URL + '/compose', post, { withCredentials: true })
+            await axios.post(process.env.REACT_APP_SERVER_URL + '/compose', post, { withCredentials: true })
                 .then((res) => {
                     console.log(res.data);
                     navigate("/stories")

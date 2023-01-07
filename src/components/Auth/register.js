@@ -29,7 +29,7 @@ const Register = () => {
   }, [])
 
   //--------Register user--------
-  const registerRequest = (e) => {
+  const registerRequest = async (e) => {
     e.preventDefault()
     const user = {
       fullName: name.fname + " " + name.lname,
@@ -38,7 +38,7 @@ const Register = () => {
       password: Input.password
     }
 
-    axios.post(process.env.REACT_APP_SERVER_URL + '/register', user, { withCredentials: true })
+    await axios.post(process.env.REACT_APP_SERVER_URL + '/register', user, { withCredentials: true })
       .then((res) => {
         if (res.data.isAuth) {
           navigate("/dashboard");

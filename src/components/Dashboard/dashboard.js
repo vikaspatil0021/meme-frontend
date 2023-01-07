@@ -32,8 +32,8 @@ const Dashboard = (props) => {
             });
     }, [])
 
-    const deleteStory = (storyId) => {
-        axios.delete(process.env.REACT_APP_SERVER_URL + "/delete", { data: { Id: storyId }, withCredentials: true })
+    const deleteStory = async (storyId) => {
+        await axios.delete(process.env.REACT_APP_SERVER_URL + "/delete", { data: { Id: storyId }, withCredentials: true })
             .then((res) => {
                 console.log(res.data);
             }).catch((err) => {

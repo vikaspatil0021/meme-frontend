@@ -66,9 +66,9 @@ const Story = () => {
         }
     }
 
-    const updatePostLikes = (message) => {
+    const updatePostLikes = async (message) => {
         console.log(likes);
-        axios.put(process.env.REACT_APP_SERVER_URL + '/updateLikes', { storyId: storyId, likesArray: likes, msg: message }, { withCredentials: true })
+        await axios.put(process.env.REACT_APP_SERVER_URL + '/updateLikes', { storyId: storyId, likesArray: likes, msg: message }, { withCredentials: true })
             .then((res) => {
                 console.log(res.data);
             })
