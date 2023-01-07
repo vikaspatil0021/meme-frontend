@@ -24,7 +24,7 @@ const Login = () => {
     //--------Confirm User and Login
     const loginRequest = async (e) => {
         e.preventDefault();
-        await axios.post(process.env.REACT_APP_SERVER_URL + '/login', user, { withCredentials: "include" })
+        await axios.post(process.env.REACT_APP_SERVER_URL + '/login', user, { withCredentials: "omit" })
             .then((res) => {
                 // console.log(user.data);
                 if (res.data.isAuth) {
