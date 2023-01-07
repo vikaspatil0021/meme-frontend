@@ -11,7 +11,7 @@ const Login = () => {
 
     //-----------Current Auth status-----------
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: true })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
             .then((res) => {
                 if (res.data.isAuth) {
                     navigate("/stories")
@@ -24,7 +24,7 @@ const Login = () => {
     //--------Confirm User and Login
     const loginRequest = async (e) => {
         e.preventDefault();
-        await axios.post(process.env.REACT_APP_SERVER_URL + '/login', user, { withCredentials: true })
+        await axios.post(process.env.REACT_APP_SERVER_URL + '/login', user, { withCredentials: "include" })
             .then((res) => {
                 // console.log(user.data);
                 if (res.data.isAuth) {

@@ -7,7 +7,7 @@ const Nav = () => {
     const [checkAuth, setCheckAuth] = useState(false);
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: true })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
             .then((res) => {
                 setCheckAuth(res.data.isAuth)
             }).catch((err) => {

@@ -19,7 +19,7 @@ const UpdateStory = (props) => {
             navigate("/dashboard")
         }
         
-        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: true })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
             .then((res) => {
                 if (!(res.data.isAuth)) {
                     navigate("/login")

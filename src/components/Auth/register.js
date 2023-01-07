@@ -18,7 +18,7 @@ const Register = () => {
 
   //--------------Current Auth status------------
   useEffect(() => {
-    axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: true })
+    axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
       .then((res) => {
         if (res.data.isAuth) {
           navigate("/stories")
@@ -38,7 +38,7 @@ const Register = () => {
       password: Input.password
     }
 
-    await axios.post(process.env.REACT_APP_SERVER_URL + '/register', user, { withCredentials: true })
+    await axios.post(process.env.REACT_APP_SERVER_URL + '/register', user, { withCredentials: "include" })
       .then((res) => {
         if (res.data.isAuth) {
           navigate("/dashboard");

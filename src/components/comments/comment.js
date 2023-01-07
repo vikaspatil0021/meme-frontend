@@ -17,7 +17,7 @@ const Comments = (props) => {
 
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL+ "/comments/" + props.storyId, { withCredentials: true })
+        axios.get(process.env.REACT_APP_SERVER_URL+ "/comments/" + props.storyId, { withCredentials: "include" })
             .then((res) => {
                 setSentComments(res.data);
             }).catch((err) => {
@@ -39,7 +39,7 @@ const Comments = (props) => {
         }
         if (newComment !== '') {
 
-            await axios.post(process.env.REACT_APP_SERVER_URL + '/comment', sendComment, { withCredentials: true })
+            await axios.post(process.env.REACT_APP_SERVER_URL + '/comment', sendComment, { withCredentials: "include" })
                 .then((res) => {
                     console.log(res.data);
 
@@ -73,7 +73,7 @@ const Comments = (props) => {
 
         if (replyContent !== '') {
 
-            await axios.put(process.env.REACT_APP_SERVER_URL + '/replyComment', replyCommentObject, { withCredentials: true })
+            await axios.put(process.env.REACT_APP_SERVER_URL + '/replyComment', replyCommentObject, { withCredentials: "include" })
                 .then((res) => {
                     console.log(res.data);
 
@@ -88,7 +88,7 @@ const Comments = (props) => {
     }
     const deleteComment = async (commentId) => {
         console.log(commentId);
-        await axios.delete(process.env.REACT_APP_SERVER_URL + "/deletecomment", { data: { Id: commentId }, withCredentials: true })
+        await axios.delete(process.env.REACT_APP_SERVER_URL + "/deletecomment", { data: { Id: commentId }, withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
             }).catch((err) => {
@@ -106,7 +106,7 @@ const Comments = (props) => {
 
 
         }
-        await axios.put(process.env.REACT_APP_SERVER_URL + "/replyComment", replyCommentObject, {withCredentials: true })
+        await axios.put(process.env.REACT_APP_SERVER_URL + "/replyComment", replyCommentObject, {withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
             }).catch((err) => {
