@@ -51,7 +51,7 @@ const Dashboard = (props) => {
                     </h1>
                     <div className="my-auto">
                         <a href="/compose" class="btn btn-primary mx-2 d-none d-md-inline">Compose</a>
-                        <a href="http://localhost:5000/logout" class="btn btn-danger me-lg-5">Log out</a>
+                        <a href="https://my-blog-backend-1ict.onrender.com/logout" class="btn btn-danger me-lg-5">Log out</a>
                     </div>
                 </div>
                 <hr className="p-0 m-0" />
