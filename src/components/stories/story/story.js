@@ -98,7 +98,7 @@ const Story = () => {
 
 
                 </div>
-                <div className="p-1">
+                <div className="p-1 border-bottom">
                     <div className="d-flex ms-2 ms-md-3">
                         <div className="mx-auto d-flex justify-content-between" style={{ width: "1370px" }}>
                             <div className="m-3" style={{ letterSpacing: "1px" }}>
