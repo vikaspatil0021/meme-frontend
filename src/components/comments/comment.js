@@ -1,9 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthModel from "../Auth/authModel";
 
 
 const Comments = (props) => {
+    const navigate = useNavigate();
+
 
     const user = props.user;
     const { _id: userId, name, username } = user;
@@ -25,6 +28,11 @@ const Comments = (props) => {
             })
     }, [])
 
+    const refreshPage = ()=>{
+        window.location.reload();
+
+    }
+
     const saveComment =  () => {
         const sendComment = {
             user: {
@@ -42,7 +50,7 @@ const Comments = (props) => {
             axios.post(process.env.REACT_APP_SERVER_URL + '/comment', sendComment, { withCredentials: "include" })
                 .then((res) => {
                     console.log(res.data);
-
+                    refreshPage();
 
                 })
                 .catch((error) => {
@@ -76,6 +84,8 @@ const Comments = (props) => {
             axios.put(process.env.REACT_APP_SERVER_URL + '/replyComment', replyCommentObject, { withCredentials: "include" })
                 .then((res) => {
                     console.log(res.data);
+                    refreshPage();
+
 
 
                 })
@@ -91,6 +101,8 @@ const Comments = (props) => {
         axios.delete(process.env.REACT_APP_SERVER_URL + "/deletecomment", { data: { Id: commentId }, withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
+                refreshPage();
+
             }).catch((err) => {
                 console.log(err);
             });
@@ -98,7 +110,7 @@ const Comments = (props) => {
     }
     const deleteReplyComment =  ({commentId,replyId}) =>{
 
-        const replyCommentObject = {
+        const CommentObject = {
             
             commentId: commentId,
             replyId:replyId,
@@ -106,9 +118,11 @@ const Comments = (props) => {
 
 
         }
-        axios.put(process.env.REACT_APP_SERVER_URL + "/replyComment", replyCommentObject, {withCredentials: "include" })
+        axios.put(process.env.REACT_APP_SERVER_URL + "/replyComment", CommentObject, {withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
+                refreshPage();
+
             }).catch((err) => {
                 console.log(err);
             });
@@ -146,7 +160,7 @@ const Comments = (props) => {
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" class="btn btn-danger rounded-4 float-end" data-bs-dismiss="modal">Cancel</button>
-                                    <a type="button" href={(newComment !== '') ? ("/stories/" + props.storyId) : "#comments"} class="btn btn-primary rounded-4 float-end me-3" onClick={saveComment}>Publish</a>
+                                    <button type="button" class="btn btn-primary rounded-4 float-end me-3" onClick={saveComment}>Publish</button>
                                 </div>
                             </div>
                         </div>
@@ -191,8 +205,8 @@ const Comments = (props) => {
                                             <h1 class="modal-title fs-5 px-3" id="exampleModalLabel">This comment will be deleted permanentally</h1>
                                         </div>
                                         <div class="modal-footer">
-                                            <a type="button" class="btn btn-primary rounded-4" data-bs-dismiss="modal">Cancel</a>
-                                            <a type="button" href={"/stories/" + props.storyId} class="btn btn-danger rounded-4" onClick={() => { deleteComment(comment._id) }}>Delete</a>
+                                            <button type="button" class="btn btn-primary rounded-4" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-danger rounded-4" onClick={() => { deleteComment(comment._id) }}>Delete</button>
                                         </div>
                                     </div>
                                 </div>
@@ -215,7 +229,7 @@ const Comments = (props) => {
                                         </div>
                                         <div className="modal-footer">
                                             <button type="button" class="btn btn-danger rounded-4 float-end" data-bs-dismiss="modal">Cancel</button>
-                                            <a type="button" href={(replyContent !== '') ? ("/stories/" + props.storyId) : "#comments"} class="btn btn-primary rounded-4 float-end me-3" onClick={() => { replyCommentHandller({ commentId: comment._id, replyArray: comment.reply }) }}>Reply</a>
+                                            <button type="button" class="btn btn-primary rounded-4 float-end me-3" onClick={() => { replyCommentHandller({ commentId: comment._id, replyArray: comment.reply }) }}>Reply</button>
                                         </div>
                                     </div>
                                 </div>
@@ -257,7 +271,7 @@ const Comments = (props) => {
                                                 </div>
                                                 <div class="modal-footer">
                                                     <a type="button" class="btn btn-primary rounded-4" data-bs-dismiss="modal">Cancel</a>
-                                                    <a type="button" href={"/stories/" + props.storyId} class="btn btn-danger rounded-4" onClick={() => { deleteReplyComment({commentId:comment._id,replyId:replyComment.replyId}) }}>Delete</a>
+                                                    <button type="button" class="btn btn-danger rounded-4" onClick={() => { deleteReplyComment({commentId:comment._id,replyId:replyComment.replyId}) }}>Delete</button>
                                                 </div>
                                             </div>
                                         </div>
