@@ -188,8 +188,10 @@ const Comments = (props) => {
                                         </button>
                                         <ul className="p-2 dropdown-menu rounded-4">
 
-                                            <li><a className="btn btn-primary py-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#" + ((props.auth) ? ("reply" + comment._id) : "authModel")}>Reply</a></li>
-                                            {(userId === comment.user.userId) ? <li><a className=" btn btn-danger py-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#a" + comment._id}>Delete</a></li> : null}
+                                            <li><a className="btn btn-primary pt-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#" + ((props.auth) ? ("reply" + comment._id) : "authModel")}>Reply</a></li>
+                                            <hr className="m-2 p-0"/>
+
+                                            {(userId === comment.user.userId) ? <li><a className=" btn btn-danger pb-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#a" + comment._id}>Delete</a></li> : null}
 
                                         </ul>
                                     </div>
@@ -255,8 +257,10 @@ const Comments = (props) => {
                                         </button>
                                         <ul className="p-2 dropdown-menu rounded-4">
 
-                                            <li><a className="btn btn-primary py-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#" + ((props.auth) ? ("reply" + comment._id) : "authModel")}>Reply</a></li>
-                                            {(userId === replyComment.user.userId) ? <li><a className=" btn btn-danger py-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#a"+replyComment.replyId}>Delete</a></li> : null}
+                                            <li><a className="btn btn-primary pt-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#" + ((props.auth) ? ("reply" + comment._id) : "authModel")}>Reply</a></li> 
+                                            <hr className="m-2 p-0"/>
+
+                                            {(userId === replyComment.user.userId) ? <li><a className=" btn btn-danger pb-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#a"+replyComment.replyId}>Delete</a></li> : null}
 
                                         </ul>
                                     </div>
