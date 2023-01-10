@@ -53,22 +53,26 @@ const Story = () => {
         if (element.classList.contains("bi-heart-fill")) {
             element.classList.replace("bi-heart-fill", "bi-heart");
             if (c != 0) {
-                c--;
+                var likesArray = likes.filter(function (ele) {
+                    return ele != sessionId;
+                })
             }
-            setCount(c);
-            updatePostLikes("remove");
+            setCount(likesArray.length);
+            updatePostLikes(likesArray);
         } else {
             element.classList.replace("bi-heart", "bi-heart-fill");
-            c++;
-            setCount(c)
-            updatePostLikes("add")
+            if(!(likes.includes(sessionId))){
+                likes.push(sessionId);
+            }
+            setCount(likes.length)
+            updatePostLikes(likes)
 
         }
     }
 
-    const updatePostLikes = async (message) => {
+    const updatePostLikes = async (likesCount) => {
         console.log(likes);
-        await axios.put(process.env.REACT_APP_SERVER_URL + '/updateLikes', { storyId: storyId, likesArray: likes, msg: message }, { withCredentials: "include" })
+        await axios.put(process.env.REACT_APP_SERVER_URL + '/updateLikes', { storyId: storyId, likesArray: likesCount }, { withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
             })
