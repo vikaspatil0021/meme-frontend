@@ -189,9 +189,9 @@ const Comments = (props) => {
                                         <ul className="p-2 dropdown-menu rounded-4">
 
                                             <li><a className="btn btn-primary pt-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#" + ((props.auth) ? ("reply" + comment._id) : "authModel")}>Reply</a></li>
-                                            <hr className="m-2 p-0"/>
+                                            
 
-                                            {(userId === comment.user.userId) ? <li><a className=" btn btn-danger pb-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#a" + comment._id}>Delete</a></li> : null}
+                                            {(userId === comment.user.userId) ?( <div><hr className="m-2 p-0"/><li><a className=" btn btn-danger pb-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#a" + comment._id}>Delete</a></li></div>) : null}
 
                                         </ul>
                                     </div>
@@ -258,9 +258,9 @@ const Comments = (props) => {
                                         <ul className="p-2 dropdown-menu rounded-4">
 
                                             <li><a className="btn btn-primary pt-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#" + ((props.auth) ? ("reply" + comment._id) : "authModel")}>Reply</a></li> 
-                                            <hr className="m-2 p-0"/>
+                                            
 
-                                            {(userId === replyComment.user.userId) ? <li><a className=" btn btn-danger pb-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#a"+replyComment.replyId}>Delete</a></li> : null}
+                                            {(userId === replyComment.user.userId) ? <div><hr className="m-2 p-0"/><li><a className=" btn btn-danger pb-2 rounded-4 dropdown-item" href="#" data-bs-toggle="modal" data-bs-target={"#a"+replyComment.replyId}>Delete</a></li></div> : null}
 
                                         </ul>
                                     </div>
