@@ -20,7 +20,7 @@ const StoryCard = (props) => {
                         <img class="card-img rounded-5 cropped" src={imageURL} alt="Card image cap" height="300" />
                         <div class="card-body text-dark">
                             <h4 class="card-title overflow-text">{title}</h4>
-                            <p class="card-text overflow-text">{content}</p>
+                            <p class="card-text overflow-text text-muted">{content}</p>
                             <div className="d-inline-flex">
 
                             <i class={"bi "+like+" mx-2 d-inline fs-5 text-danger"} />
