@@ -24,7 +24,7 @@
 .storyPage{
     animation-name: slowMoveup ;
     animation-duration: 1s;
-    border: 0;
+    border: 0.1;
 }
 
 .colorChange{
