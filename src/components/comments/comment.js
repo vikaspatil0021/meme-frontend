@@ -131,7 +131,7 @@ const Comments = (props) => {
     return (
         <div id="comments" className="m-2">
             <div class="card storyPage rounded-5 my-3 p-1 p-md-4 p-lg-5 pt-lg-3">
-                <div className="card-content p-1 py-3 p-lg-5 pt-lg-3">
+                <div className="card-content p-1 py-3 p-lg-5 pt-lg-3 pb-lg-2">
 
                     <div className="d-flex justify-content-center">
 
@@ -240,7 +240,7 @@ const Comments = (props) => {
                             {comment.reply.map((replyComment) =>
                             (
                                 <div className=" ms-5 ms-md-4">
-                                    <hr className="mx-auto" style={{ width: "95%" }} />
+                                    <hr className="float-end" style={{ width: "97%" }} />
                                     <a href={"/people/" + replyComment.user.username} className="text-decoration-none d-inline-flex">
                                         <div className="card d-inline border-0 px-3 pb-0 rounded-4">
 
@@ -251,7 +251,7 @@ const Comments = (props) => {
                                     </a>
                                     <div className="d-inline dropstart">
 
-                                        <button className="rounded-5 border-0 float-end drop-button-comment me-4" data-bs-toggle="dropdown">
+                                        <button className="rounded-5 border-0 float-end drop-button-comment" data-bs-toggle="dropdown">
 
                                             <i class="bi bi-three-dots fs-4 float-end"></i>
                                         </button>
