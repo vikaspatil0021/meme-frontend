@@ -1,41 +1,56 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import Nav from "../../Header/header";
 
 
 const Person = () => {
+
+    const [auth, setAuth] = useState('');
+    useEffect(() => {
+        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
+            .then((res) => {
+                setAuth(res.data.isAuth)
+            }).catch((err) => {
+                console.log(err);
+            })
+
+    }, []);
+
     return (
         <div>
-            <div className="mt-lg-5 pt-lg-5 mx-lg-5 px-lg-5 mt-5 pt-5 m-2 p-2 mx-md-3 px-md-3">
-                <div className="mx-auto my-3 d-flex flex-wrap">
-                    <div class="m-1 m-md-2 col-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="card mx-auto d-flex flex-column">
-                            <div className="mx-auto">
-                                <i class="bi bi-person-fill" style={{ fontSize: "8rem" }}></i>
-                            </div>
-                            <h5 class="mx-auto fw-normal">@{ }vikaspatil0021</h5>
-                            <h3 class="mx-auto m-2 font-monospace">{ }Vikas Patil</h3>
-                            <div className="text-center">
+            <div className="sticky-top bg-white" >
 
-                            <p className="px-5 pt-3 font-monospace fw-normal">I m interested in web developement pp asnd ai developmeent and machine learning</p>
-                            </div>
+                <div className="quickLinks px-2 py-2">
+                    <div className="d-flex ms-2 ms-md-3">
+                        <div className="mx-auto" style={{ width: "1370px" }}>
+
+                            <a href="/" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold"><i class=" my-1 bi bi-house-door" /></a>
+                            {(auth) ? <a href="/dashboard" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold">Dashboard</a> :
+                                <button data-bs-toggle="modal" data-bs-target="#authModel" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold">Dashboard</button>}
+                            <a href="/people" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" />People</a>
+
                         </div>
-                        <div className="row mx-auto">
-                        <div className="card col ms-0 m-1">
-                            hiVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVv
-                        </div>
-                        <div className="card col me-0 m-1">
-                            hi
-                        </div>
-                        </div>
-                    </div>
-                    <div class="card m-1 m-md-2 col-12 col-md">
-                        <div class="card-body">
-                            <h5 class="card-title">{ }</h5>
-                            <p class="card-text">{ }</p>
-                        </div>
+
                     </div>
                 </div>
+                <div className="">
+                    <div className="ms-2 ms-md-3">
+                        <div className="mx-auto card-content" style={{ width: "1370px" }}>
+                        <div className="col-12">
+
+                        <img class="rounded-5 cropped m-3" src="https://res.cloudinary.com/dt55mivpf/image/upload/v1671421250/MYBLOG/POSTS/y8firp0fwrq4nicvrjw3.jpg" alt="Card image cap" height="150" width="150" />
+                        </div>
+
+                            
+                            
+
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
+
         </div>
     );
 }

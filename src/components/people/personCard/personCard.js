@@ -10,10 +10,10 @@ const PersonCard = (props) => {
             
             <a href={"/people/" + username} class="card-link">
                 
-                <div class="card Storycard rounded-4 mb-1">
+                <div class="card Storycard rounded-5 mb-1">
                     <div class="card-content d-flex p-3">
                         <div className="col-5">
-                            <img class="card-img rounded-4 cropped" src="https://res.cloudinary.com/dt55mivpf/image/upload/v1671421250/MYBLOG/POSTS/y8firp0fwrq4nicvrjw3.jpg" alt="Card image cap" height="150" />
+                            <img class="card-img rounded-5 cropped" src="https://res.cloudinary.com/dt55mivpf/image/upload/v1671421250/MYBLOG/POSTS/y8firp0fwrq4nicvrjw3.jpg" alt="Card image cap" height="150" />
 
                         </div>
                         <div class="card-body col-7 py-0 text-dark">
