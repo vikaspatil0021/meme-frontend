@@ -1,0 +1,16 @@
+.personImage{
+    height: 400px;
+    object-fit: cover;
+    object-position: 50% 10%;
+}
+@media (max-width: 767.98px) {
+    .personImage{
+        height: 200px;
+        
+    }
+}
+@media (max-width:575.98px) {
+    .personImage{
+        height: 150px;
+    }
+}
