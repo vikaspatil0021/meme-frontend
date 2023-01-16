@@ -18,9 +18,9 @@ const Person = () => {
 
     return (
         <div>
-            <div className="" >
+            <div className="sticky-top bg-white" >
 
-                <div className="sticky-top  bg-white quickLinks px-2 py-2">
+                <div className="quickLinks px-2 py-2">
                     <div className="d-flex ms-2 ms-md-3">
                         <div className="mx-auto" style={{ width: "1370px" }}>
 
@@ -33,24 +33,16 @@ const Person = () => {
 
                     </div>
                 </div>
-                <div className="p-1  bg-white border-bottom">
-                    <div className="d-flex ms-2 ms-md-3">
-                        <div className="mx-auto d-flex " style={{ width: "1370px" }}>
-                            <div className="m-3 d-flex">
+                <div className="">
+                    <div className="ms-2 ms-md-3">
+                        <div className="mx-auto card-content" style={{ width: "1370px" }}>
+                        <div className="col-12">
 
-                                <div className="col-6">
+                        <img class="rounded-5 cropped m-3" src="https://res.cloudinary.com/dt55mivpf/image/upload/v1671421250/MYBLOG/POSTS/y8firp0fwrq4nicvrjw3.jpg" alt="Card image cap" height="150" width="150" />
+                        </div>
 
-                                    <img class="rounded-5 cropped card-img" src="https://res.cloudinary.com/dt55mivpf/image/upload/v1671421250/MYBLOG/POSTS/y8firp0fwrq4nicvrjw3.jpg" alt="Card image cap" />
-                                </div>
-                                <div className="">
-                                    <div className="m-3 d-inline fs-4 fw-semibold text-muted">
-                                        vikaspatil0021
-                                    </div>
-                                </div>
-                            </div>
-
-
-
+                            
+                            
 
                         </div>
 
