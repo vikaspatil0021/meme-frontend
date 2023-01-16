@@ -170,7 +170,7 @@ const Story = () => {
                         </div>
 
                     </div>
-                ) : <Preloader page={location.pathname.slice(1)} />}
+                ) : <Preloader />}
         </div>
 
     );

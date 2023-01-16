@@ -63,7 +63,7 @@ const Stories = () => {
             {loading ? 
             (<div className="mx-auto mt-3 px-2 d-flex flex-wrap mw-100" style={{ width: "1400px" }}>
                 {displayStory}
-            </div>) : <Preloader page={"stories"} />}
+            </div>) : <Preloader />}
         </div>
     );
 }

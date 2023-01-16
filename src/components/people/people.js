@@ -55,7 +55,7 @@ const People = () => {
                 {loading ?
                     (<div className="mx-auto mt-3 px-2 d-flex flex-wrap mw-100" style={{ width: "1400px" }}>
                         {displayPerson}
-                    </div>) : <Preloader page={"people"} />}
+                    </div>) : <Preloader  />}
 
         </div>
     );
