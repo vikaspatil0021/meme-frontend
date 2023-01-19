@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Nav from "../../Header/header";
 import Preloader from "../../preLoader/preloader";
+import AuthModel from "../../Auth/authModel";
 
 
 const Person = () => {
@@ -24,18 +25,19 @@ const Person = () => {
             })
 
         axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
-            .then((res) => {
-                setAuth(res.data.isAuth)
-            }).catch((err) => {
+        .then((res) => {
+            setAuth(res.data.isAuth)
+        }).catch((err) => {
                 console.log(err);
             })
-
-    }, []);
-
-    const {username,name}=personInfo;
-
-    return (
-        <div>
+            
+        }, []);
+        
+        const {username,name}=personInfo;
+        
+        return (
+            <div>
+        <AuthModel />
             <div className="sticky-top" >
 
                 <div className=" bg-white quickLinks px-2 py-2">
@@ -77,22 +79,7 @@ const Person = () => {
                                         34
                                     </p>
                                 </div>
-                                <div className="mx-3">
-                                    <p className="fw-semibold fs-4 text-muted m-0">
-                                        Stories
-                                    </p>
-                                    <p className="py-0 ps-1 fw-semibold my-0">
-                                        12
-                                    </p>
-                                </div>
-                                <div className="mx-3">
-                                    <p className="fw-semibold fs-4 text-muted m-0">
-                                        Friends
-                                    </p>
-                                    <p className="py-0 my-0 ps-1 fw-semibold">
-                                        34
-                                    </p>
-                                </div>
+                                
                             </div>
 
 
