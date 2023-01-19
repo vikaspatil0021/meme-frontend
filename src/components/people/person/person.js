@@ -104,7 +104,7 @@ const Person = () => {
                                         Bio
                                     </div>
                                     <div class="tab-pane fade" id="pills-stories" role="tabpanel" aria-labelledby="pills-stories-tab" tabindex="0">
-                                        <div className="d-flex">
+                                        <div className="d-md-flex">
 
                                         {story.map((eachStory) => {
                                             return(
