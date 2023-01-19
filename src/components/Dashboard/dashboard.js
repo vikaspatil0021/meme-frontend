@@ -74,7 +74,7 @@ const Dashboard = (props) => {
 
 
                         <div class="d-flex align-items-start px-4">
-                            <div class="nav flex-column nav-pills p-3 col-3 list-group" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            <div class="flex-column nav-pills p-3 col-3 list-group" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                 <button class="active list-group-item p-3" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">My Account</button>
                                 <button class="list-group-item p-3" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">My Stories</button>
 
