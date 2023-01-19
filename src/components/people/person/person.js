@@ -98,12 +98,12 @@ const Person = () => {
 
                                 </div>
                                 <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active card p-4 rounded-4" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                                    <div class="tab-pane show active card p-4 rounded-4" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
 
 
                                         Bio
                                     </div>
-                                    <div class="tab-pane fade d-md-flex" id="pills-stories" role="tabpanel" aria-labelledby="pills-stories-tab" tabindex="0">
+                                    <div class="tab-pane d-md-flex" id="pills-stories" role="tabpanel" aria-labelledby="pills-stories-tab" tabindex="0">
                                         {story.map((eachStory) => {
                                             return(
                                             <div className="col-12 col-md-6  me-3">
@@ -125,7 +125,7 @@ const Person = () => {
                                             )
                                         })}
                                     </div>
-                                    <div class="tab-pane fade" id="pills-friends" role="tabpanel" aria-labelledby="pills-friends-tab" tabindex="0">
+                                    <div class="tab-pane" id="pills-friends" role="tabpanel" aria-labelledby="pills-friends-tab" tabindex="0">
                                         Friends
                                     </div>
                                 </div>
