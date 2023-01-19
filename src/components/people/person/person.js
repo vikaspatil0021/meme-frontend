@@ -83,10 +83,13 @@ const Person = () => {
                         </div>
 
                         <div className="d-flex ">
-                            <div className="p-4 ps-4 ps-md-4 mx-auto" style={{ width: "1370px" }}>
-                                <div class="nav-pills my-4  list-group list-group-horizontal" id="pills-tab" role="tablist" >
-                                    <button class="active rounded-start list-group-item" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Stories(20)</button>
-                                    <button class="list-group-item" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Friends(20)</button>
+                            <div className="py-4 ps-4 ps-md-4 mx-auto" style={{ width: "1370px" }}>
+                                
+                                <div class="nav-pills mb-4 list-group list-group-horizontal" id="pills-tab" role="tablist" >
+                                    <button class="active list-group-item opacity-75" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Profile</button>
+                                    <button class="list-group-item opacity-75" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Friends(20)</button>
+                                    <button class="list-group-item opacity-75" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Stories(20)</button>
+
                                     
 
                                 </div>
