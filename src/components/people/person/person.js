@@ -13,10 +13,10 @@ const Person = () => {
 
     const [auth, setAuth] = useState('');
     const [loading, setLoading] = useState(false);
-    console.log(personInfo);
     useEffect(() => {
         axios.get(process.env.REACT_APP_SERVER_URL + location.pathname, { withCredentials: "include" })
             .then((res) => {
+                console.log(res.data);
                 setPersonInfo(res.data.foundUser);
                 setLoading(true);
 
@@ -83,27 +83,27 @@ const Person = () => {
                         </div>
 
                         <div className="d-flex ">
-                            <div className="py-4 ps-4 ps-md-4 mx-auto" style={{ width: "1370px" }}>
+                            <div className="py-4 px-4 ps-md-4 mx-auto" style={{ width: "1370px" }}>
 
                                 <div class="nav-pills mb-4 list-group list-group-horizontal" id="pills-tab" role="tablist" >
-                                    <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Profile</button>
+                                    <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Bio</button>
+                                    <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-stories-tab" data-bs-toggle="pill" data-bs-target="#pills-stories" type="button" role="tab" aria-controls="pills-stories" aria-selected="true">Stories(20)</button>
                                     <button class="list-group-item opacity-75 me-2 rounded-4" id="pills-friends-tab" data-bs-toggle="pill" data-bs-target="#pills-friends" type="button" role="tab" aria-controls="pills-friends" aria-selected="false">Friends(20)</button>
-                                    <button class="list-group-item opacity-75 rounded-4" id="pills-stories-tab" data-bs-toggle="pill" data-bs-target="#pills-stories" type="button" role="tab" aria-controls="pills-stories" aria-selected="true">Stories(20)</button>
 
 
 
                                 </div>
                                 <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                                    <div class="tab-pane fade show active card p-4 rounded-4" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
 
 
-                                        yes
+                                        Bio
                                     </div>
                                     <div class="tab-pane fade" id="pills-friends" role="tabpanel" aria-labelledby="pills-friends-tab" tabindex="0">
-                                        friennds
+                                        Friends
                                     </div>
                                     <div class="tab-pane fade" id="pills-stories" role="tabpanel" aria-labelledby="pills-stories-tab" tabindex="0">
-                                        stories
+                                        Stories
                                     </div>
                                 </div>
                             </div>
