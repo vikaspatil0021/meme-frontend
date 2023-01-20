@@ -104,11 +104,11 @@ const Person = () => {
                                         Bio
                                     </div>
                                     <div class="tab-pane fade" id="pills-stories" role="tabpanel" aria-labelledby="pills-stories-tab" tabindex="0">
-                                        <div className="d-md-flex">
+                                        <div className="d-flex flex-wrap mw-100">
 
                                         {story.map((eachStory) => {
                                             return(
-                                            <div className="col-12 col-md-6  me-3">
+                                            <div className="col-12 col-md-5  me-3">
 
 
                                                 <a href={"/stories/"+eachStory._id} class="card-link">

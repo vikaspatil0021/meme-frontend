@@ -157,7 +157,7 @@ const Story = () => {
                                         <div class="card-body">
 
                                             <h5 class="card-title fs-2">{title}</h5>
-                                            <p class="card-text fs-md-5 fs-4 pt-md-5 pt-3 text-secondary">{content}</p>
+                                            <p class="card-text fs-5 pt-md-5 pt-3 text-secondary">{content}</p>
                                         </div>
                                     </div>
                                 </div>
