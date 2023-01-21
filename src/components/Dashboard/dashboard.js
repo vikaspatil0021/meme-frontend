@@ -52,10 +52,10 @@ const Dashboard = (props) => {
                 <div className=" d-flex ms-2 ms-md-3">
                     <div className=" mx-auto" style={{ width: "1370px" }}>
 
-                        <a href="/" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold"><i class=" my-1 bi bi-house-door" /></a>
-                        <a href="/stories" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold me-1">Stories</a>
+                        <a href="/" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" /><i class=" my-1 bi bi-house-door" /></a>
+                        <a href="/stories" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold me-1"><i class="my-1 pe-1 bi bi-arrow-left" />Stories</a>
 
-                        <a href="/people" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold">People</a>
+                        <a href="/people" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" />People</a>
                     </div>
 
                 </div>
