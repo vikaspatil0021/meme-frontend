@@ -62,10 +62,10 @@ const Dashboard = (props) => {
 
 
             </div>
-            <div className="sticky-top ">
+            <div className="sticky-top bg-white">
 
 
-                <div className="d-flex quickLinks bg-white">
+                <div className="d-flex  ">
                     <div className="d-flex flex-wrap justify-content-between py-3 mx-auto px-3" style={{ width: "1390px" }}>
                         <h1 className="fw-bolder fs-2 my-auto ms-1 ms-md-2">
                             Dashboard
@@ -77,7 +77,10 @@ const Dashboard = (props) => {
                             </div> : null}
                     </div>
                 </div>
-                <div class="nav-pills p-2 pb-0 list-group list-group-horizontal" id="pills-tab" role="tablist"  style={{backgroundColor: "#f5f5f7"}}>
+                {(loading) ?
+                <div className="d-flex quickLinks ps-2 ps-md-3">
+
+                <div class="nav-pills p-2 list-group list-group-horizontal mx-auto" id="pills-tab" role="tablist"  style={{width: "1370px" }}>
                     <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-account-tab" data-bs-toggle="pill" data-bs-target="#pills-account" type="button" role="tab" aria-controls="pills-account" aria-selected="true">Account</button>
                     <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-mystories-tab" data-bs-toggle="pill" data-bs-target="#pills-mystories" type="button" role="tab" aria-controls="pills-mystories" aria-selected="true">My Stories</button>
                     <button class="list-group-item opacity-75 me-2 rounded-4" id="pills-myfriends-tab" data-bs-toggle="pill" data-bs-target="#pills-myfriends" type="button" role="tab" aria-controls="pills-myfriends" aria-selected="false">My Friends</button>
@@ -85,17 +88,18 @@ const Dashboard = (props) => {
 
 
                 </div>
+                </div>:null}
 
             </div>
 
             {loading ?
-                (<div>
+                (<div className="d-flex">
 
 
 
 
 
-                    <div class=" px-4">
+                    <div class="mx-auto px-4" style={{ width: "1370px" }}>
                         
                         <div class="tab-content p-3" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-account" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
