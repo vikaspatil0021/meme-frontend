@@ -165,7 +165,7 @@ const Dashboard = (props) => {
 
 
                                                     <div class="card rounded-5 mb-2">
-                                                        <div class="card-content d-flex p-2 py-1">
+                                                        <div class="card-content d-flex p-2">
                                                             <img class="rounded-5 cropped" src={story.imageURL} alt="Card image cap" height="100" width="130" />
                                                             <div class="card-body py-2 text-dark">
                                                                 <h4 class="card-title overflow-text m-0">{story.title}</h4>
