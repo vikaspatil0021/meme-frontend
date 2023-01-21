@@ -48,9 +48,9 @@ const Dashboard = (props) => {
 
     return (
         <div>
-            <div className="quickLinks bg-white px-2 py-2">
-                <div className="d-flex ms-2 ms-md-3">
-                    <div className="mx-auto" style={{ width: "1370px" }}>
+            <div className="bg-white px-2 py-2">
+                <div className=" d-flex ms-2 ms-md-3">
+                    <div className=" mx-auto" style={{ width: "1370px" }}>
 
                         <a href="/" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold"><i class=" my-1 bi bi-house-door" /></a>
                         <a href="/stories" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold me-1">Stories</a>
@@ -62,10 +62,10 @@ const Dashboard = (props) => {
 
 
             </div>
-            <div className="sticky-top bg-white">
+            <div className="sticky-top bg-white border-top">
 
 
-                <div className="d-flex  ">
+                <div className="d-flex">
                     <div className="d-flex flex-wrap justify-content-between py-3 mx-auto px-3" style={{ width: "1390px" }}>
                         <h1 className="fw-bolder fs-2 my-auto ms-1 ms-md-2">
                             Dashboard
@@ -78,7 +78,7 @@ const Dashboard = (props) => {
                     </div>
                 </div>
                 {(loading) ?
-                <div className="d-flex quickLinks ps-2 ps-md-3">
+                <div className="d-flex ps-2 ps-md-3 quickLinks">
 
                 <div class="nav-pills p-2 list-group list-group-horizontal mx-auto" id="pills-tab" role="tablist"  style={{width: "1370px" }}>
                     <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-account-tab" data-bs-toggle="pill" data-bs-target="#pills-account" type="button" role="tab" aria-controls="pills-account" aria-selected="true">Account</button>
