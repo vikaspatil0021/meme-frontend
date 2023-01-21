@@ -25,8 +25,8 @@ function App() {
 
   return (
     <div>
-      <Router>
       <Nav />
+      <Router>
         <Routes>
           <Route path='/login' exact element={<Login />} />
           <Route path='/register' exact element={<Register />} />

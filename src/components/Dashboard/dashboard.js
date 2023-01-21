@@ -73,7 +73,7 @@ const Dashboard = (props) => {
                         {(loading) ?
                             <div className="my-auto">
                                 <a href="/compose" class="btn btn-primary me-1 rounded-4 opacity-75">Compose</a>
-                                <a href="https://my-blog-backend-1ict.onrender.com/logout" class="btn btn-danger rounded-4 me-2 me-md-4 opacity-75">Log out</a>
+                                <a href="https://my-blog-backend-1ict.onrender.com/logout" class="btn btn-danger rounded-4 me-2 me-md-4">Log out</a>
                             </div> : null}
                     </div>
                 </div>
