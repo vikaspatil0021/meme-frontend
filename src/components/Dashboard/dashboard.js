@@ -48,29 +48,41 @@ const Dashboard = (props) => {
 
     return (
         <div>
+        <div className="sticky-top ">
+
+            <div className="quickLinks bg-white px-2 py-2">
+                <div className="d-flex ms-2 ms-md-3">
+                    <div className="mx-auto" style={{ width: "1370px" }}>
+
+                        <a href="/" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold"><i class=" my-1 bi bi-house-door" /></a>
+                        <a href="/stories" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold me-1">Stories</a>
+
+                        <a href="/people" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold">People</a>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div className="d-flex quickLinks bg-white">
+                <div className="d-flex flex-wrap justify-content-between py-3 mx-auto px-3" style={{ width: "1390px" }}>
+                    <h1 className="fw-bolder fs-2 my-auto ms-1 ms-md-2">
+                        Dashboard
+                    </h1>
+
+                    <div className="my-auto">
+                        <a href="/compose" class="btn btn-primary me-1 rounded-4">Compose</a>
+                        <a href="https://my-blog-backend-1ict.onrender.com/logout" class="btn btn-danger rounded-4 me-2 me-md-4">Log out</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+
             {loading ?
                 (<div>
-                    <div>
-                        <div className="d-flex flex-wrap justify-content-between px-5 py-4" style={{ backgroundColor: "white" }}>
-                            <h1 className="fw-bolder fs-2 my-auto">
-                                Dashboard
-                            </h1>
 
-                            <div className="my-auto">
-                                <a href="/compose" class="btn btn-primary mx-2 d-none d-md-inline">Compose</a>
-                                <a href="https://my-blog-backend-1ict.onrender.com/logout" class="btn btn-danger me-lg-5">Log out</a>
-                            </div>
-                        </div>
-                        <hr className="p-0 m-0" />
-                    </div>
                     <div>
-                        <div className="mx-5 mt-3">
-                            <a href="/" class="btn btn-success me-1">Home</a>
-                            <a href="/stories" class="btn btn-success me-1">Stories</a>
-                            <a href="/people" class="btn btn-success">People</a>
-                            <a href="/compose" class="btn btn-success float-end d-md-none">Compose</a>
 
-                        </div>
 
 
                         <div class="d-flex align-items-start px-4">
@@ -98,6 +110,40 @@ const Dashboard = (props) => {
                                                 <label className="text-muted pb-2">Email</label>
                                                 <h5 class="card-title my-auto">{accountStories.myAccount.email}</h5>
                                             </div>
+
+                                        </div>
+                                        <div class="card-body p-4">
+                                            <div className="mb-4">
+                                                <label className="text-muted pb-2">Name</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.name}</h5>
+                                                <hr />
+                                            </div>
+                                            <div className="mb-3">
+                                                <label className="text-muted pb-2">Username</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.username}</h5>
+                                                <hr />
+                                            </div>
+                                            <div className="mb-1">
+                                                <label className="text-muted pb-2">Email</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.email}</h5>
+                                            </div>
+
+                                        </div><div class="card-body p-4">
+                                            <div className="mb-4">
+                                                <label className="text-muted pb-2">Name</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.name}</h5>
+                                                <hr />
+                                            </div>
+                                            <div className="mb-3">
+                                                <label className="text-muted pb-2">Username</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.username}</h5>
+                                                <hr />
+                                            </div>
+                                            <div className="mb-1">
+                                                <label className="text-muted pb-2">Email</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.email}</h5>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
