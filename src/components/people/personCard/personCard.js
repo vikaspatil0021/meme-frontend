@@ -13,7 +13,7 @@ const PersonCard = (props) => {
                 <div class="card Storycard rounded-5 mb-1">
                     <div class="card-content d-flex p-3">
                         <div className="col-5">
-                            <img class="card-img rounded-5 cropped" src="http://res.cloudinary.com/dt55mivpf/image/upload/v1674375695/MYBLOG/POSTS/jzlb8uswbhanv3lle0qr.jpg" alt="Card image cap" height="150" />
+                            <img class="card-img rounded-5 cropped" src="http://res.cloudinary.com/dt55mivpf/image/upload/v1674375759/MYBLOG/POSTS/kgylnk6gjcjs5flkgmwj.jpg" alt="Card image cap" height="150" />
 
                         </div>
                         <div class="card-body col-7 py-0 text-dark">
