@@ -175,7 +175,7 @@ const Comments = (props) => {
                                     <a href={"/people/" + comment.user.username} className="text-decoration-none d-inline-flex">
                                         <div className="card d-inline border-0 p-1 pb-0 rounded-4">
 
-                                            <img src="http://res.cloudinary.com/dt55mivpf/image/upload/v1674375464/MYBLOG/POSTS/xx97afdadifsuujq6pyv.jpg" className=" rounded-5 cropped me-2" alt="card_img" height="40" width="40" />
+                                            <img src="http://res.cloudinary.com/dt55mivpf/image/upload/v1674375545/MYBLOG/POSTS/tkyd9p1kpq25mdpzura3.jpg" className=" rounded-5 cropped me-2" alt="card_img" height="40" width="40" />
 
                                             <span className="colorChange fs-5 fw-bold">{comment.user.name}</span>
                                         </div>
