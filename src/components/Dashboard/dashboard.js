@@ -40,6 +40,8 @@ const Dashboard = (props) => {
         await axios.delete(process.env.REACT_APP_SERVER_URL + "/delete", { data: { Id: storyId }, withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
+                window.location.reload();
+
             }).catch((err) => {
                 console.log(err);
             });
@@ -193,7 +195,7 @@ const Dashboard = (props) => {
                                                         </div>
                                                         <div class="modal-footer">
                                                             <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
-                                                            <a type="button" href="/dashboard" class="btn btn-primary" onClick={() => { deleteStory(story._id) }}>Delete</a>
+                                                            <button type="button"  class="btn btn-primary" onClick={() => { deleteStory(story._id) }}>Delete</button>
                                                         </div>
                                                     </div>
                                                 </div>
