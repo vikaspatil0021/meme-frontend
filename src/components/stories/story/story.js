@@ -146,7 +146,7 @@ const Story = () => {
                                             <a href={"/people/" + username} className="text-decoration-none d-inline-flex">
                                                 <div className="card d-inline border-0 p-3 pb-0 rounded-4">
 
-                                                    <img src="https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/caroline-byline-compressor.png?width=48&height=48&name=caroline-byline-compressor.png" className=" rounded-5 cropped me-2" alt="card_img" height="50" width="50" />
+                                                    <img src="http://res.cloudinary.com/dt55mivpf/image/upload/v1674374264/MYBLOG/POSTS/wbljdcdzsmigjyz0qcnr.jpg" className=" rounded-5 cropped me-2" alt="card_img" height="50" width="50" />
 
                                                     <span className="colorChange fs-5 fw-bold">{name}</span>
                                                 </div>

@@ -75,6 +75,7 @@ const Register = () => {
             <form className="mx-5">
 
               <h3 class="fw-normal mb-3 pb-3">Register</h3>
+              
               <div class="row">
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
