@@ -55,10 +55,24 @@ const Register = () => {
   return (
     <div>
       <div>
-        <div className="mt-lg-5 pt-lg-5 mx-lg-5 px-lg-5 mt-5 pt-5 m-2 p-2 mx-md-3 px-md-3">
+      <div className="quickLinks sticky-top bg-white px-2 py-2">
+                <div className=" d-flex ms-2 ms-md-3">
+                    <div className=" mx-auto" style={{ width: "1370px" }}>
+
+                        <a href="/" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" /><i class=" my-1 bi bi-house-door" /></a>
+                        <a href="/stories" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold me-1"><i class="my-1 pe-1 bi bi-arrow-left" />Stories</a>
+
+                        <a href="/people" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" />People</a>
+                    </div>
+
+                </div>
+
+
+            </div>
+        <div className=" mx-lg-5 px-lg-5 m-2 p-2 mx-md-3 px-md-3">
           <div className="mt-4 d-flex justify-content-center">
 
-            <form style={{ width: "40%" }}>
+            <form className="mx-5">
 
               <h3 class="fw-normal mb-3 pb-3">Register</h3>
               <div class="row">

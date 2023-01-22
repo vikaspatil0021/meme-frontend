@@ -41,7 +41,7 @@ const Login = () => {
     return (
         <div>
             <div>
-            <div className="quickLinks bg-white px-2 py-2">
+            <div className="quickLinks sticky-top bg-white px-2 py-2">
                 <div className=" d-flex ms-2 ms-md-3">
                     <div className=" mx-auto" style={{ width: "1370px" }}>
 
