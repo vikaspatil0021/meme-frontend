@@ -68,7 +68,7 @@ const Person = () => {
                                 <div className="d-flex justify-content-left mx-auto card-content" style={{ width: "1370px" }}>
                                     <div className="p-3 ps-2">
 
-                                        <img class="rounded-5 cropped" src="http://res.cloudinary.com/dt55mivpf/image/upload/v1674374264/MYBLOG/POSTS/wbljdcdzsmigjyz0qcnr.jpg" alt="Card image cap" height="150" width="150" />
+                                        <img class="rounded-5 cropped" src="http://res.cloudinary.com/dt55mivpf/image/upload/v1674375464/MYBLOG/POSTS/xx97afdadifsuujq6pyv.jpg" alt="Card image cap" height="150" width="150" />
                                     </div>
 
                                     <div className="m-auto ms-2 mt-4 ms-md-4">
