@@ -41,7 +41,6 @@ const Dashboard = (props) => {
             .then((res) => {
                 console.log(res.data);
                 window.location.reload();
-
             }).catch((err) => {
                 console.log(err);
             });
@@ -166,36 +165,36 @@ const Dashboard = (props) => {
                                             <div className="mx-2">
 
 
-                                                    <div class="card rounded-5 mb-2">
-                                                        <div class="card-content d-flex p-2">
-                                                            <img class="rounded-5 cropped" src={story.imageURL} alt="Card image cap" height="100" width="130" />
-                                                            <div class="card-body py-2 text-dark">
-                                                                <h4 class="card-title overflow-text m-0">{story.title}</h4>
-                                                                <div className="">
-                                                                    <a className="btn py-0 px-2 border-0" href={"/stories/" + story._id}><i class="bi bi-arrow-up-right-square text-info fs-4"></i></a>
-                                                                    <a className="btn py-0 px-2 border-0" ><i onClick={() => { props.updateStory(story); navigate("/dashboard/update") }} class="bi bi-pencil-square text-info fs-4"></i></a>
-                                                                    <a className="btn py-0 px-2 border-0" href="#" data-bs-toggle="modal" data-bs-target={"#a" + story._id}><i class="bi bi-trash3 text-danger fs-4"></i></a>
+                                                <div class="card rounded-5 mb-2">
+                                                    <div class="card-content d-flex p-2">
+                                                        <img class="rounded-5 cropped" src={story.imageURL} alt="Card image cap" height="100" width="130" />
+                                                        <div class="card-body py-2 text-dark">
+                                                            <h4 class="card-title overflow-text m-0">{story.title}</h4>
+                                                            <div className="">
+                                                                <a className="btn py-0 px-2 border-0" href={"/stories/" + story._id}><i class="bi bi-arrow-up-right-square text-info fs-4"></i></a>
+                                                                <a className="btn py-0 px-2 border-0" ><i onClick={() => { props.updateStory(story); navigate("/dashboard/update") }} class="bi bi-pencil-square text-info fs-4"></i></a>
+                                                                <a className="btn py-0 px-2 border-0" href="#" data-bs-toggle="modal" data-bs-target={"#a" + story._id}><i class="bi bi-trash3 text-danger fs-4"></i></a>
 
 
-
-                                                                </div>
 
                                                             </div>
 
                                                         </div>
+
                                                     </div>
+                                                </div>
                                             </div>
+                                           
                                             {/* <!-- Modal --> */}
-                                            <div class="modal fade" id={"a" + story._id} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
+                                            <div class="modal fade aniModal" id={"a" + story._id} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog my-5">
+                                                    <div class="modal-content rounded-5">
                                                         <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">{story.title} will be deleted permanentally</h1>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            <h1 class="modal-title fs-5 px-3" id="exampleModalLabel">{story.title} will be deleted permanentally</h1>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</a>
-                                                            <button type="button"  class="btn btn-primary" onClick={() => { deleteStory(story._id) }}>Delete</button>
+                                                            <a type="button" class="btn btn-primary rounded-4" data-bs-dismiss="modal">Cancel</a>
+                                                            <button type="button" class="btn btn-danger rounded-4" onClick={() => { deleteStory(story._id) }}>Delete</button>
                                                         </div>
                                                     </div>
                                                 </div>
