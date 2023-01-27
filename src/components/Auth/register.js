@@ -32,7 +32,6 @@ const Register = () => {
   const registerRequest = async (e) => {
     e.preventDefault()
     const user = {
-      fullName: name.fname + " " + name.lname,
       email: Input.email,
       username: Input.username,
       password: Input.password
@@ -72,37 +71,14 @@ const Register = () => {
           <div class="carousel-inner">
             <div class="carousel-item active">
 
-              <div className=" mx-lg-5 px-lg-5 m-2 p-2 mx-md-3 px-md-3">
+              <div className=" m-2 p-2 mx-md-3 px-md-3">
                 <div className="mt-4 d-flex justify-content-center">
 
-                  <form className="mx-5">
+                  <form className="col-lg-3 col-md-5">
 
                     <h3 class="fw-normal mb-3 pb-3">Register</h3>
 
-                    <div class="row">
-                      <div class="col-md-6 mb-4">
-                        <div class="form-outline">
-                          <label class="form-label" for="formFname">First name</label>
-                          <input autoFocus required type="text" name="fname" id="formFname" class="form-control" value={name.fname} onChange={(event) => {
-                            setName({
-                              fname: event.target.value,
-                              lname: name.lname
-                            })
-                          }} />
-                        </div>
-                      </div>
-                      <div class="col-md-6 mb-4">
-                        <div class="form-outline">
-                          <label class="form-label" for="formLname">Last name</label>
-                          <input required type="text" id="formLname" class="form-control" value={name.lname} onChange={(event) => {
-                            setName({
-                              fname: name.fname,
-                              lname: event.target.value
-                            })
-                          }} />
-                        </div>
-                      </div>
-                    </div>
+                    
                     <div class="form-outline mb-4">
                       <label class="form-label" for="formUsername">Username</label>
                       <input required type="text" name="username" id="formUsername" class="form-control form-control-lg" value={Input.username} onChange={(event) => {
@@ -150,14 +126,14 @@ const Register = () => {
 
 
             <div class="carousel-item">
-              <ProfileDetails />
+            <ProfileDetails />
 
 
-
+              
             </div>
 
           </div>
-
+      
         </div>
 
 

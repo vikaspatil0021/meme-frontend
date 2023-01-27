@@ -3,6 +3,10 @@ import p1 from "../img/p1.png"
 
 const ProfileDetails = () => {
     const [file, selectedFile] = useState();
+    const [name, setName] = useState({
+        fname: '',
+        lname: ''
+      });
     return (
         <div>
 
@@ -17,10 +21,10 @@ const ProfileDetails = () => {
                         </div>
 
 
-                        <div className="mt-5">
+                        <div className="mt-2">
                             <h3 className="fw-bolder fs-2  m-3">Profile set up</h3>
 
-                            <div class="card rounded-5 mb-2" style={{maxWidth:""}}>
+                            <div class="card rounded-5 mb-2" style={{ maxWidth: "" }}>
                                 <div class="card-content d-flex p-3">
                                     <div className="col-5">
                                         <img className="card-img rounded-5 cropped" src={(!file) ? p1 : URL.createObjectURL(file)} height="150" />
@@ -45,15 +49,45 @@ const ProfileDetails = () => {
                                     selectedFile(f);
                                 }} />
                                 <button class="input-group-text btn btn-primary" on>Upload
-                                <div className="spinner-border spinner-border-sm text-white mx-2"></div>
+                                    <div className="spinner-border spinner-border-sm text-white mx-2"></div>
                                 </button>
                             </div>
-                            <div class="pt-1 mb-4">
-                                <button class="btn btn-danger btn-lg float-end" data-bs-target="#carouselControls"
-                                    data-bs-slide="next" type="submit">Finish</button>
+
+
+
+                        </div>
+                        <div class="row py-4">
+                            <div class="col-md-6 mb-2">
+                                <div class="form-outline">
+                                    <label class="form-label" for="formFname">First name</label>
+                                    <input autoFocus required type="text" name="fname" id="formFname" class="form-control form-control-lg"
+                                    //   value={name.fname} onChange={(event) => {
+                                    //     setName({
+                                    //       fname: event.target.value,
+                                    //       lname: name.lname
+                                    //     })
+                                    //   }} 
+
+                                    />
+                                </div>
                             </div>
-
-
+                            <div class="col-md-6 mb-2">
+                                <div class="form-outline">
+                                    <label class="form-label" for="formLname">Last name</label>
+                                    <input required type="text" id="formLname" class="form-control form-control-lg"
+                                    //    value={name.lname} onChange={(event) => {
+                                    //     setName({
+                                    //       fname: name.fname,
+                                    //       lname: event.target.value
+                                    //     })
+                                    //   }}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-1 mb-4">
+                            <button class="btn btn-danger btn-lg" data-bs-target="#carouselControls"
+                                data-bs-slide="next" type="submit">Finish</button>
                         </div>
                     </div>
 
