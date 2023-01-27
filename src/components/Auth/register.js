@@ -75,17 +75,6 @@ const Register = () => {
 
                     <h3 class="fw-normal mb-3 pb-3">Register</h3>
 
-                    
-                    <div class="form-outline mb-4">
-                      <label class="form-label" for="formUsername">Username</label>
-                      <input required type="text" name="username" id="formUsername" class="form-control form-control-lg" value={Input.username} onChange={(event) => {
-                        setInput({
-                          email: Input.email,
-                          username: event.target.value,
-                          password: Input.password
-                        })
-                      }} />
-                    </div>
                     <div class="form-outline mb-4">
                       <label class="form-label" for="formEmail">Email address</label>
                       <input required type="email" name="email" id="formEmail" class="form-control form-control-lg" value={Input.email} onChange={(event) => {
@@ -96,6 +85,17 @@ const Register = () => {
                         })
                       }} />
                     </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="formUsername">Username</label>
+                      <input required type="text" name="username" id="formUsername" class="form-control form-control-lg" value={Input.username} onChange={(event) => {
+                        setInput({
+                          email: Input.email,
+                          username: event.target.value,
+                          password: Input.password
+                        })
+                      }} />
+                    </div>
+                    
 
                     <div class="form-outline mb-4">
                       <label class="form-label" for="formPassword">Password</label>
