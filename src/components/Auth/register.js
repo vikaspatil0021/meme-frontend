@@ -6,10 +6,7 @@ import ProfileDetails from "./profile";
 
 const Register = () => {
   const navigate = useNavigate()
-  const [name, setName] = useState({
-    fname: '',
-    lname: ''
-  });
+
   const [Input, setInput] = useState({
     email: '',
     username: '',
@@ -67,7 +64,7 @@ const Register = () => {
 
 
         </div>
-        <div id="carouselControls" class="carousel slide">
+        <div id="carouselControls" class="carousel slide" data-bs-touch="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
 

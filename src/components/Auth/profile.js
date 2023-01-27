@@ -21,7 +21,7 @@ const ProfileDetails = () => {
                         </div>
 
 
-                        <div className="mt-2">
+                        <div className="">
                             <h3 className="fw-bolder fs-2  m-3">Profile set up</h3>
 
                             <div class="card rounded-5 mb-2" style={{ maxWidth: "" }}>
@@ -43,7 +43,7 @@ const ProfileDetails = () => {
                                 </div>
 
                             </div>
-                            <div class="input-group shadow-none mb-3">
+                            <div class="input-group shadow-none mb-3 px-3">
                                 <input type="file" class="form-control shadow-none" id="inputGroupFile02" onChange={(e) => {
                                     const f = e.target.files[0];
                                     selectedFile(f);
@@ -56,7 +56,7 @@ const ProfileDetails = () => {
 
 
                         </div>
-                        <div class="row py-4">
+                        <div class="row pt-3 px-4">
                             <div class="col-md-6 mb-2">
                                 <div class="form-outline">
                                     <label class="form-label" for="formFname">First name</label>
@@ -85,7 +85,7 @@ const ProfileDetails = () => {
                                 </div>
                             </div>
                         </div>
-                        <div class="pt-1 mb-4">
+                        <div class="pt-2 mb-4 mx-4">
                             <button class="btn btn-danger btn-lg" data-bs-target="#carouselControls"
                                 data-bs-slide="next" type="submit">Finish</button>
                         </div>
