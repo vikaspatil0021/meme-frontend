@@ -1,12 +1,56 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import p1 from "../img/p1.png"
 
-const ProfileDetails = () => {
+const ProfileDetails = (props) => {
+    const navigate = useNavigate()
+
     const [file, selectedFile] = useState();
-    const [name, setName] = useState({
+    const [profileInfo, setProfileInfo] = useState({
         fname: '',
-        lname: ''
-      });
+        lname: '',
+        profileImgURL: ''
+    });
+
+    const uploadProfileImage = async () => {
+
+
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "gkcutnp6")
+        await axios.post("https://api.cloudinary.com/v1_1/dt55mivpf/image/upload", formData)
+            .then((res) => {
+                console.log(res.data.url);
+                setProfileInfo({ fname: profileInfo.fname, lname: profileInfo.lname, profileImgURL: res.data.url })
+
+            })
+            .catch((error) => {
+                console.log(error);
+
+            });
+
+
+    }
+
+    const profileRequest = async () => {
+
+        await axios.put(process.env.REACT_APP_SERVER_URL + '/profileinfo', {
+            username: props.username,
+            fullName: profileInfo.fname + " " + profileInfo.lname,
+            profileImgURL: profileInfo.profileImgURL
+        }, 
+        { withCredentials: "include" })
+            .then((res) => {
+
+                console.log(res);
+                navigate("/dashboard")
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
     return (
         <div>
 
@@ -33,7 +77,7 @@ const ProfileDetails = () => {
                                         <p className="m-auto">
                                             <span class="placeholder col-8"></span>
                                             <span class="placeholder col-10"></span>
-                                            <span class="fs-4 text-muted">Preview Profile Photo</span>
+                                            <span class=" text-muted">Preview Profile Photo</span>
 
 
                                         </p>
@@ -48,7 +92,7 @@ const ProfileDetails = () => {
                                     const f = e.target.files[0];
                                     selectedFile(f);
                                 }} />
-                                <button class="input-group-text btn btn-primary" on>Upload
+                                <button class="input-group-text btn btn-primary" onClick={uploadProfileImage}>Upload
                                     <div className="spinner-border spinner-border-sm text-white mx-2"></div>
                                 </button>
                             </div>
@@ -61,12 +105,13 @@ const ProfileDetails = () => {
                                 <div class="form-outline">
                                     <label class="form-label" for="formFname">First name</label>
                                     <input autoFocus required type="text" name="fname" id="formFname" class="form-control form-control-lg"
-                                    //   value={name.fname} onChange={(event) => {
-                                    //     setName({
-                                    //       fname: event.target.value,
-                                    //       lname: name.lname
-                                    //     })
-                                    //   }} 
+                                        value={profileInfo.fname} onChange={(event) => {
+                                            setProfileInfo({
+                                                fname: event.target.value,
+                                                lname: profileInfo.lname,
+                                                profileImgURL: profileInfo.profileImgURL
+                                            })
+                                        }}
 
                                     />
                                 </div>
@@ -75,19 +120,25 @@ const ProfileDetails = () => {
                                 <div class="form-outline">
                                     <label class="form-label" for="formLname">Last name</label>
                                     <input required type="text" id="formLname" class="form-control form-control-lg"
-                                    //    value={name.lname} onChange={(event) => {
-                                    //     setName({
-                                    //       fname: name.fname,
-                                    //       lname: event.target.value
-                                    //     })
-                                    //   }}
+                                        value={profileInfo.lname} onChange={(event) => {
+                                            setProfileInfo({
+                                                fname: profileInfo.fname,
+                                                lname: event.target.value,
+                                                profileImgURL: profileInfo.profileImgURL
+
+                                            })
+                                        }}
                                     />
                                 </div>
                             </div>
                         </div>
                         <div class="pt-2 mb-4 mx-4">
-                            <button class="btn btn-danger btn-lg" data-bs-target="#carouselControls"
-                                data-bs-slide="next" type="submit">Finish</button>
+                            <button class="btn btn-danger btn-lg" onClick={()=>{
+                                if(profileInfo.fname !== "" && profileInfo.lname !== '' && profileInfo.profileImgURL!==''){
+                                    profileRequest()
+                                }
+
+                            }} type="submit">Finish</button>
                         </div>
                     </div>
 

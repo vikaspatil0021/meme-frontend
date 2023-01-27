@@ -18,7 +18,7 @@ const Register = () => {
     axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
       .then((res) => {
         if (res.data.isAuth) {
-          navigate("/stories")
+          navigate("/dashboard")
         }
       }).catch((err) => {
         console.log(err);
@@ -28,19 +28,14 @@ const Register = () => {
   //--------Register user--------
   const registerRequest = async (e) => {
     e.preventDefault()
-    const user = {
-      email: Input.email,
-      username: Input.username,
-      password: Input.password
-    }
+    
 
-    await axios.post(process.env.REACT_APP_SERVER_URL + '/register', user, { withCredentials: "include" })
+    await axios.post(process.env.REACT_APP_SERVER_URL + '/register', Input, { withCredentials: "include" })
       .then((res) => {
-        if (res.data.isAuth) {
-        } else {
+        
           console.log(res);
 
-        }
+        
       })
       .catch((error) => {
         console.log(error);
@@ -77,7 +72,7 @@ const Register = () => {
 
                     <div class="form-outline mb-4">
                       <label class="form-label" for="formEmail">Email address</label>
-                      <input required type="email" name="email" id="formEmail" class="form-control form-control-lg" value={Input.email} onChange={(event) => {
+                      <input autoFocus required type="email" name="email" id="formEmail" class="form-control form-control-lg" value={Input.email} onChange={(event) => {
                         setInput({
                           email: event.target.value,
                           username: Input.username,
@@ -109,8 +104,11 @@ const Register = () => {
                     </div>
 
                     <div class="pt-1 mb-4">
+                      {  (Input.email !== "" && Input.username !== '' && Input.password!=='') ?
+                      
                       <button class="btn btn-danger btn-lg d-block" data-bs-target="#carouselControls"
-                        data-bs-slide="next" onClick={registerRequest} type="submit">Register</button>
+                        data-bs-slide="next" onClick={registerRequest} type="submit">Register</button>:
+                      <button class="btn btn-danger btn-lg d-block" type="submit">Register</button>}
                     </div>
 
                     <p className="w-100 d-block">Already have an account? <a href="/login" class="link-danger">Login here</a></p>
@@ -123,7 +121,7 @@ const Register = () => {
 
 
             <div class="carousel-item">
-            <ProfileDetails />
+            <ProfileDetails username={Input.username} />
 
 
               

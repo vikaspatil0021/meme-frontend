@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import Nav from "../../Header/header";
 import Preloader from "../../preLoader/preloader";
 import AuthModel from "../../Auth/authModel";
-import "./person.css"
+import "./person.css";
+import p1 from "./../../img/p1.png"
+
 
 
 const Person = () => {
@@ -34,7 +35,7 @@ const Person = () => {
 
     }, []);
     const { story, user } = personInfo
-    const { username, name } = user;
+    const { username, name,profileImgURL } = user;
     useEffect(() => {
         setLengths(loading ? (story.length) : 0);
     }, [story])
@@ -68,7 +69,7 @@ const Person = () => {
                                 <div className="d-flex justify-content-left mx-auto card-content" style={{ width: "1370px" }}>
                                     <div className="p-3 ps-2">
 
-                                        <img class="rounded-5 cropped" src="http://res.cloudinary.com/dt55mivpf/image/upload/v1674375834/MYBLOG/POSTS/xtpye8s762dcp8chpy5u.jpg" alt="Card image cap" height="150" width="150" />
+                                        <img class="rounded-5 cropped" src={profileImgURL||p1} alt="Card image cap" height="150" width="150" />
                                     </div>
 
                                     <div className="m-auto ms-2 mt-4 ms-md-4">

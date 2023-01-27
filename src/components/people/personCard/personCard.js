@@ -4,7 +4,7 @@ import "./personCard.css"
 import p1 from "./../../img/p1.png"
 
 const PersonCard = (props) => {
-    const { _id, name, username } = props.sentPerson;
+    const { _id, name, username,profileImgURL } = props.sentPerson;
 
 
     return (
@@ -15,7 +15,7 @@ const PersonCard = (props) => {
                 <div class="card Storycard rounded-5 mb-1">
                     <div class="card-content d-flex p-3">
                         <div className="col-5">
-                            <img class="card-img rounded-5 cropped" src={p1} alt="Card image cap" height="150" />
+                            <img class="card-img rounded-5 cropped" src={profileImgURL||p1} alt="Card image cap" height="150" />
 
                         </div>
                         <div class="card-body col-7 py-0 text-dark">
