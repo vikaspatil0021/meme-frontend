@@ -8,5 +8,6 @@
   }
 
 .carousel-item{
-  transition: 1s;
+  transition: .5s ease-in-out;
 }
+

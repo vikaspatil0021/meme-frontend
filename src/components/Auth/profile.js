@@ -6,14 +6,23 @@ import p1 from "../img/p1.png"
 const ProfileDetails = (props) => {
     const navigate = useNavigate()
 
-    const [file, selectedFile] = useState();
+    const [file, selectedFile] = useState('');
     const [profileInfo, setProfileInfo] = useState({
         fname: '',
         lname: '',
         profileImgURL: ''
     });
+    // elemnts by ids------------------
 
+
+    const ele1 = document.getElementById("upload-spinner");
+    
+    const ele2 = document.getElementById("choose-photo");
+    const ele3 = document.getElementById("next-button");
+    const ele4 = document.getElementById("upload-button");
+    
     const uploadProfileImage = async () => {
+        ele1.classList.remove("d-none");
 
 
         const formData = new FormData();
@@ -23,6 +32,15 @@ const ProfileDetails = (props) => {
             .then((res) => {
                 console.log(res.data.url);
                 setProfileInfo({ fname: profileInfo.fname, lname: profileInfo.lname, profileImgURL: res.data.url })
+                ele3.disabled = false;
+                ele2.disabled = true;
+                ele1.classList.add("d-none");
+                ele4.classList.replace("btn-primary","btn-success");
+                ele4.innerHTML="Uploaded";
+                ele4.disabled=true;
+
+
+
 
             })
             .catch((error) => {
@@ -39,8 +57,8 @@ const ProfileDetails = (props) => {
             username: props.username,
             fullName: profileInfo.fname + " " + profileInfo.lname,
             profileImgURL: profileInfo.profileImgURL
-        }, 
-        { withCredentials: "include" })
+        },
+            { withCredentials: "include" })
             .then((res) => {
 
                 console.log(res);
@@ -59,10 +77,6 @@ const ProfileDetails = (props) => {
                 <div className="d-flex justify-content-center">
 
                     <div className="col-12 col-md-6 col-lg-4">
-                        <div className="">
-
-                            <a className="btn float-end border-0 btn-primary rounded-4 px-3 opacity-75" href="/dashboard">skip<i class="my-1 ps-1 bi bi-arrow-right" /></a>
-                        </div>
 
 
                         <div className="">
@@ -73,37 +87,34 @@ const ProfileDetails = (props) => {
                                     <div className="col-5">
                                         <img className="card-img rounded-5 cropped" src={(!file) ? p1 : URL.createObjectURL(file)} height="150" />
                                     </div>
-                                    <div className="card-body">
-                                        <p className="m-auto">
-                                            <span class="placeholder col-8"></span>
-                                            <span class="placeholder col-10"></span>
-                                            <span class=" text-muted">Preview Profile Photo</span>
-
-
-                                        </p>
+                                    <div  className="card-body d-flex flex-wrap justify-content-center align-items-center">
+                                    <span class="position-absolute btn mx-4 btn-primary rounded-4 opacity-75">{file==""?"Choose photo":"Change photo"}</span>
+                                        <input id="choose-photo" type="file" class="form-control form-control-lg opacity-0" onChange={(e) => {
+                                            const f = e.target.files[0];
+                                            selectedFile(f);
+                                        }} />
 
                                     </div>
 
                                 </div>
 
                             </div>
-                            <div class="input-group shadow-none mb-3 px-3">
-                                <input type="file" class="form-control shadow-none" id="inputGroupFile02" onChange={(e) => {
-                                    const f = e.target.files[0];
-                                    selectedFile(f);
-                                }} />
-                                <button class="input-group-text btn btn-primary" onClick={uploadProfileImage}>Upload
-                                    <div className="spinner-border spinner-border-sm text-white mx-2"></div>
-                                </button>
+                            <div className="d-flex flex-wrap justify-content-center">
+
+                            <button id="upload-button" class="btn btn-lg btn-primary m-2 w-100 rounded-4" onClick={uploadProfileImage}>Upload
+                                <div id="upload-spinner" className="spinner-border spinner-border-sm text-white mx-2 d-none"></div>
+                            </button>
                             </div>
 
 
 
+
+
                         </div>
-                        <div class="row pt-3 px-4">
+                        {/* <div class="row pt-3 px-4">
                             <div class="col-md-6 mb-2">
                                 <div class="form-outline">
-                                    <label class="form-label" for="formFname">First name</label>
+                                    <label class="form-label" for="formFname">* First name</label>
                                     <input autoFocus required type="text" name="fname" id="formFname" class="form-control form-control-lg"
                                         value={profileInfo.fname} onChange={(event) => {
                                             setProfileInfo({
@@ -118,7 +129,7 @@ const ProfileDetails = (props) => {
                             </div>
                             <div class="col-md-6 mb-2">
                                 <div class="form-outline">
-                                    <label class="form-label" for="formLname">Last name</label>
+                                    <label class="form-label" for="formLname">* Last name</label>
                                     <input required type="text" id="formLname" class="form-control form-control-lg"
                                         value={profileInfo.lname} onChange={(event) => {
                                             setProfileInfo({
@@ -131,15 +142,16 @@ const ProfileDetails = (props) => {
                                     />
                                 </div>
                             </div>
-                        </div>
-                        <div class="pt-2 mb-4 mx-4">
-                            <button class="btn btn-danger btn-lg" onClick={()=>{
-                                if(profileInfo.fname !== "" && profileInfo.lname !== '' && profileInfo.profileImgURL!==''){
+                        </div> */}
+                        <div class="d-flex flex-wrap justify-content-center float-bottom">
+                            <button id="next-button" class="btn btn-danger btn-lg w-100 m-2 rounded-4" onClick={() => {
+                                if (profileInfo.fname !== "" && profileInfo.lname !== '' && profileInfo.profileImgURL !== '') {
                                     profileRequest()
                                 }
 
-                            }} type="submit">Finish</button>
+                            }} type="submit" disabled>Next</button>
                         </div>
+
                     </div>
 
                 </div>

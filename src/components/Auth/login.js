@@ -26,7 +26,7 @@ const Login = () => {
         e.preventDefault();
         await axios.post(process.env.REACT_APP_SERVER_URL + '/login', user, { withCredentials: "include" })
             .then((res) => {
-                // console.log(user.data);
+                console.log(res);
                 if (res.data.isAuth) {
                     navigate("/dashboard");
                 }

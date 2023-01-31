@@ -59,6 +59,7 @@ const Register = () => {
 
 
         </div>
+        
         <div id="carouselControls" class="carousel slide" data-bs-touch="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -71,8 +72,8 @@ const Register = () => {
                     <h3 class="fw-normal mb-3 pb-3">Register</h3>
 
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="formEmail">Email address</label>
-                      <input autoFocus required type="email" name="email" id="formEmail" class="form-control form-control-lg" value={Input.email} onChange={(event) => {
+                      <label class="form-label" for="formEmail">Email address *</label>
+                      <input required type="email" name="email" id="formEmail" class="form-control form-control-lg" value={Input.email} onChange={(event) => {
                         setInput({
                           email: event.target.value,
                           username: Input.username,
@@ -81,7 +82,7 @@ const Register = () => {
                       }} />
                     </div>
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="formUsername">Username</label>
+                      <label class="form-label" for="formUsername">Username *</label>
                       <input required type="text" name="username" id="formUsername" class="form-control form-control-lg" value={Input.username} onChange={(event) => {
                         setInput({
                           email: Input.email,
@@ -93,7 +94,7 @@ const Register = () => {
                     
 
                     <div class="form-outline mb-4">
-                      <label class="form-label" for="formPassword">Password</label>
+                      <label class="form-label" for="formPassword">Password *</label>
                       <input required type="password" name="password" id="formPassword" class="form-control form-control-lg" value={Input.password} onChange={(event) => {
                         setInput({
                           email: Input.email,
@@ -103,12 +104,9 @@ const Register = () => {
                       }} />
                     </div>
 
-                    <div class="pt-1 mb-4">
-                      {  (Input.email !== "" && Input.username !== '' && Input.password!=='') ?
-                      
-                      <button class="btn btn-danger btn-lg d-block" data-bs-target="#carouselControls"
-                        data-bs-slide="next" onClick={registerRequest} type="submit">Register</button>:
-                      <button class="btn btn-danger btn-lg d-block" type="submit">Register</button>}
+                    <div class="d-flex flex-wrap justify-content-center">
+                      <button class="btn btn-danger btn-lg w-100 rounded-4" data-bs-target="#carouselControls"
+                        data-bs-slide="next"  type="submit">Register</button>
                     </div>
 
                     <p className="w-100 d-block">Already have an account? <a href="/login" class="link-danger">Login here</a></p>
