@@ -24,13 +24,14 @@ const ProfileDetails2 = (props) => {
             ele2.classList.remove("d-none");
             ele3.classList.add("d-none");
             // capitalize the first letter of fullname
-            const fullNAME = (profileInfo.fname)[0].toUpperCase() + (profileInfo.fname).substring(1) + ' ' + (profileInfo.lname)[0].toUpperCase() + (profileInfo.lname).substring(1)
+            const f1 = (profileInfo.fname)[0].toUpperCase() + (profileInfo.fname).substring(1) 
+            const f2 = (profileInfo.lname)[0].toUpperCase() + (profileInfo.lname).substring(1)
 
 
 
             await axios.post(process.env.REACT_APP_SERVER_URL + '/profileinfo', {
                 username: props.username,
-                fullName: fullNAME,
+                fullName: f1 + " " + f2,
                 profileImgURL: props.profileImgUrl,
                 instaUsername: profileInfo.instaUsername,
                 bio: profileInfo.bio
