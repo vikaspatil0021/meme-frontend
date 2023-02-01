@@ -17,7 +17,6 @@ const ProfileDetails = (props) => {
 
     
     const uploadProfileImage = async () => {
-        ele1.classList.remove("d-none");
 
 
         const formData = new FormData();
@@ -38,7 +37,7 @@ const ProfileDetails = (props) => {
 
                     const carousel = new bootstrap.Carousel('#carouselControls')
                     carousel.next()
-                  }, 500)
+                  }, 800)
             })
             .catch((error) => {
                 console.log(error);
@@ -80,7 +79,12 @@ const ProfileDetails = (props) => {
                             </div>
                             <div className="d-flex flex-wrap justify-content-center">
 
-                            <button id="upload-button" class="btn btn-lg btn-primary m-2 w-100 rounded-4" onClick={uploadProfileImage}>Upload
+                            <button id="upload-button" class="btn btn-lg btn-primary m-2 w-100 rounded-4" onClick={()=>{
+                                        ele1.classList.remove("d-none");
+                                        setTimeout(()=>{
+                                            uploadProfileImage()
+                                        },3000)
+                            }}>Upload
                                 <div id="upload-spinner" className="spinner-border spinner-border-sm text-white mx-2 d-none"></div>
 
                                 <i id="upload-check-icon" class="bi bi-check-circle-fill mx-2 d-none"></i>

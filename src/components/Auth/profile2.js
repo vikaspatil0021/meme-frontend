@@ -47,7 +47,7 @@ const ProfileDetails2 = (props) => {
                         setTimeout(() => {
 
                             navigate("/dashboard")
-                          }, 500)
+                          }, 1000)
                     }
 
                 })
