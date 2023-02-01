@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import ProfileDetails from "./profile";
+import * as bootstrap from "bootstrap"
 
 const Register = () => {
   const navigate = useNavigate()
@@ -12,6 +13,14 @@ const Register = () => {
     username: '',
     password: ''
   });
+
+
+  const ele1 = document.getElementById("register-button");
+  const ele2 = document.getElementById("register-spinner");
+  const ele3 = document.getElementById("register-arrow");
+
+
+
 
   //--------------Current Auth status------------
   useEffect(() => {
@@ -26,21 +35,52 @@ const Register = () => {
   }, [])
 
   //--------Register user--------
-  const registerRequest = async (e) => {
-    e.preventDefault()
-    
+  const registerRequest = async () => {
 
-    await axios.post(process.env.REACT_APP_SERVER_URL + '/register', Input, { withCredentials: "include" })
-      .then((res) => {
-        
-          console.log(res);
 
-        
-      })
-      .catch((error) => {
-        console.log(error);
-      });
 
+    if (ele1.disabled==false) {
+      ele2.classList.remove("d-none");
+      ele3.classList.add("d-none");
+
+
+
+
+
+      await axios.post(process.env.REACT_APP_SERVER_URL + '/register', Input, { withCredentials: "include" })
+        .then((res) => {
+          ele2.classList.add("d-none");
+            ele3.classList.remove("d-none");
+
+          console.log(res.data);
+          if (res.data.isAuth) {
+            ele1.classList.replace("btn-danger","btn-success");
+            ele1.innerHTML="Registered";
+
+            setTimeout(()=>{
+
+              const carousel = new bootstrap.Carousel('#carouselControls')
+              carousel.next()
+            },500)
+          }
+
+
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
+  }
+
+  if (Input.email !== "" && Input.username !== '' && Input.password !== '') {
+    ele1.disabled = false
+
+  } else {
+    if (ele1) {
+
+      ele1.disabled = true
+    }
   }
   return (
     <div>
@@ -59,7 +99,7 @@ const Register = () => {
 
 
         </div>
-        
+
         <div id="carouselControls" class="carousel slide" data-bs-touch="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -73,7 +113,7 @@ const Register = () => {
 
                     <div class="form-outline mb-4">
                       <label class="form-label" for="formEmail">Email address *</label>
-                      <input required type="email" name="email" id="formEmail" class="form-control form-control-lg" value={Input.email} onChange={(event) => {
+                      <input autoFocus required type="email" name="email" id="formEmail" class="form-control form-control-lg" value={Input.email} onChange={(event) => {
                         setInput({
                           email: event.target.value,
                           username: Input.username,
@@ -91,7 +131,7 @@ const Register = () => {
                         })
                       }} />
                     </div>
-                    
+
 
                     <div class="form-outline mb-4">
                       <label class="form-label" for="formPassword">Password *</label>
@@ -104,10 +144,19 @@ const Register = () => {
                       }} />
                     </div>
 
-                    <div class="d-flex flex-wrap justify-content-center">
-                      <button class="btn btn-danger btn-lg w-100 rounded-4" data-bs-target="#carouselControls"
-                        data-bs-slide="next"  type="submit">Register</button>
+                    <div class="d-flex flex-wrap justify-content-center pb-4">
+                      <div className="w-100" onClick={registerRequest}>
+
+                        <button id="register-button" class="btn btn-danger btn-lg w-100 rounded-4"
+                          type="button"   disabled>Register
+                          <div id="register-spinner" className="spinner-border spinner-border-sm text-white mx-2 d-none"></div>
+
+                          <i id="register-arrow" class="my-1 ps-1 bi bi-arrow-right" /></button>
+                      </div>
+
+
                     </div>
+
 
                     <p className="w-100 d-block">Already have an account? <a href="/login" class="link-danger">Login here</a></p>
 
@@ -119,14 +168,14 @@ const Register = () => {
 
 
             <div class="carousel-item">
-            <ProfileDetails username={Input.username} />
+              <ProfileDetails username={Input.username} />
 
 
-              
+
             </div>
 
           </div>
-      
+
         </div>
 
 
