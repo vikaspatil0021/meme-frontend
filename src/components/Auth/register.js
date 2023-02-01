@@ -13,6 +13,7 @@ const Register = () => {
     username: '',
     password: ''
   });
+  const [toastmsg,setToastmsg] = useState('')
 
 
   const ele1 = document.getElementById("register-button");
@@ -39,7 +40,7 @@ const Register = () => {
 
 
 
-    if (ele1.disabled==false) {
+    if (ele1.disabled == false) {
       ele2.classList.remove("d-none");
       ele3.classList.add("d-none");
 
@@ -50,18 +51,25 @@ const Register = () => {
       await axios.post(process.env.REACT_APP_SERVER_URL + '/register', Input, { withCredentials: "include" })
         .then((res) => {
           ele2.classList.add("d-none");
-            ele3.classList.remove("d-none");
+          ele3.classList.remove("d-none");
 
           console.log(res.data);
           if (res.data.isAuth) {
-            ele1.classList.replace("btn-danger","btn-success");
-            ele1.innerHTML="Registered";
+            ele1.classList.replace("btn-danger", "btn-success");
+            ele1.innerHTML = "Registered";
 
-            setTimeout(()=>{
+            setTimeout(() => {
 
               const carousel = new bootstrap.Carousel('#carouselControls')
               carousel.next()
-            },500)
+            }, 500)
+          }else{
+            setToastmsg("Username already taken")
+            const toastLive = document.getElementById('liveToast-register');
+            const toast = new bootstrap.Toast(toastLive)
+            toast.show()
+
+
           }
 
 
@@ -98,6 +106,17 @@ const Register = () => {
           </div>
 
 
+        </div>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+
+        <div id="liveToast-register" class="toast align-items-center  bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body text-white">
+              {toastmsg}
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        </div>
         </div>
 
         <div id="carouselControls" class="carousel slide" data-bs-touch="false">
@@ -148,7 +167,7 @@ const Register = () => {
                       <div className="w-100" onClick={registerRequest}>
 
                         <button id="register-button" class="btn btn-danger btn-lg w-100 rounded-4"
-                          type="button"  disabled>Register
+                          type="button" disabled>Register
                           <div id="register-spinner" className="spinner-border spinner-border-sm text-white mx-2 d-none"></div>
 
                           <i id="register-arrow" class="my-1 ps-1 bi bi-arrow-right" /></button>
