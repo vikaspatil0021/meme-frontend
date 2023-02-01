@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import ProfileDetails from "./profile";
 import * as bootstrap from "bootstrap"
+import ProfileDetails2 from "./profile2";
 
 const Register = () => {
   const navigate = useNavigate()
@@ -13,9 +14,9 @@ const Register = () => {
     username: '',
     password: ''
   });
-  const [toastmsg,setToastmsg] = useState('')
+  const [profileImgUrl,setprofileImgUrl] = useState('')
 
-
+  console.log(profileImgUrl);
   const ele1 = document.getElementById("register-button");
   const ele2 = document.getElementById("register-spinner");
   const ele3 = document.getElementById("register-arrow");
@@ -69,7 +70,6 @@ const Register = () => {
               carousel.next()
             }, 500)
           }else{
-            setToastmsg("Username already taken")
             const toastLive = document.getElementById('liveToast-register');
             const toast = new bootstrap.Toast(toastLive)
             toast.show()
@@ -84,6 +84,12 @@ const Register = () => {
         });
     }
 
+  }
+
+
+  //function to get the profile image url from profile.js
+  const getImgUrl= (imgUrl)=>{
+    setprofileImgUrl(imgUrl);
   }
 
   if (Input.email !== "" && Input.username !== '' && Input.password !== '') {
@@ -112,17 +118,20 @@ const Register = () => {
 
 
         </div>
-        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div className="d-flex justify-content-center">
+        <div class="toast-container position-fixed bottom-0 p-3">
 
-        <div id="liveToast-register" class="toast align-items-center  bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="liveToast-register" class="toast align-items-center bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="d-flex">
             <div class="toast-body text-white">
-              {toastmsg}
+              Username already taken
             </div>
             <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
           </div>
         </div>
         </div>
+        </div>
+
 
         <div id="carouselControls" class="carousel slide" data-bs-touch="false">
           <div class="carousel-inner">
@@ -169,10 +178,10 @@ const Register = () => {
                     </div>
 
                     <div class="d-flex flex-wrap justify-content-center pb-4">
-                      <div className="w-100" onClick={registerRequest}>
+                      <div className="w-100" >
 
                         <button id="register-button" class="btn btn-danger btn-lg w-100 rounded-4"
-                          type="button" disabled>Register
+                          type="button" data-bs-target="#carouselControls" data-bs-slide="next" >Register
                           <div id="register-spinner" className="spinner-border spinner-border-sm text-white mx-2 d-none"></div>
 
                           <i id="register-arrow" class="my-1 ps-1 bi bi-arrow-right" /></button>
@@ -192,7 +201,13 @@ const Register = () => {
 
 
             <div class="carousel-item">
-              <ProfileDetails username={Input.username} />
+              <ProfileDetails getImgUrl={getImgUrl} />
+
+
+
+            </div>
+            <div class="carousel-item">
+              <ProfileDetails2 username={Input.username} profileImgUrl={profileImgUrl} />
 
 
 
