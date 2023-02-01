@@ -24,7 +24,6 @@ const ProfileDetails = (props) => {
         formData.append("upload_preset", "gkcutnp6")
         await axios.post("https://api.cloudinary.com/v1_1/dt55mivpf/image/upload", formData)
             .then((res) => {
-                console.log(res.data.url);
                 props.getImgUrl(res.data.url);
                 ele3.disabled = false;
                 ele2.disabled = true;
@@ -91,7 +90,7 @@ const ProfileDetails = (props) => {
                         <div class="d-flex flex-wrap justify-content-center float-bottom fw-bolder pt-4">
                         <div className="w-100 mx-1">
 
-                            <button id="next-button" class="btn btn-danger btn-lg w-100 rounded-4" type="button"  data-bs-target="#carouselControls" data-bs-slide="next" >Next
+                            <button id="next-button" class="btn btn-danger btn-lg w-100 rounded-4" type="button"  data-bs-target="#carouselControls" data-bs-slide="next" disabled>Almost there
                             <i class="my-1 ps-1 bi bi-arrow-right" /></button>
                         </div>
                         </div>

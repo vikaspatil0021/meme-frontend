@@ -16,7 +16,6 @@ const Register = () => {
   });
   const [profileImgUrl,setprofileImgUrl] = useState('')
 
-  console.log(profileImgUrl);
   const ele1 = document.getElementById("register-button");
   const ele2 = document.getElementById("register-spinner");
   const ele3 = document.getElementById("register-arrow");
@@ -59,7 +58,6 @@ const Register = () => {
           ele2.classList.add("d-none");
           ele3.classList.remove("d-none");
 
-          console.log(res.data);
           if (res.data.isAuth) {
             ele1.classList.replace("btn-danger", "btn-success");
             ele1.innerHTML = "Registered";
@@ -178,10 +176,10 @@ const Register = () => {
                     </div>
 
                     <div class="d-flex flex-wrap justify-content-center pb-4">
-                      <div className="w-100" >
+                      <div className="w-100" onClick={registerRequest}>
 
                         <button id="register-button" class="btn btn-danger btn-lg w-100 rounded-4"
-                          type="button" data-bs-target="#carouselControls" data-bs-slide="next" >Register
+                          type="button" disabled>Register
                           <div id="register-spinner" className="spinner-border spinner-border-sm text-white mx-2 d-none"></div>
 
                           <i id="register-arrow" class="my-1 ps-1 bi bi-arrow-right" /></button>
