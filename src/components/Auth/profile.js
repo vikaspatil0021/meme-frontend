@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import p1 from "../img/p1.png"
+import * as bootstrap from "bootstrap"
 
 const ProfileDetails = (props) => {
 
@@ -10,7 +11,7 @@ const ProfileDetails = (props) => {
     const ele1 = document.getElementById("upload-spinner");
     
     const ele2 = document.getElementById("choose-photo");
-    const ele3 = document.getElementById("next-button");
+    // const ele3 = document.getElementById("next-button");
     const ele4 = document.getElementById("upload-button");
     const ele5 = document.getElementById("upload-check-icon");
 
@@ -25,13 +26,19 @@ const ProfileDetails = (props) => {
         await axios.post("https://api.cloudinary.com/v1_1/dt55mivpf/image/upload", formData)
             .then((res) => {
                 props.getImgUrl(res.data.url);
-                ele3.disabled = false;
+                // ele3.disabled = false;
                 ele2.disabled = true;
                 ele1.classList.add("d-none");
                 ele4.classList.replace("btn-primary","btn-success");
                 ele4.innerHTML="Uploaded";
                 ele4.disabled=true;
                 ele5.classList.remove("d-none");
+
+                setTimeout(() => {
+
+                    const carousel = new bootstrap.Carousel('#carouselControls')
+                    carousel.next()
+                  }, 500)
             })
             .catch((error) => {
                 console.log(error);
@@ -87,13 +94,13 @@ const ProfileDetails = (props) => {
 
                         </div>
                         
-                        <div class="d-flex flex-wrap justify-content-center float-bottom fw-bolder pt-4">
+                        {/* <div class="d-flex flex-wrap justify-content-center float-bottom fw-bolder pt-4">
                         <div className="w-100 mx-1">
 
                             <button id="next-button" class="btn btn-danger btn-lg w-100 rounded-4" type="button"  data-bs-target="#carouselControls" data-bs-slide="next" disabled>Almost there
                             <i class="my-1 ps-1 bi bi-arrow-right" /></button>
                         </div>
-                        </div>
+                        </div> */}
 
                     </div>
 
