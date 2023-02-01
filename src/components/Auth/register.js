@@ -37,7 +37,12 @@ const Register = () => {
 
   //--------Register user--------
   const registerRequest = async () => {
-
+    const lowereduser = (Input.username).toLowerCase();
+    const dataToSend = {
+      email: Input.email,
+      username: lowereduser,
+      password: Input.password
+    }
 
 
     if (ele1.disabled == false) {
@@ -48,7 +53,7 @@ const Register = () => {
 
 
 
-      await axios.post(process.env.REACT_APP_SERVER_URL + '/register', Input, { withCredentials: "include" })
+      await axios.post(process.env.REACT_APP_SERVER_URL + '/register', dataToSend, { withCredentials: "include" })
         .then((res) => {
           ele2.classList.add("d-none");
           ele3.classList.remove("d-none");
