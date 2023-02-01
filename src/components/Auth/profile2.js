@@ -28,7 +28,7 @@ const ProfileDetails2 = (props) => {
 
 
 
-            await axios.put(process.env.REACT_APP_SERVER_URL + '/profileinfo', {
+            await axios.post(process.env.REACT_APP_SERVER_URL + '/profileinfo', {
                 username: props.username,
                 fullName: fullNAME,
                 profileImgURL: props.profileImgUrl,
