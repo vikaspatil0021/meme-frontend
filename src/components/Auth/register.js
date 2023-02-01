@@ -148,7 +148,7 @@ const Register = () => {
                       <div className="w-100" onClick={registerRequest}>
 
                         <button id="register-button" class="btn btn-danger btn-lg w-100 rounded-4"
-                          type="button"   disabled>Register
+                          type="button"  disabled>Register
                           <div id="register-spinner" className="spinner-border spinner-border-sm text-white mx-2 d-none"></div>
 
                           <i id="register-arrow" class="my-1 ps-1 bi bi-arrow-right" /></button>
