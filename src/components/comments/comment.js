@@ -9,7 +9,7 @@ const Comments = (props) => {
 
 
     const user = props.user;
-    const { _id: userId, name, username } = user;
+    const { _id: userId, name, username,profileImgURL } = user;
 
     const [newComment, setNewComment] = useState('');
     const [replyContent, setReplyContent] = useState('');
@@ -154,7 +154,7 @@ const Comments = (props) => {
                                     <h1 class="modal-title fs-5 mx-3" id="exampleModalLabel">New comment</h1>
                                 </div>
                                 <div class="modal-body d-flex">
-                                    <img src="https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/caroline-byline-compressor.png?width=48&height=48&name=caroline-byline-compressor.png" className=" rounded-5 cropped me-2" alt="card_img" height="40" width="40" />
+                                    <img src={profileImgURL} className=" rounded-5 cropped me-2" alt="card_img" height="40" width="40" />
 
                                     <textarea autoFocus required type="text" name="comment" id="comment" class="form-control form-control-lg" rows="3" onChange={(e) => { setNewComment(e.target.value) }} value={newComment} />
                                 </div>
@@ -175,7 +175,7 @@ const Comments = (props) => {
                                     <a href={"/people/" + comment.user.username} className="text-decoration-none d-inline-flex">
                                         <div className="card d-inline border-0 p-1 pb-0 rounded-4">
 
-                                            <img src="http://res.cloudinary.com/dt55mivpf/image/upload/v1674375834/MYBLOG/POSTS/xtpye8s762dcp8chpy5u.jpg" className=" rounded-5 cropped me-2" alt="card_img" height="40" width="40" />
+                                            <img src={comment.user.profileImgURL} className=" rounded-5 cropped me-2" alt="card_img" height="40" width="40" />
 
                                             <span className="colorChange fs-5 fw-bold">{comment.user.name}</span>
                                         </div>
@@ -225,7 +225,7 @@ const Comments = (props) => {
                                             <h1 class="modal-title fs-5 mx-3" id="exampleModalLabel">Reply comment</h1>
                                         </div>
                                         <div class="modal-body d-flex">
-                                            <img src="https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/caroline-byline-compressor.png?width=48&height=48&name=caroline-byline-compressor.png" className=" rounded-5 cropped me-2" alt="card_img" height="40" width="40" />
+                                            <img src={profileImgURL} className=" rounded-5 cropped me-2" alt="card_img" height="40" width="40" />
 
                                             <textarea autoFocus required type="text" name="comment" class="form-control form-control-lg" rows="3" onChange={(e) => { setReplyContent(e.target.value) }} value={replyContent} />
                                         </div>
@@ -244,7 +244,7 @@ const Comments = (props) => {
                                     <a href={"/people/" + replyComment.user.username} className="text-decoration-none d-inline-flex">
                                         <div className="card d-inline border-0 px-3 pb-0 rounded-4">
 
-                                            <img src="https://53.fs1.hubspotusercontent-na1.net/hub/53/hubfs/caroline-byline-compressor.png?width=48&height=48&name=caroline-byline-compressor.png" className=" rounded-5 cropped me-2" alt="card_img" height="40" width="40" />
+                                            <img src={replyComment.user.profileImgURL} className=" rounded-5 cropped me-2" alt="card_img" height="40" width="40" />
 
                                             <span className="colorChange fs-5 fw-bold">{replyComment.user.name}</span>
                                         </div>

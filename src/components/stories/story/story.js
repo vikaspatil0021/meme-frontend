@@ -38,7 +38,7 @@ const Story = () => {
     console.log(storyContent);
     const { story, user, sessionUser } = storyContent;
     const { _id: storyId, title, content, imageURL, likes } = story;
-    const { _id: userId, name, username } = user;
+    const { _id: userId, name, username,profileImgURL } = user;
     const { _id: sessionId } = sessionUser;
 
     //setting the likes state for the first time 
@@ -146,7 +146,7 @@ const Story = () => {
                                             <a href={"/people/" + username} className="text-decoration-none d-inline-flex">
                                                 <div className="card d-inline border-0 p-3 pb-0 rounded-4">
 
-                                                    <img src="http://res.cloudinary.com/dt55mivpf/image/upload/v1674375834/MYBLOG/POSTS/xtpye8s762dcp8chpy5u.jpg" className=" rounded-5 cropped me-2" alt="card_img" height="50" width="50" />
+                                                    <img src={profileImgURL} className=" rounded-5 cropped me-2" alt="card_img" height="50" width="50" />
 
                                                     <span className="colorChange fs-5 fw-bold">{name}</span>
                                                 </div>
