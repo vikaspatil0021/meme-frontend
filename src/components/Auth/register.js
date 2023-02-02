@@ -205,7 +205,7 @@ const Register = () => {
 
             </div>
             <div class="carousel-item">
-              <ProfileDetails2 username={Input.username} profileImgUrl={profileImgUrl} />
+              <ProfileDetails2 profileImgUrl={profileImgUrl} />
 
 
 
