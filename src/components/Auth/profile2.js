@@ -34,8 +34,7 @@ const ProfileDetails2 = (props) => {
                 profileImgURL: props.profileImgUrl,
                 instaUsername: profileInfo.instaUsername,
                 bio: profileInfo.bio
-            },
-                { withCredentials: "include" })
+            },{ withCredentials: "include" })
                 .then((res) => {
                     ele2.classList.add("d-none");
                     ele3.classList.remove("d-none");

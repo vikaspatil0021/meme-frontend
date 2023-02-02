@@ -66,7 +66,7 @@ const Register = () => {
 
               const carousel = new bootstrap.Carousel('#carouselControls')
               carousel.next()
-            }, 500)
+            }, 800)
           }else{
             const toastLive = document.getElementById('liveToast-register');
             const toast = new bootstrap.Toast(toastLive)
