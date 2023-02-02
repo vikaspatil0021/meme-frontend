@@ -70,7 +70,9 @@ const Comments = (props) => {
             user: {
                 userId: userId,
                 name: name,
-                username: username
+                username: username,
+                profileImgURL:profileImgURL
+
             },
             content: replyContent,
             commentId: commentId,

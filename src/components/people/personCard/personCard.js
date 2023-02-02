@@ -4,7 +4,7 @@ import "./personCard.css"
 import p1 from "./../../img/p1.png"
 
 const PersonCard = (props) => {
-    const { _id, name, username,profileImgURL } = props.sentPerson;
+    const { _id, name, username,profileImgURL,memeCount } = props.sentPerson;
 
 
     return (
@@ -25,15 +25,15 @@ const PersonCard = (props) => {
                                 <p className="card-title d-inline fw-semibold text-muted under-line" style={{fontSize:"19px"}}>{username}</p>
                             </div>
                             <div className="card-content d-inline-flex flex-wrap rounded-3 my-2 p-2" style={{ backgroundColor: "#efefef" }}>
-                                <div className="me-3">
+                                <div className="me-2">
                                     <p className="fw-semibold text-muted m-0">
-                                        Stories
+                                        Memes
                                     </p>
                                     <p className="py-0 ps-1 fw-semibold my-0">
-                                        12
+                                    {memeCount}
                                     </p>
                                 </div>
-                                <div className="me-3">
+                                <div className="me-2">
                                     <p className="fw-semibold text-muted m-0">
                                         Friends
                                     </p>
