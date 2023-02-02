@@ -16,8 +16,8 @@ const People = () => {
         axios.get(process.env.REACT_APP_SERVER_URL + "/people", { withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
-                console.log(res.data);
-                setPeopleData(res.data);
+                const reverseArr = (res.data).reverse()
+                setPeopleData(reverseArr);
                 setLoading(true)
             }).catch((error) => {
                 console.log(error);

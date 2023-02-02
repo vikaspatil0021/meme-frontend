@@ -19,7 +19,10 @@ const Stories = () => {
             .then((res) => {
                 console.log(res.data);
                 setLoading(true)
-                setStoriesData(res.data.storiesAll)
+
+                const reverseArr = (res.data.storiesAll).reverse()
+
+                setStoriesData(reverseArr)
                 setUser(res.data.fUser)
                 // }
             }).catch((error) => {
