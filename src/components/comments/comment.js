@@ -38,7 +38,8 @@ const Comments = (props) => {
             user: {
                 userId: userId,
                 name: name,
-                username: username
+                username: username,
+                profileImgURL:profileImgURL
             },
             storyId: props.storyId,
             content: newComment,
