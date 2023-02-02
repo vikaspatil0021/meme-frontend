@@ -69,7 +69,7 @@ const ProfileDetails = (props) => {
                                     </div>
                                     <div  className="card-body d-flex flex-wrap justify-content-center align-items-center">
                                     <span class="position-absolute btn mx-4 btn-primary rounded-4 opacity-75">{file==""?"Choose photo":"Change photo"}</span>
-                                        <input id="choose-photo" type="file" accept="image/gif, image/jpeg, image/png" class="form-control form-control-lg opacity-0" onChange={(e) => {
+                                        <input id="choose-photo" type="file" accept="image/*" class="form-control form-control-lg opacity-0" onChange={(e) => {
                                             const f = e.target.files[0];
                                             selectedFile(f);
                                         }} />
