@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import * as bootstrap from "bootstrap"
 
 const Login = () => {
     const navigate = useNavigate();
@@ -52,6 +53,11 @@ const Login = () => {
 
                 })
                 .catch((error) => {
+                    ele2.classList.add("d-none");
+                    ele3.classList.remove("d-none");
+                    const toastLive = document.getElementById('liveToast-login');
+                    const toast = new bootstrap.Toast(toastLive)
+                    toast.show()
                     console.log(error);
 
                 });
@@ -84,6 +90,19 @@ const Login = () => {
                     </div>
 
 
+                </div>
+                <div className="d-flex justify-content-center">
+                    <div class="toast-container position-fixed bottom-0 p-3">
+
+                        <div id="liveToast-login" class="toast align-items-center bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="d-flex">
+                                <div class="toast-body text-white">
+                                    Username or password is incorrect
+                                </div>
+                                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className=" mx-lg-5 px-lg-5  m-2 p-2 mx-md-3 px-md-3">
                     <div className="mt-4 d-flex justify-content-center">
