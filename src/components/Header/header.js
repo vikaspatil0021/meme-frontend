@@ -20,7 +20,7 @@ const Nav = () => {
             <div className="navbar p-3" style={{ width: "1410px" }}>
 
                 <div>
-                    <a href="/" className="navbar-brand font-roboto fs-5 fw-bolder ms-2 ms-md-3"><i class="bi bi-browser-edge p-1"></i>blog</a>
+                    <a href="/" className="navbar-brand fs-5 fw-bolder ms-2 ms-md-3">IMEME</a>
                 </div>
 
 
