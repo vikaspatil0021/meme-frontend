@@ -1,10 +1,23 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./personCard.css"
 import p1 from "./../../img/p1.png"
 
 const PersonCard = (props) => {
-    const { _id, name, username,profileImgURL,memeCount } = props.sentPerson;
+    const [lengths, setLengths] = useState(0);
+
+    const { _id, name, username,profileImgURL } = props.sentPerson;
+    useEffect(() => {
+        axios.get(process.env.REACT_APP_SERVER_URL + "/people/" + username, { withCredentials: "include" })
+            .then((res) => {
+                console.log(res.data);
+                setLengths((res.data.fstories).length);
+
+            }).catch((error) => {
+                console.log(error);
+
+            })
+    }, []);
 
 
     return (
@@ -30,7 +43,7 @@ const PersonCard = (props) => {
                                         Memes
                                     </p>
                                     <p className="py-0 ps-1 fw-semibold my-0">
-                                    {memeCount}
+                                    {lengths}
                                     </p>
                                 </div>
                                 <div className="me-2">
