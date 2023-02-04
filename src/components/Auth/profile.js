@@ -68,8 +68,8 @@ const ProfileDetails = (props) => {
                                         <img className="card-img rounded-5 cropped" src={(!file) ? p1 : URL.createObjectURL(file)} height="150" />
                                     </div>
                                     <div  className="card-body d-flex flex-wrap justify-content-center align-items-center">
-                                    <span class="position-absolute btn mx-4 btn-primary rounded-4 opacity-75">{file==""?"Choose photo":"Change photo"}</span>
-                                        <input id="choose-photo" type="file" accept="image/jpeg, image/png, image/jpg" class="form-control form-control-lg opacity-0" onChange={(e) => {
+                                    <span class="position-absolute btn btn-primary rounded-4 opacity-75">{file==""?"Choose image":"Change image"}</span>
+                                        <input id="choose-photo" type="file" accept="image/jpeg, image/png, image/jpg" class="form-control opacity-0" style={{width:"130px"}} onChange={(e) => {
                                             const f = e.target.files[0];
                                             selectedFile(f);
                                         }} />
