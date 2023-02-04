@@ -169,10 +169,7 @@ const Compose = () => {
 
                                                 </button>
                                             </div>
-                                            <div className="d-flex flex-wrap justify-content-center">
-
-                                                <a href="/dashboard" class="btn btn-lg btn-danger opacity-75 m-2 w-100 rounded-4" >Cancel </a>
-                                            </div>
+                                   
                                         </div>
                                         <div class="carousel-item">
                                             <div className=" mx-2 px-2 mx-md-3 px-md-3">
@@ -198,10 +195,7 @@ const Compose = () => {
 
 
                                                 </div>
-                                                <div className="d-flex flex-wrap justify-content-center">
-
-                                                    <a href="/dashboard" class="btn btn-lg btn-danger opacity-75 m-2 w-100 rounded-4" >Cancel </a>
-                                                </div>
+                                     
                                             </div>
                                         </div>
 

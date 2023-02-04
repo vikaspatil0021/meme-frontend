@@ -131,7 +131,7 @@ const ProfileDetails2 = (props) => {
                                 </div>
                             </div>
                             <div class="px-2">
-                                <label class="form-label" for="textareaBio">  Bio</label>
+                                <label class="form-label" for="textareaBio">Bio*</label>
                                 <textarea class="form-control" placeholder="One word/sentence that describes you..." id="textareaBio" rows="4"
                                     value={profileInfo.bio} onChange={(event) => {
                                         setProfileInfo({

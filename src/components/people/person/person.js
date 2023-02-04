@@ -35,7 +35,7 @@ const Person = () => {
 
     }, []);
     const { story, user } = personInfo
-    const { username, name,profileImgURL } = user;
+    const { username, name, profileImgURL, instaUsername, bio } = user;
     useEffect(() => {
         setLengths(loading ? (story.length) : 0);
     }, [story])
@@ -69,7 +69,7 @@ const Person = () => {
                                 <div className="d-flex justify-content-left mx-auto card-content" style={{ width: "1370px" }}>
                                     <div className="p-3 ps-2">
 
-                                        <img class="rounded-5 cropped" src={profileImgURL||p1} alt="Card image cap" height="150" width="150" />
+                                        <img class="rounded-5 cropped" src={profileImgURL || p1} alt="Card image cap" height="150" width="150" />
                                     </div>
 
                                     <div className="m-auto ms-2 mt-4 ms-md-4">
@@ -91,7 +91,7 @@ const Person = () => {
                             <div className="py-4 px-4 ps-md-4 mx-auto" style={{ width: "1370px" }}>
 
                                 <div class="nav-pills mb-4 list-group list-group-horizontal" id="pills-tab" role="tablist" >
-                                    <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Bio</button>
+                                    <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">About</button>
                                     <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-stories-tab" data-bs-toggle="pill" data-bs-target="#pills-stories" type="button" role="tab" aria-controls="pills-stories" aria-selected="true">Memes ({lengths})</button>
                                     <button class="list-group-item opacity-75 me-2 rounded-4" id="pills-friends-tab" data-bs-toggle="pill" data-bs-target="#pills-friends" type="button" role="tab" aria-controls="pills-friends" aria-selected="false">Friends(20)</button>
 
@@ -101,32 +101,41 @@ const Person = () => {
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active card p-4 rounded-4" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
 
-
-                                        Bio
+                                        {(bio)?<><div >
+                                            <h5 className="text-dark">Bio</h5>
+                                            <p className="text-muted">{bio}</p>
+                                        </div>
+                                        <hr /></>:null}
+                                        <div>
+                                            <a href={"https://www.instagram.com/" + instaUsername} className="under-line fs-4 text-muted" >
+                                                <i class="me-2 text-danger bi bi-instagram"></i>
+                                                {instaUsername}
+                                                <i class="bi bi-arrow-right mx-2"></i></a>
+                                        </div>
                                     </div>
                                     <div class="tab-pane fade" id="pills-stories" role="tabpanel" aria-labelledby="pills-stories-tab" tabindex="0">
                                         <div className="d-flex flex-wrap mw-100">
 
-                                        {story.map((eachStory) => {
-                                            return(
-                                            <div className="col-12 col-md-5  me-3">
+                                            {story.map((eachStory) => {
+                                                return (
+                                                    <div className="col-12 col-md-5  me-3">
 
 
-                                                <a href={"/memes/"+eachStory._id} class="card-link">
-                                                    <div class="card rounded-5 mb-2">
-                                                        <div class="card-content d-flex p-2">
-                                                            <img class="rounded-5 cropped" src={eachStory.imageURL} alt="Card image cap" height="100" width="130" />
-                                                            <div class="card-body text-dark">
-                                                                <h4 class="card-title overflow-text">{eachStory.title}</h4>
+                                                        <a href={"/memes/" + eachStory._id} class="card-link">
+                                                            <div class="card rounded-5 mb-2">
+                                                                <div class="card-content d-flex p-2">
+                                                                    <img class="rounded-5 cropped" src={eachStory.imageURL} alt="Card image cap" height="100" width="130" />
+                                                                    <div class="card-body text-dark">
+                                                                        <h4 class="card-title overflow-text">{eachStory.title}</h4>
 
 
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                        </a>
                                                     </div>
-                                                </a>
-                                            </div>
-                                            )
-                                        })}
+                                                )
+                                            })}
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="pills-friends" role="tabpanel" aria-labelledby="pills-friends-tab" tabindex="0">
