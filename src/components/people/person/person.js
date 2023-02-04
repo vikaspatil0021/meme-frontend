@@ -103,7 +103,7 @@ const Person = () => {
 
                                         {(bio)?<><div >
                                             <h5 className="text-dark">Bio</h5>
-                                            <p className="text-muted">{bio}</p>
+                                            <p className="text-muted">- {bio}</p>
                                         </div>
                                         <hr /></>:null}
                                         <div>
