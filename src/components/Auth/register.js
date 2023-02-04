@@ -5,9 +5,12 @@ import axios from "axios";
 import ProfileDetails from "./profile";
 import * as bootstrap from "bootstrap"
 import ProfileDetails2 from "./profile2";
+import Preloader from "../preLoader/preloader";
 
 const Register = () => {
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false);
+
 
   const [Input, setInput] = useState({
     email: '',
@@ -27,8 +30,11 @@ const Register = () => {
   useEffect(() => {
     axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
       .then((res) => {
+        
         if (res.data.isAuth) {
           navigate("/dashboard")
+        }else{
+          setLoading(true);
         }
       }).catch((err) => {
         console.log(err);
@@ -107,7 +113,7 @@ const Register = () => {
             <div className=" mx-auto" style={{ width: "1370px" }}>
 
               <a href="/" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" /><i class=" my-1 bi bi-house-door" /></a>
-              <a href="/stories" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold me-1"><i class="my-1 pe-1 bi bi-arrow-left" />Stories</a>
+              <a href="/memes" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold me-1"><i class="my-1 pe-1 bi bi-arrow-left" />Memes</a>
 
               <a href="/people" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" />People</a>
             </div>
@@ -130,7 +136,8 @@ const Register = () => {
         </div>
         </div>
 
-
+        {loading ?
+                (
         <div id="carouselControls" class="carousel slide" data-bs-touch="false">
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -214,6 +221,7 @@ const Register = () => {
           </div>
 
         </div>
+        ) : <Preloader />}
 
 
       </div>

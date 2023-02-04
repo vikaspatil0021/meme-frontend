@@ -94,7 +94,7 @@ const Compose = () => {
                     console.log(res.data);
                     setTimeout(() => {
 
-                        navigate("/stories")
+                        navigate("/memes")
                       }, 800)
 
                 })

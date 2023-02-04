@@ -92,7 +92,7 @@ const Person = () => {
 
                                 <div class="nav-pills mb-4 list-group list-group-horizontal" id="pills-tab" role="tablist" >
                                     <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Bio</button>
-                                    <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-stories-tab" data-bs-toggle="pill" data-bs-target="#pills-stories" type="button" role="tab" aria-controls="pills-stories" aria-selected="true">Stories ({lengths})</button>
+                                    <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-stories-tab" data-bs-toggle="pill" data-bs-target="#pills-stories" type="button" role="tab" aria-controls="pills-stories" aria-selected="true">Memes ({lengths})</button>
                                     <button class="list-group-item opacity-75 me-2 rounded-4" id="pills-friends-tab" data-bs-toggle="pill" data-bs-target="#pills-friends" type="button" role="tab" aria-controls="pills-friends" aria-selected="false">Friends(20)</button>
 
 
@@ -112,7 +112,7 @@ const Person = () => {
                                             <div className="col-12 col-md-5  me-3">
 
 
-                                                <a href={"/stories/"+eachStory._id} class="card-link">
+                                                <a href={"/memes/"+eachStory._id} class="card-link">
                                                     <div class="card rounded-5 mb-2">
                                                         <div class="card-content d-flex p-2">
                                                             <img class="rounded-5 cropped" src={eachStory.imageURL} alt="Card image cap" height="100" width="130" />

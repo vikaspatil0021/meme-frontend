@@ -7,7 +7,7 @@ import StoryCard from "./storyCard/storyCard.js";
 import Preloader from "../preLoader/preloader";
 
 
-const Stories = () => {
+const Memes = () => {
     const [loading, setLoading] = useState(false);
     const [auth, setAuth] = useState('');
     const [user,setUser] = useState('');
@@ -15,7 +15,7 @@ const Stories = () => {
     const [storiesData, setStoriesData] = useState([])
     useEffect(() => {
 
-        axios.get(process.env.REACT_APP_SERVER_URL + "/stories", { withCredentials: "include" })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/memes", { withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
                 setLoading(true)
@@ -71,4 +71,4 @@ const Stories = () => {
     );
 }
 
-export default Stories;
+export default Memes;

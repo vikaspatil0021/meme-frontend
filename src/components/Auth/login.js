@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import * as bootstrap from "bootstrap"
+import Preloader from "../preLoader/preloader";
 
 const Login = () => {
     const navigate = useNavigate();
+
+    const [loading, setLoading] = useState(false);
+
     const [user, setUser] = useState({
         username: '',
         password: ''
@@ -19,9 +23,12 @@ const Login = () => {
     useEffect(() => {
         axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
             .then((res) => {
+                
                 if (res.data.isAuth) {
-                    navigate("/stories")
-                }
+                    navigate("/dashboard")
+                }else{
+                    setLoading(true);
+                  }
             }).catch((err) => {
                 console.log(err);
             })
@@ -82,7 +89,7 @@ const Login = () => {
                         <div className=" mx-auto" style={{ width: "1370px" }}>
 
                             <a href="/" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" /><i class=" my-1 bi bi-house-door" /></a>
-                            <a href="/stories" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold me-1"><i class="my-1 pe-1 bi bi-arrow-left" />Stories</a>
+                            <a href="/memes" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold me-1"><i class="my-1 pe-1 bi bi-arrow-left" />Memes</a>
 
                             <a href="/people" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" />People</a>
                         </div>
@@ -104,6 +111,8 @@ const Login = () => {
                         </div>
                     </div>
                 </div>
+                {loading ?
+                (
                 <div className=" mx-lg-5 px-lg-5  m-2 p-2 mx-md-3 px-md-3">
                     <div className="mt-4 d-flex justify-content-center">
 
@@ -145,7 +154,8 @@ const Login = () => {
                         </form>
                     </div>
 
-                </div>
+                </div>) : <Preloader />}
+
 
             </div>
         </div>

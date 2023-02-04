@@ -4,7 +4,7 @@ import "./storyCard.css"
 
 const StoryCard = (props) => {
 
-    const { _id, title, imageURL, content, likes } = props.sentStory;
+    const { _id, title, imageURL, likes } = props.sentStory;
     if (props.user) {
 
         var { _id: sessionId } = props.user;
@@ -15,7 +15,7 @@ const StoryCard = (props) => {
 
     useEffect(() => {
 
-        axios.get(process.env.REACT_APP_SERVER_URL + "/stories/" + _id, { withCredentials: "include" })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/memes/" + _id, { withCredentials: "include" })
             .then((res) => {
                 setfUser(res.data.user)
 
@@ -29,7 +29,7 @@ const StoryCard = (props) => {
     return (
         <div className="p-1 p-md-2 col-12 col-md-6 col-lg-4">
 
-            <a href={"/stories/" + _id} class="card-link">
+            <a href={"/memes/" + _id} class="card-link">
                 <div class="card Storycard rounded-5 mb-2">
                     <div class="card-content p-3 pb-0">
                         <img class="card-img rounded-5 cropped" src={imageURL} alt="Card image cap" height="300" />

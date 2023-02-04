@@ -54,7 +54,7 @@ const Dashboard = (props) => {
                     <div className=" mx-auto" style={{ width: "1370px" }}>
 
                         <a href="/" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" /><i class=" my-1 bi bi-house-door" /></a>
-                        <a href="/stories" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold me-1"><i class="my-1 pe-1 bi bi-arrow-left" />Stories</a>
+                        <a href="/memes" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold me-1"><i class="my-1 pe-1 bi bi-arrow-left" />Memes</a>
 
                         <a href="/people" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" />People</a>
                     </div>
@@ -83,7 +83,7 @@ const Dashboard = (props) => {
 
                         <div class="nav-pills p-2 list-group list-group-horizontal mx-auto" id="pills-tab" role="tablist" style={{ width: "1370px" }}>
                             <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-account-tab" data-bs-toggle="pill" data-bs-target="#pills-account" type="button" role="tab" aria-controls="pills-account" aria-selected="true">Account</button>
-                            <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-mystories-tab" data-bs-toggle="pill" data-bs-target="#pills-mystories" type="button" role="tab" aria-controls="pills-mystories" aria-selected="true">My Stories</button>
+                            <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-mystories-tab" data-bs-toggle="pill" data-bs-target="#pills-mystories" type="button" role="tab" aria-controls="pills-mystories" aria-selected="true">My Memes</button>
                             <button class="list-group-item opacity-75 me-2 rounded-4" id="pills-myfriends-tab" data-bs-toggle="pill" data-bs-target="#pills-myfriends" type="button" role="tab" aria-controls="pills-myfriends" aria-selected="false">My Friends</button>
 
 
@@ -171,7 +171,7 @@ const Dashboard = (props) => {
                                                         <div class="card-body py-2 text-dark">
                                                             <h4 class="card-title overflow-text m-0">{story.title}</h4>
                                                             <div className="">
-                                                                <a className="btn py-0 px-2 border-0" href={"/stories/" + story._id}><i class="bi bi-arrow-up-right-square text-info fs-4"></i></a>
+                                                                <a className="btn py-0 px-2 border-0" href={"/memes/" + story._id}><i class="bi bi-arrow-up-right-square text-info fs-4"></i></a>
                                                                 <a className="btn py-0 px-2 border-0" ><i onClick={() => { props.updateStory(story); navigate("/dashboard/update") }} class="bi bi-pencil-square text-info fs-4"></i></a>
                                                                 <a className="btn py-0 px-2 border-0" href="#" data-bs-toggle="modal" data-bs-target={"#a" + story._id}><i class="bi bi-trash3 text-danger fs-4"></i></a>
 
