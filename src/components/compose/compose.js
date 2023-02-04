@@ -1,10 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Preloader from "../preLoader/preloader";
 
 
 const Compose = () => {
     const navigate = useNavigate();
+
+    const [loading, setLoading] = useState(false);
+
     const [post, setPost] = useState({
         title: '',
         content: '',
@@ -17,13 +21,18 @@ const Compose = () => {
     useEffect(() => {
         axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
             .then((res) => {
+                setLoading(res.data.isAuth);
+
                 if (!(res.data.isAuth)) {
-                    navigate("/login")
+                    // navigate("/login")
                 }
             }).catch((err) => {
                 console.log(err);
             })
     }, [])
+    if(!loading){
+        setLoading(true)
+    }
 
     //post request to image upload to cloudinary ------------------
     const uploadImage =async()=>{
@@ -71,14 +80,47 @@ const Compose = () => {
 
     return (
         <div>
-            <div className="mt-lg-5 pt-lg-5 mx-lg-5 px-lg-5 mt-5 pt-5 m-2 p-2 mx-md-3 px-md-3">
-                <div className="mt-5 d-flex justify-content-center">
+        <div className="quickLinks sticky-top bg-white px-2 py-2">
+          <div className=" d-flex ms-2 ms-md-3">
+            <div className=" mx-auto" style={{ width: "1370px" }}>
 
-                    <form style={{ width: "65%" }} method="POST">
+              <a href="/" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" /><i class=" my-1 bi bi-house-door" /></a>
+              <a href="/stories" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold me-1"><i class="my-1 pe-1 bi bi-arrow-left" />Memes</a>
 
-                        <h3 class="fw-normal mb-3 pb-3">Compose</h3>
+              <a href="/people" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" />People</a>
+            </div>
 
-                        <input type="file" name="postImage" onChange={(e) => { setFileSelected(e.target.files) }} />
+          </div>
+
+
+        </div>
+        {loading ?
+                (
+            <div className="mx-lg-5 px-lg-5 mx-md-3 px-md-3 px-3">
+                <div className="pt-5 d-flex justify-content-center">
+
+                <form className="col-12 col-md-6 col-lg-4">
+
+                        <h3 class="fw-semibold mb-3 ms-3">Compose</h3>
+
+                        <div class="card rounded-5 mb-2">
+                                <div class="card-content p-3">
+                                        <img className="card-img rounded-5 cropped"  height="300" />
+                                    
+                                    <div  className="card-body d-flex flex-wrap justify-content-center align-items-center">
+                                    <span class="position-absolute btn mx-4 btn-primary rounded-4 opacity-75">{"Change photo"}</span>
+                                        <input id="choose-photo" type="file" accept="image/jpeg, image/png, image/jpg" class="form-control form-control-lg opacity-0" onChange={(e) => {
+                                            const f = e.target.files[0];
+                                            // selectedFile(f);
+                                        }} />
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        {/* <input type="file" name="postImage" onChange={(e) => { setFileSelected(e.target.files) }} />
                         <button class="btn btn-danger btn-inline" onClick={uploadImage} type="button">upload</button>
 
                         <div class="form-outline mb-4">
@@ -95,11 +137,13 @@ const Compose = () => {
                             <a href="/dashboard" class="btn btn-danger btn-lg btn-inline me-2">Cancel</a>
 
                             <button class="btn btn-danger btn-lg btn-inline" onClick={createPost} type="button">Publish</button>
-                        </div>
+                        </div> */}
 
                     </form>
                 </div>
             </div>
+            ) : <Preloader />}
+
         </div>
 
     );
