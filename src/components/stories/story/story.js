@@ -83,10 +83,23 @@ const Story = () => {
 
     }
 
+    //scrolling effect og quicklinks ------CSS available on story.css
+    var prevScrollpos = window.pageYOffset;
+      window.onscroll = function () {
+          var currentScrollPos = window.pageYOffset;
+          if (prevScrollpos > currentScrollPos) {
+              document.getElementById("sticky-top-story").style.top = "0";
+          } else {
+              document.getElementById("sticky-top-story").style.top = "-155px";
+          }
+          prevScrollpos = currentScrollPos;
+      }
+  
+
 
     return (
         <div>
-            <div className="sticky-top bg-white" >
+            <div id="sticky-top-story" className="sticky-top bg-white" >
                 <div className="quickLinks px-2 py-2">
                     <div className="d-flex ms-2 ms-md-3">
                         <div className="mx-auto" style={{ width: "1370px" }}>

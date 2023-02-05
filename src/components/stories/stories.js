@@ -42,6 +42,8 @@ const Memes = () => {
         return <StoryCard sentStory={story} user={user} />
     })
 
+
+    //scrolling effect og quicklinks ------CSS available on story.css
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
         var currentScrollPos = window.pageYOffset;

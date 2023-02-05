@@ -3,4 +3,7 @@
 
 }
 
-
+#sticky-top-dash{
+    top:0;
+    transition: top .3s ease-in-out;
+}

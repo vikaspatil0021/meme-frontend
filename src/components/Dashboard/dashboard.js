@@ -47,6 +47,19 @@ const Dashboard = (props) => {
 
     }
 
+    //scrolling effect og quicklinks ------CSS available on story.css
+
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("sticky-top-dash").style.top = "0";
+        } else {
+            document.getElementById("sticky-top-dash").style.top = "-125px";
+        }
+        prevScrollpos = currentScrollPos;
+    }
+
     return (
         <div>
             <div className="bg-white px-2 py-2">
@@ -63,7 +76,7 @@ const Dashboard = (props) => {
 
 
             </div>
-            <div className="sticky-top bg-white border-top">
+            <div id="sticky-top-dash" className="sticky-top bg-white border-top">
 
 
                 <div className="d-flex">
@@ -73,13 +86,17 @@ const Dashboard = (props) => {
                         </h1>
                         {(loading) ?
                             <div className="my-auto">
-                                <a href="/compose" class="btn btn-primary me-1 rounded-4 opacity-75">Compose</a>
-                                {/* <a href="https://my-blog-backend-1ict.onrender.com/logout" class="btn btn-danger rounded-4 me-2 me-md-4">Log out</a> */}
+                                    <a href="/compose" class="btn btn-primary opacity-75 rounded-4 ps-3">
+                                   Compose
+                                    <i class="mx-2 pe-1 bi bi-arrow-right " />
+                                    </a>
+                                {/* <a href="/compose" class="btn btn-primary me-1 rounded-4 opacity-75">Compose</a>
+                                <a href="https://my-blog-backend-1ict.onrender.com/logout" class="btn btn-danger rounded-4 me-2 me-md-4">Log out</a> */}
                             </div> : null}
                     </div>
                 </div>
                 {(loading) ?
-                    <div className="d-flex ps-2 ps-md-3 ">
+                    <div className="d-flex ps-2 ps-md-3 border-bottom">
 
 
                         <div class="nav-pills p-2 pt-0 list-group list-group-horizontal mx-auto" id="pills-tab" role="tablist" style={{ width: "1370px" }}>
@@ -103,7 +120,7 @@ const Dashboard = (props) => {
                         <div class="tab-content py-3 px-0" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-account" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
 
-                                <div class="card rounded-4 mb-2">
+                                <div class="card rounded-5 mb-2">
                                     <div class="card-body p-4">
                                         <div className="p-3 pt-0 ps-0">
 
@@ -120,6 +137,24 @@ const Dashboard = (props) => {
                                                 <label className="text-muted pb-2">Username</label>
                                                 <h5 class="card-title my-auto">{accountStories.myAccount.username}</h5>
                                                 <hr />
+                                            </div>
+                                            <div className="">
+                                                <label className="text-muted pb-2">Email</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.email}</h5>
+                                                <hr />
+
+                                            </div>
+                                            <div className="">
+                                                <label className="text-muted pb-2">Insta username</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.instaUsername}</h5>
+                                                <hr />
+
+                                            </div>
+                                            <div className="">
+                                                <label className="text-muted pb-2">Bio</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.bio}</h5>
+                                                <hr />
+
                                             </div>
                                             <div className="">
                                                 <label className="text-muted pb-2">Email</label>

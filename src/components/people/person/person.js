@@ -41,10 +41,23 @@ const Person = () => {
     }, [story])
 
 
+    
+    //scrolling effect og quicklinks ------CSS available on story.css
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("sticky-top-person").style.top = "0";
+        } else {
+            document.getElementById("sticky-top-person").style.top = "-55px";
+        }
+        prevScrollpos = currentScrollPos;
+    }
+
     return (
         <div>
             <AuthModel />
-            <div className="sticky-top" >
+            <div id="sticky-top-person" className="sticky-top" >
 
                 <div className=" bg-white quickLinks px-2 py-2">
                     <div className="d-flex ms-2 ms-md-3">
@@ -107,7 +120,7 @@ const Person = () => {
                                         </div>
                                         <hr /></>:null}
                                         <div>
-                                            <a href={"https://www.instagram.com/" + instaUsername} className="under-line fs-4 text-muted" >
+                                            <a href={"https://www.instagram.com/" + instaUsername} target="_blank" className="under-line fs-4 text-muted" >
                                                 <i class="me-2 text-danger bi bi-instagram"></i>
                                                 {instaUsername}
                                                 <i class="bi bi-arrow-right mx-2"></i></a>

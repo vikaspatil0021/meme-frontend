@@ -9,3 +9,8 @@
     animation-name: slowMove ;
     animation-duration: 1s;
 }
+
+#sticky-top-people,#sticky-top-person, #sticky-top-dash, #sticky-top-story,#sticky-top-stories{
+    top:0;
+    transition: top .3s ease-in-out;
+}
