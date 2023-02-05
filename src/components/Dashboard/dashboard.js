@@ -81,9 +81,10 @@ const Dashboard = (props) => {
                 {(loading) ?
                     <div className="d-flex ps-2 ps-md-3 ">
 
+
                         <div class="nav-pills p-2 pt-0 list-group list-group-horizontal mx-auto" id="pills-tab" role="tablist" style={{ width: "1370px" }}>
                             <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-account-tab" data-bs-toggle="pill" data-bs-target="#pills-account" type="button" role="tab" aria-controls="pills-account" aria-selected="true">Account</button>
-                            <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-mystories-tab" data-bs-toggle="pill" data-bs-target="#pills-mystories" type="button" role="tab" aria-controls="pills-mystories" aria-selected="true">My Memes</button>
+                            <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-mystories-tab" data-bs-toggle="pill" data-bs-target="#pills-mystories" type="button" role="tab" aria-controls="pills-mystories" aria-selected="false">My Memes</button>
                             <button class="list-group-item opacity-75 me-2 rounded-4" id="pills-myfriends-tab" data-bs-toggle="pill" data-bs-target="#pills-myfriends" type="button" role="tab" aria-controls="pills-myfriends" aria-selected="false">My Friends</button>
                         </div>
                     </div> : null}
@@ -99,10 +100,10 @@ const Dashboard = (props) => {
 
                     <div class="mx-auto px-2" style={{ width: "1370px" }}>
 
-                        <div class="tab-content py-3 px-0" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-account" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+                        <div class="tab-content py-3 px-0" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-account" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+
                                 <div class="card rounded-4 mb-2">
-                                    {/* <h2 className="card-title px-4 pt-4">Account info</h2> */}
                                     <div class="card-body p-4">
                                         <div className="p-3 pt-0 ps-0">
 
@@ -110,36 +111,50 @@ const Dashboard = (props) => {
                                         </div>
                                         <div className="ms-2">
 
-                                        <div className="">
-                                            <label className="text-muted pb-2">Name</label>
-                                            <h5 class="card-title my-auto">{accountStories.myAccount.name}</h5>
-                                            <hr />
-                                        </div>
-                                        <div className="">
-                                            <label className="text-muted pb-2">Username</label>
-                                            <h5 class="card-title my-auto">{accountStories.myAccount.username}</h5>
-                                            <hr />
-                                        </div>
-                                        <div className="">
-                                            <label className="text-muted pb-2">Email</label>
-                                            <h5 class="card-title my-auto">{accountStories.myAccount.email}</h5>
-                                            <hr />
+                                            <div className="">
+                                                <label className="text-muted pb-2">Name</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.name}</h5>
+                                                <hr />
+                                            </div>
+                                            <div className="">
+                                                <label className="text-muted pb-2">Username</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.username}</h5>
+                                                <hr />
+                                            </div>
+                                            <div className="">
+                                                <label className="text-muted pb-2">Email</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.email}</h5>
+                                                <hr />
 
-                                        </div>
-                                        <div className="">
-                                            <label className="text-muted pb-2">Email</label>
-                                            <h5 class="card-title my-auto">{accountStories.myAccount.email}</h5>
-                                        </div>
+                                            </div>
+                                            <div className="">
+                                                <label className="text-muted pb-2">Insta username</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.instaUsername}</h5>
+                                                <hr />
+
+                                            </div>
+                                            <div className="">
+                                                <label className="text-muted pb-2">Bio</label>
+                                                <h5 class="card-title my-auto">{accountStories.myAccount.bio}</h5>
+                                                <hr />
+
+                                            </div>
                                         </div>
 
 
+
+                                <div className="d-flex mt-4">
+                                    <a href="https://my-blog-backend-1ict.onrender.com/logout" class="btn btn-danger rounded-4 px-5">Log out
+                                    <i class="mx-2 pe-1 bi bi-arrow-right " />
+                                    </a>
+                                </div>
                                     </div>
 
 
 
                                 </div>
                             </div>
-                            <div class="tab-pane fade d-flex flex-wrap" id="pills-mystories" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+                            <div class="tab-pane fade" id="pills-mystories" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
                                 {accountStories.myStories.map((story) => {
                                     return (
                                         <div class="col-12 col-md-6">
@@ -183,6 +198,9 @@ const Dashboard = (props) => {
                                         </div>
                                     )
                                 })}
+                            </div>
+                            <div class="tab-pane fade" id="pills-myfriends" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+                                gfgxfb
                             </div>
 
                         </div>
