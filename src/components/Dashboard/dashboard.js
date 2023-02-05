@@ -155,6 +155,7 @@ const Dashboard = (props) => {
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-mystories" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+                                <div className="d-flex flex-wrap">
                                 {accountStories.myStories.map((story) => {
                                     return (
                                         <div class="col-12 col-md-6">
@@ -198,6 +199,7 @@ const Dashboard = (props) => {
                                         </div>
                                     )
                                 })}
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="pills-myfriends" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
                                 gfgxfb

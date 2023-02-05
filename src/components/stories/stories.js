@@ -42,11 +42,22 @@ const Memes = () => {
         return <StoryCard sentStory={story} user={user} />
     })
 
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("sticky-top-stories").style.top = "0";
+        } else {
+            document.getElementById("sticky-top-stories").style.top = "-55px";
+        }
+        prevScrollpos = currentScrollPos;
+    }
+
     
 
     return (
         <div>
-            <div className="sticky-top quickLinks bg-white px-2 py-2">
+            <div id="sticky-top-stories" className="sticky-top quickLinks bg-white px-2 py-2">
                 <div className="d-flex ms-2 ms-md-3">
                     <div className="mx-auto" style={{ width: "1370px" }}>
 

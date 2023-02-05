@@ -27,6 +27,11 @@
     border: 0.1;
 }
 
+#sticky-top-stories{
+    top:0;
+    transition: .5s ease-in-out;
+}
+
 .colorChange{
     color: #6c757d;
 
