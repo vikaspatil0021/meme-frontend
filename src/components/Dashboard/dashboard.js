@@ -187,7 +187,7 @@ const Dashboard = (props) => {
 
                                 <div class="card rounded-5 mb-2">
                                     <div class="card-body p-4">
-                                        <div className="p-3 pt-0 ps-0">
+                                        <div className="p-3 pe-0 pt-0 ps-0">
 
                                             <img class="rounded-5 cropped" src={accountStories.myAccount.profileImgURL} alt="Card image cap" height="150" width="150" />
                                             <div className="d-inline dropstart">
@@ -212,7 +212,7 @@ const Dashboard = (props) => {
 
 
 
-                                        <div class="modal" tabindex="-1" id="update-profile-photo">
+                                        <div class="modal fade aniModal" tabindex="-1" id="update-profile-photo">
                                             <div class="modal-dialog  modal-fullscreen-md-down">
                                                 <div class="modal-content rounded-5">
                                                     <div class="modal-header">
