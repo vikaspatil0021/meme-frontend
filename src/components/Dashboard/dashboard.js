@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Preloader from "../preLoader/preloader";
-import p1 from "../img/p1.png"
 
 
 
@@ -16,6 +15,11 @@ const Dashboard = (props) => {
         myAccount: {},
         myStories: []
     })
+
+    const [updateDetails, setUpdateDetails] = useState({})
+
+    console.log(updateDetails);
+
 
     //--------------Current Auth status----------
     useEffect(() => {
@@ -33,6 +37,7 @@ const Dashboard = (props) => {
             .then((res) => {
                 console.log(res.data);
                 setAccountStories(res.data);
+                setUpdateDetails(res.data.myAccount)
             }).catch((error) => {
                 console.log(error);
 
@@ -55,36 +60,59 @@ const Dashboard = (props) => {
     // edit -profile -phtoto --------------------
     // elemnts by ids------------------
     const ele1 = document.getElementById("upload-spinner");
-    
+
     const ele2 = document.getElementById("choose-photo");
     // const ele3 = document.getElementById("next-button");
     const ele4 = document.getElementById("upload-button");
     const ele5 = document.getElementById("upload-check-icon");
-    const updateRequest = (imgUrl) =>{
+    const ele6 = document.getElementById("updateinfo-icon");
+    const ele7 = document.getElementById("updateinfo-spinner");
+    const ele8 = document.getElementById("updateinfo-button");
 
 
 
-        if(imgUrl){
+    const updateRequest = async(imgUrl) => {
+        var data = {}
 
-            axios.post(process.env.REACT_APP_SERVER_URL+"/editprofile",{imgUrl:imgUrl},{ withCredentials: "include" })
-            .then((res)=>{
-                ele4.innerHTML="Redirecting ...";
 
-                console.log(res.data);
-                setTimeout(()=>{
-                    window.location.reload()
-
-                },800)
-            }).catch((err)=>{
-                console.log(err);
-            })
+        if (imgUrl!='') {
+            data={
+                imgUrl:imgUrl
+            }
+            
+        }else{
+            ele7.classList.remove("d-none");
+            ele6.classList.add("d-none")
+            data = {
+                ...updateDetails
+            }
+            
         }
+
+        await axios.post(process.env.REACT_APP_SERVER_URL + "/editprofile",data , { withCredentials: "include" })
+                .then((res) => {
+                    if(imgUrl==''){
+                        ele8.classList.replace("btn-primary","btn-success")
+                        ele8.innerHTML = "Saving ...";
+                    }else{
+                        ele4.innerHTML = "Redirecting ...";
+
+                    }
+
+                    console.log(res.data);
+                    setTimeout(() => {
+                        window.location.reload()
+
+                    }, 800)
+                }).catch((err) => {
+                    console.log(err);
+                })
     }
 
 
 
 
-    
+
     const uploadAndUpdateImage = async () => {
         ele1.classList.remove("d-none");
 
@@ -99,12 +127,12 @@ const Dashboard = (props) => {
                 updateRequest(res.data.url)
                 ele2.disabled = true;
                 ele1.classList.add("d-none");
-                ele4.classList.replace("btn-primary","btn-success");
-                ele4.innerHTML="Uploaded";
-                ele4.disabled=true;
+                ele4.classList.replace("btn-primary", "btn-success");
+                ele4.innerHTML = "Uploaded";
+                ele4.disabled = true;
                 ele5.classList.remove("d-none");
 
-                
+
             })
             .catch((error) => {
                 console.log(error);
@@ -249,10 +277,69 @@ const Dashboard = (props) => {
 
                                                                 </button>
                                                             </div>
-                                                            <span className="text-danger mx-5">*After uploading, you will be redirected automatically...</span>
+                                                            <span className="text-danger">*After uploading, you will be redirected automatically.</span>
                                                         </div>
                                                     </div>
-                                                    
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        {/* update modals-INFO----------------------------------------------------------------------- */}
+
+
+
+                                        <div class="modal fade aniModal" tabindex="-1" id="update-profile-info">
+                                            <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-md-down">
+                                                <div class="modal-content rounded-5">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title ms-3">Edit profile info</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div className=" m-md-5 m-3 mt-md-3">
+
+                                                            <div className="mb-3">
+                                                                <label className="text-muted pb-2">Name</label>
+                                                                <input autoFocus required type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: e.target.value, username: updateDetails.username,email:updateDetails.email,instaUsername:updateDetails.instaUsername,bio:updateDetails.bio }) }} value={updateDetails.name} />
+
+                                                            </div>
+                                                            <div className="mb-3">
+                                                                <label className="text-muted pb-2">Username</label>
+                                                                <input  type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: updateDetails.name, username: e.target.value,email:updateDetails.email,instaUsername:updateDetails.instaUsername,bio:updateDetails.bio }) }} value={updateDetails.username} />
+                                                                <span className="text-danger">*If username is changed, you will need to log in again</span>
+
+                                                            </div>
+                                                            <div className="mb-3">
+                                                                <label className="text-muted pb-2">Email</label>
+                                                                <input type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: updateDetails.name, username: updateDetails.username,email:e.target.value,instaUsername:updateDetails.instaUsername,bio:updateDetails.bio }) }} value={updateDetails.email} />
+
+                                                            </div>
+                                                            <div className="mb-3">
+                                                                <label className="text-muted pb-2">Insta username</label>
+                                                                <input type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: updateDetails.name, username: updateDetails.username,email:updateDetails.email,instaUsername:e.target.value,bio:updateDetails.bio }) }} value={updateDetails.instaUsername} />
+
+                                                            
+                                                            </div>
+                                                            <div className="mb-3">
+                                                                <label className="text-muted pb-2">Bio</label>
+                                                                <input type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name:  updateDetails.name, username: updateDetails.username,email:updateDetails.email,instaUsername:updateDetails.instaUsername,bio:e.target.value }) }} value={updateDetails.bio} />
+
+                                                             
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary rounded-4" data-bs-dismiss="modal">Close</button>
+                                                        <button id="updateinfo-button" type="button" class="btn btn-primary rounded-4 ps-3" onClick={()=>{updateRequest('')}}>Save changes
+                                                        <div id="updateinfo-spinner" className="spinner-border spinner-border-sm text-white mx-2 d-none"></div>
+
+                                                        <i id="updateinfo-icon" class="ms-1 bi bi-arrow-right" />
+
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -290,24 +377,7 @@ const Dashboard = (props) => {
                                                 <hr />
 
                                             </div>
-                                            <div className="">
-                                                <label className="text-muted pb-2">Email</label>
-                                                <h5 class="card-title my-auto">{accountStories.myAccount.email}</h5>
-                                                <hr />
-
-                                            </div>
-                                            <div className="">
-                                                <label className="text-muted pb-2">Insta username</label>
-                                                <h5 class="card-title my-auto">{accountStories.myAccount.instaUsername}</h5>
-                                                <hr />
-
-                                            </div>
-                                            <div className="">
-                                                <label className="text-muted pb-2">Bio</label>
-                                                <h5 class="card-title my-auto">{accountStories.myAccount.bio}</h5>
-                                                <hr />
-
-                                            </div>
+                                            
                                         </div>
 
 

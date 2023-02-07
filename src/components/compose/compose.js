@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Preloader from "../preLoader/preloader";
-import p1 from "../img/p1.png"
+import uploadMeme from "../img/uploadMeme.png"
 import * as bootstrap from "bootstrap"
 
 
@@ -146,7 +146,7 @@ const Compose = () => {
                                         <div class="carousel-item active">
                                             <div class="card rounded-5 mb-2">
                                                 <div class="card-content d-flex flex-wrap justify-content-center p-3 pb-0">
-                                                    <img className="card-img rounded-5 cropped" src={(!fileSelected) ? p1 : URL.createObjectURL(fileSelected)} height="300" />
+                                                    <img className="card-img rounded-5 cropped" src={(!fileSelected) ? uploadMeme : URL.createObjectURL(fileSelected)} height="300" />
 
                                                     <div className="col-6 card-body d-flex flex-wrap justify-content-center align-items-center">
                                                         <span class="position-absolute btn btn-primary rounded-4 opacity-75">{fileSelected == "" ? "Choose image" : "Change image"}</span>

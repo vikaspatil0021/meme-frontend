@@ -32,14 +32,14 @@ const StoryCard = (props) => {
             <a href={"/memes/" + _id} class="card-link">
                 <div class="card Storycard rounded-5 mb-2">
                     <div class="card-content p-3 pb-0">
-                        <img class="card-img rounded-5 cropped" src={imageURL} alt="Card image cap" height="300" />
+                        <img class="card-img rounded-5 cropped" src={imageURL}  height="300" />
                         <div class="card-body text-dark">
                             <h4 class="card-title overflow-text">{title}</h4>
                             <div className="d-flex justify-content-between py-2">
 
                                 <div className="d-flex border-0 rounded-4">
 
-                                    <img src={profileImgURL} className=" rounded-5 me-2" height="30" width="30" />
+                                    <img src={profileImgURL} className="cropped rounded-5 me-2" height="30" width="30" />
 
                                     <span className="text-muted fs-5 fw-bold">{name}</span>
                                 </div>
