@@ -2,12 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Preloader from "../preLoader/preloader";
+import p1 from "../img/p1.png"
 
 
 
 const Dashboard = (props) => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+
+    const [file, selectedFile] = useState('');
 
     const [accountStories, setAccountStories] = useState({
         myAccount: {},
@@ -44,6 +47,70 @@ const Dashboard = (props) => {
             }).catch((err) => {
                 console.log(err);
             });
+
+    }
+
+
+
+    // edit -profile -phtoto --------------------
+    // elemnts by ids------------------
+    const ele1 = document.getElementById("upload-spinner");
+    
+    const ele2 = document.getElementById("choose-photo");
+    // const ele3 = document.getElementById("next-button");
+    const ele4 = document.getElementById("upload-button");
+    const ele5 = document.getElementById("upload-check-icon");
+    const updateRequest = (imgUrl) =>{
+
+
+
+        if(imgUrl){
+
+            axios.post(process.env.REACT_APP_SERVER_URL+"/editprofile",{imgUrl:imgUrl},{ withCredentials: "include" })
+            .then((res)=>{
+                ele4.innerHTML="Redirecting ...";
+
+                console.log(res.data);
+                setTimeout(()=>{
+                    window.location.reload()
+
+                },800)
+            }).catch((err)=>{
+                console.log(err);
+            })
+        }
+    }
+
+
+
+
+    
+    const uploadAndUpdateImage = async () => {
+        ele1.classList.remove("d-none");
+
+
+
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "gkcutnp6")
+        await axios.post("https://api.cloudinary.com/v1_1/dt55mivpf/image/upload", formData)
+            .then((res) => {
+                // ele3.disabled = false;
+                updateRequest(res.data.url)
+                ele2.disabled = true;
+                ele1.classList.add("d-none");
+                ele4.classList.replace("btn-primary","btn-success");
+                ele4.innerHTML="Uploaded";
+                ele4.disabled=true;
+                ele5.classList.remove("d-none");
+
+                
+            })
+            .catch((error) => {
+                console.log(error);
+
+            });
+
 
     }
 
@@ -86,12 +153,10 @@ const Dashboard = (props) => {
                         </h1>
                         {(loading) ?
                             <div className="my-auto">
-                                    <a href="/compose" class="btn btn-primary opacity-75 rounded-4 ps-3">
-                                   Compose
+                                <a href="/compose" class="btn btn-primary opacity-75 rounded-4 ps-3">
+                                    Compose
                                     <i class="mx-2 pe-1 bi bi-arrow-right " />
-                                    </a>
-                                {/* <a href="/compose" class="btn btn-primary me-1 rounded-4 opacity-75">Compose</a>
-                                <a href="https://my-blog-backend-1ict.onrender.com/logout" class="btn btn-danger rounded-4 me-2 me-md-4">Log out</a> */}
+                                </a>
                             </div> : null}
                     </div>
                 </div>
@@ -125,7 +190,76 @@ const Dashboard = (props) => {
                                         <div className="p-3 pt-0 ps-0">
 
                                             <img class="rounded-5 cropped" src={accountStories.myAccount.profileImgURL} alt="Card image cap" height="150" width="150" />
+                                            <div className="d-inline dropstart">
+
+                                                <button className="rounded-5 border-0 float-end" data-bs-toggle="dropdown">
+
+                                                    <i class="bi bi-three-dots fs-4 float-end"></i>
+                                                </button>
+                                                <ul className=" p-2 dropdown-menu rounded-4">
+
+                                                    <li><a className="btn btn-primary rounded-4 dropdown-item pt-2" href="#" data-bs-toggle="modal" data-bs-target="#update-profile-photo" >Edit profile photo</a></li>
+                                                    <hr className="m-2" />
+                                                    <li><a className="btn btn-primary rounded-4 dropdown-item pb-2" href="#" data-bs-toggle="modal" data-bs-target="#update-profile-info" >Edit profile info</a></li>
+
+
+
+
+                                                </ul>
+                                            </div>
                                         </div>
+                                        {/* update modals-PHOTO----------------------------------------------------------------------- */}
+
+
+
+                                        <div class="modal" tabindex="-1" id="update-profile-photo">
+                                            <div class="modal-dialog  modal-fullscreen-md-down">
+                                                <div class="modal-content rounded-5">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title ms-3">Edit profile photo</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div className=" m-md-5">
+                                                            <h3 className="fw-bolder fs-2  m-3">Update photo</h3>
+
+                                                            <div class="card rounded-5 mb-2">
+                                                                <div class="card-content d-flex p-3">
+                                                                    <div className="col-5">
+                                                                        <img className="card-img rounded-5 cropped" src={(!file) ? accountStories.myAccount.profileImgURL : URL.createObjectURL(file)} height="150" />
+                                                                    </div>
+                                                                    <div className="card-body d-flex flex-wrap justify-content-center align-items-center">
+                                                                        <span class="position-absolute btn btn-primary rounded-4 opacity-75">Change image</span>
+                                                                        <input id="choose-photo" type="file" accept="image/jpeg, image/png, image/jpg" class="form-control opacity-0" style={{ width: "130px" }} onChange={(e) => {
+                                                                            const f = e.target.files[0];
+                                                                            selectedFile(f);
+                                                                        }} />
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div className="d-flex flex-wrap justify-content-center">
+
+                                                                <button id="upload-button" class="btn btn-lg btn-primary m-2 w-100 rounded-4" onClick={uploadAndUpdateImage}>Upload
+                                                                    <div id="upload-spinner" className="spinner-border spinner-border-sm text-white mx-2 d-none"></div>
+
+                                                                    <i id="upload-check-icon" class="bi bi-check-circle-fill mx-2 d-none"></i>
+
+                                                                </button>
+                                                            </div>
+                                                            <span className="text-danger mx-5">*After uploading, you will be redirected automatically...</span>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
                                         <div className="ms-2">
 
                                             <div className="">
@@ -178,11 +312,11 @@ const Dashboard = (props) => {
 
 
 
-                                <div className="d-flex mt-4">
-                                    <a href="https://my-blog-backend-1ict.onrender.com/logout" class="btn btn-danger rounded-4 px-5">Log out
-                                    <i class="mx-2 pe-1 bi bi-arrow-right " />
-                                    </a>
-                                </div>
+                                        <div className="d-flex mt-4">
+                                            <a href="https://my-blog-backend-1ict.onrender.com/logout" class="btn btn-danger rounded-4 px-5">Log out
+                                                <i class="mx-2 pe-1 bi bi-arrow-right " />
+                                            </a>
+                                        </div>
                                     </div>
 
 
@@ -191,49 +325,49 @@ const Dashboard = (props) => {
                             </div>
                             <div class="tab-pane fade" id="pills-mystories" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
                                 <div className="d-flex flex-wrap">
-                                {accountStories.myStories.map((story) => {
-                                    return (
-                                        <div class="col-12 col-md-6">
-                                            <div className="mx-2">
+                                    {accountStories.myStories.map((story) => {
+                                        return (
+                                            <div class="col-12 col-md-6">
+                                                <div className="mx-2">
 
 
-                                                <div class="card rounded-5 mb-2">
-                                                    <div class="card-content d-flex p-2">
-                                                        <img class="rounded-5 cropped" src={story.imageURL} alt="Card image cap" height="100" width="130" />
-                                                        <div class="card-body py-2 text-dark">
-                                                            <h4 class="card-title overflow-text m-0">{story.title}</h4>
-                                                            <div className="">
-                                                                <a className="btn py-0 px-2 border-0" href={"/memes/" + story._id}><i class="bi bi-arrow-up-right-square text-info fs-4"></i></a>
-                                                                <a className="btn py-0 px-2 border-0" ><i onClick={() => { props.updateStory(story); navigate("/dashboard/update") }} class="bi bi-pencil-square text-info fs-4"></i></a>
-                                                                <a className="btn py-0 px-2 border-0" href="#" data-bs-toggle="modal" data-bs-target={"#a" + story._id}><i class="bi bi-trash3 text-danger fs-4"></i></a>
+                                                    <div class="card rounded-5 mb-2">
+                                                        <div class="card-content d-flex p-2">
+                                                            <img class="rounded-5 cropped" src={story.imageURL} alt="Card image cap" height="100" width="130" />
+                                                            <div class="card-body py-2 text-dark">
+                                                                <h4 class="card-title overflow-text m-0">{story.title}</h4>
+                                                                <div className="">
+                                                                    <a className="btn py-0 px-2 border-0" href={"/memes/" + story._id}><i class="bi bi-arrow-up-right-square text-info fs-4"></i></a>
+                                                                    <a className="btn py-0 px-2 border-0" ><i onClick={() => { props.updateStory(story); navigate("/dashboard/update") }} class="bi bi-pencil-square text-info fs-4"></i></a>
+                                                                    <a className="btn py-0 px-2 border-0" href="#" data-bs-toggle="modal" data-bs-target={"#a" + story._id}><i class="bi bi-trash3 text-danger fs-4"></i></a>
 
 
+
+                                                                </div>
 
                                                             </div>
 
                                                         </div>
+                                                    </div>
+                                                </div>
 
+                                                {/* <!-- Modal --> */}
+                                                <div class="modal fade aniModal" id={"a" + story._id} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog my-5">
+                                                        <div class="modal-content rounded-5">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5 px-3" id="exampleModalLabel">{story.title} will be deleted permanentally</h1>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <a type="button" class="btn btn-primary rounded-4" data-bs-dismiss="modal">Cancel</a>
+                                                                <button type="button" class="btn btn-danger rounded-4" onClick={() => { deleteStory(story._id) }}>Delete</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            {/* <!-- Modal --> */}
-                                            <div class="modal fade aniModal" id={"a" + story._id} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog my-5">
-                                                    <div class="modal-content rounded-5">
-                                                        <div class="modal-header">
-                                                            <h1 class="modal-title fs-5 px-3" id="exampleModalLabel">{story.title} will be deleted permanentally</h1>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <a type="button" class="btn btn-primary rounded-4" data-bs-dismiss="modal">Cancel</a>
-                                                            <button type="button" class="btn btn-danger rounded-4" onClick={() => { deleteStory(story._id) }}>Delete</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )
-                                })}
+                                        )
+                                    })}
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-myfriends" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
