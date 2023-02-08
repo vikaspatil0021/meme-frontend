@@ -86,7 +86,7 @@ const Dashboard = (props) => {
 
         }
 
-    },100)
+    },10)
 
      //controlling the dashboard pills via js-------
      
