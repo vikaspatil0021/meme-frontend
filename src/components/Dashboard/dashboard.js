@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Preloader from "../preLoader/preloader";
-
-
+import $ from "jquery";
+import * as bootstrap from "bootstrap";
 
 const Dashboard = (props) => {
     const navigate = useNavigate();
@@ -42,9 +42,15 @@ const Dashboard = (props) => {
                 console.log(error);
 
             });
-    }, [])
 
+   
+
+    }, [])
     const deleteStory = async (storyId) => {
+
+        localStorage.setItem('currentActiveTab', $("#pills-mystories-tab").attr('data-bs-target'));
+
+       
         await axios.delete(process.env.REACT_APP_SERVER_URL + "/delete", { data: { Id: storyId }, withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
@@ -54,6 +60,36 @@ const Dashboard = (props) => {
             });
 
     }
+    const currentTab = ()=>{
+        const tabB1 = document.getElementById('pills-account-tab');
+        const tabB2 = document.getElementById("pills-mystories-tab");
+    
+        const tabC1 = document.getElementById("pills-account");
+        const tabC2 = document.getElementById("pills-mystories");
+    
+        tabB1.classList.remove("active");
+        tabB2.classList.add("active");
+    
+        tabC1.classList.remove("show","active");
+        tabC2.classList.add("show","active");
+
+        localStorage.removeItem("currentActiveTab");
+
+    }
+    setTimeout(()=>{
+
+        var currentActiveTab = localStorage.getItem('currentActiveTab');
+        if(currentActiveTab){
+
+            currentTab()
+
+
+        }
+
+    },100)
+
+     //controlling the dashboard pills via js-------
+     
 
 
 
@@ -71,42 +107,42 @@ const Dashboard = (props) => {
 
 
 
-    const updateRequest = async(imgUrl) => {
+    const updateRequest = async (imgUrl) => {
         var data = {}
 
 
-        if (imgUrl!='') {
-            data={
-                imgUrl:imgUrl
+        if (imgUrl != '') {
+            data = {
+                imgUrl: imgUrl
             }
-            
-        }else{
+
+        } else {
             ele7.classList.remove("d-none");
             ele6.classList.add("d-none")
             data = {
                 ...updateDetails
             }
-            
+
         }
 
-        await axios.post(process.env.REACT_APP_SERVER_URL + "/editprofile",data , { withCredentials: "include" })
-                .then((res) => {
-                    if(imgUrl==''){
-                        ele8.classList.replace("btn-primary","btn-success")
-                        ele8.innerHTML = "Saving ...";
-                    }else{
-                        ele4.innerHTML = "Redirecting ...";
+        await axios.post(process.env.REACT_APP_SERVER_URL + "/editprofile", data, { withCredentials: "include" })
+            .then((res) => {
+                if (imgUrl == '') {
+                    ele8.classList.replace("btn-primary", "btn-success")
+                    ele8.innerHTML = "Saving ...";
+                } else {
+                    ele4.innerHTML = "Redirecting ...";
 
-                    }
+                }
 
-                    console.log(res.data);
-                    setTimeout(() => {
-                        window.location.reload()
+                console.log(res.data);
+                setTimeout(() => {
+                    window.location.reload()
 
-                    }, 800)
-                }).catch((err) => {
-                    console.log(err);
-                })
+                }, 800)
+            }).catch((err) => {
+                console.log(err);
+            })
     }
 
 
@@ -141,7 +177,8 @@ const Dashboard = (props) => {
 
 
     }
-
+    
+        
     //scrolling effect og quicklinks ------CSS available on story.css
 
     var prevScrollpos = window.pageYOffset;
@@ -302,41 +339,41 @@ const Dashboard = (props) => {
 
                                                             <div className="mb-3">
                                                                 <label className="text-muted pb-2">Name</label>
-                                                                <input autoFocus required type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: e.target.value, username: updateDetails.username,email:updateDetails.email,instaUsername:updateDetails.instaUsername,bio:updateDetails.bio }) }} value={updateDetails.name} />
+                                                                <input autoFocus required type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: e.target.value, email: updateDetails.email, instaUsername: updateDetails.instaUsername, bio: updateDetails.bio }) }} value={updateDetails.name} />
 
                                                             </div>
-                                                            <div className="mb-3">
+                                                            {/* <div className="mb-3">
                                                                 <label className="text-muted pb-2">Username</label>
                                                                 <input  type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: updateDetails.name, username: e.target.value,email:updateDetails.email,instaUsername:updateDetails.instaUsername,bio:updateDetails.bio }) }} value={updateDetails.username} />
                                                                 <span className="text-danger">*If username is changed, you will need to log in again</span>
 
-                                                            </div>
+                                                            </div> */}
                                                             <div className="mb-3">
                                                                 <label className="text-muted pb-2">Email</label>
-                                                                <input type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: updateDetails.name, username: updateDetails.username,email:e.target.value,instaUsername:updateDetails.instaUsername,bio:updateDetails.bio }) }} value={updateDetails.email} />
+                                                                <input type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: updateDetails.name, email: e.target.value, instaUsername: updateDetails.instaUsername, bio: updateDetails.bio }) }} value={updateDetails.email} />
 
                                                             </div>
                                                             <div className="mb-3">
                                                                 <label className="text-muted pb-2">Insta username</label>
-                                                                <input type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: updateDetails.name, username: updateDetails.username,email:updateDetails.email,instaUsername:e.target.value,bio:updateDetails.bio }) }} value={updateDetails.instaUsername} />
+                                                                <input type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: updateDetails.name, email: updateDetails.email, instaUsername: e.target.value, bio: updateDetails.bio }) }} value={updateDetails.instaUsername} />
 
-                                                            
+
                                                             </div>
                                                             <div className="mb-3">
                                                                 <label className="text-muted pb-2">Bio</label>
-                                                                <input type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name:  updateDetails.name, username: updateDetails.username,email:updateDetails.email,instaUsername:updateDetails.instaUsername,bio:e.target.value }) }} value={updateDetails.bio} />
+                                                                <input type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: updateDetails.name, email: updateDetails.email, instaUsername: updateDetails.instaUsername, bio: e.target.value }) }} value={updateDetails.bio} />
 
-                                                             
+
                                                             </div>
-                                                            
+
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary rounded-4" data-bs-dismiss="modal">Close</button>
-                                                        <button id="updateinfo-button" type="button" class="btn btn-primary rounded-4 ps-3" onClick={()=>{updateRequest('')}}>Save changes
-                                                        <div id="updateinfo-spinner" className="spinner-border spinner-border-sm text-white mx-2 d-none"></div>
+                                                        <button id="updateinfo-button" type="button" class="btn btn-primary rounded-4 ps-3" onClick={() => { updateRequest('') }}>Save changes
+                                                            <div id="updateinfo-spinner" className="spinner-border spinner-border-sm text-white mx-2 d-none"></div>
 
-                                                        <i id="updateinfo-icon" class="ms-1 bi bi-arrow-right" />
+                                                            <i id="updateinfo-icon" class="ms-1 bi bi-arrow-right" />
 
                                                         </button>
                                                     </div>
@@ -377,7 +414,7 @@ const Dashboard = (props) => {
                                                 <hr />
 
                                             </div>
-                                            
+
                                         </div>
 
 
