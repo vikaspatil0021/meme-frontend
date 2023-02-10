@@ -58,8 +58,9 @@ const Dashboard = (props) => {
             }).catch((err) => {
                 console.log(err);
             });
-
-    }
+            
+        }
+        //controlling the dashboard pills via js-------
     const currentTab = ()=>{
         const tabB1 = document.getElementById('pills-account-tab');
         const tabB2 = document.getElementById("pills-mystories-tab");
@@ -86,9 +87,8 @@ const Dashboard = (props) => {
 
         }
 
-    },10)
+    },1200)
 
-     //controlling the dashboard pills via js-------
      
 
 
