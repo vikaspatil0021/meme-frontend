@@ -87,7 +87,7 @@ const Dashboard = (props) => {
 
         }
 
-    },1200)
+    },1300)
 
      
 
