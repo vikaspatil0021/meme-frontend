@@ -22,14 +22,11 @@ const Nav = () => {
                 <div>
                     <a href="/" className="navbar-brand fs-5 fw-bolder ms-2 ms-md-3">IMEME</a>
                 </div>
-                <div>
-                <a class="me-1" type="button">
-                <i class="bi bi-search text-light px-1 fs-5"></i>
-                </a>
+
+
                 <a class="ps-2 me-2 me-md-3" type="button" data-bs-toggle="collapse" href="#collapseExample">
-                    <i class="bi bi-list text-light fs-3 px-1"></i>
+                    <i class="bi bi-list text-light fs-4 px-1"></i>
                 </a>
-                </div>
                 <div className="w-100">
                     <div class="collapse" id="collapseExample">
                         <hr className="text-white w-80" />
