@@ -1,3 +1,7 @@
 .carousel-item{
     transition: .7s ease-in-out;
 }
+
+#main-post-button a{
+    all:unset;
+}
