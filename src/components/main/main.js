@@ -52,15 +52,19 @@ const Main = () => {
                                     <div>
 
                                     <span className="text-muted  fw-bolder text-left ms-3 ms-md-5" style={{ fontSize: "50px" }}>Welcome to </span>
-                                    <p className="text-dark fw-bolder text-left ms-3 ms-md-5" style={{ fontSize: "50px" }}>IMEME</p>
+                                    <p className="text-dark fw-bolder text-left ms-3 ms-md-5" style={{ fontSize: "60px" }}>IMEME,</p>
+                                    <p className="text-muted fw-bolder text-left ms-3 mb-0 ms-md-5" style={{ fontSize: "30px" }}>Ain't you the meme guy? </p>
+                                    <p className="text-muted fw-bolder text-left ms-3 ms-md-5" style={{ fontSize: "30px" }}></p>
+
+
                                     </div>
 
-                                    <div className="me-md-5">
+                                    <div className="me-md-5 d-flex align-items-end">
 
-                                {(auth) ? <a href="/compose" className="btn btn-primary opacity-75 ms-3 ms-md-5 rounded-5 px-4 mb-4 my-md-4 py-3 fs-4">
+                                {(auth) ? <a href="/compose" className="btn btn-primary opacity-75 ms-2 ms-md-5 rounded-5 px-4 mb-4 my-md-4 py-3 fs-4">
                                     Post a meme today!
                                 </a> :
-                                    <a data-bs-toggle="modal" data-bs-target="#authModel" class="btn btn-primary  ms-3 ms-md-5 opacity-75 rounded-5 px-4 mb-4 my-md-4 py-3 fs-4">
+                                    <a data-bs-toggle="modal" data-bs-target="#authModel" class="btn btn-primary  ms-2 ms-md-5 opacity-75 rounded-5 px-4 mb-4 my-md-4 py-3 fs-4">
                                         Post a meme today!
                                     </a>}
                                     </div>
@@ -82,7 +86,7 @@ const Main = () => {
                     <div class="carousel-item">
 
 
-
+dfdhfg
 
                     </div>
                     <div className="fixed-bottom d-flex justify-content-center mb-3">
