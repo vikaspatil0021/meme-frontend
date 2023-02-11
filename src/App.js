@@ -24,9 +24,9 @@ function App() {
   }, 10000);
 
   return (
-    <div>
-      <Nav />
+    <div className="h-100">
       <Router>
+      <Nav />
         <Routes>
           <Route path="/" exact element={<Main />} />
           <Route path='/login' exact element={<Login />} />

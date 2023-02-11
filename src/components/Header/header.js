@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import "./header.css";
 
 
 const Nav = () => {
     const [checkAuth, setCheckAuth] = useState(false);
+    const location = useLocation()
 
     useEffect(() => {
         axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
@@ -15,8 +17,15 @@ const Nav = () => {
             })
     }, [])
 
+    if(location.pathname==="/"){
+        setTimeout(()=>{
+
+            document.querySelector("#header").classList.add("d-none")
+        },10)
+
+    }
     return (
-        <div className="mx-auto justify-content-around nav">
+        <div id="header" className="mx-auto justify-content-around nav">
             <div className="navbar p-3" style={{ width: "1410px" }}>
 
                 <div>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import AuthModel from "../Auth/authModel";
 
 
@@ -7,7 +8,6 @@ import AuthModel from "../Auth/authModel";
 
 const Main = () => {
     const [auth, setAuth] = useState('');
-
     useEffect(() => {
 
         axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
@@ -18,65 +18,57 @@ const Main = () => {
             })
     }, []);
 
-
     return (
-        <div className="card">
-            <div className=" d-flex justify-content-center mx-2 mx-md-4">
-                <div className=" rounded-5 mx-1" style={{ width: "1350px" }}>
+        <div className="h-100">
 
-                    <div className="" >
-
-                        <div class="rounded-5 d-flex justify-content-center">
+            <div id="carouselControls-main" class="carousel slide h-100">
+                <div class="carousel-inner h-100">
+                    <div class="carousel-item active bg-white h-100">
 
 
-
-
-                            {(auth) ? <a href="/compose" className="btn btn-primary opacity-75 rounded-4 px-4 my-4 py-3 fs-4">
+                        {(auth) ? <a href="/compose" className="btn btn-primary opacity-75 rounded-5 px-4 my-4 py-3 fs-4">
+                            Post a meme today!
+                        </a> :
+                            <a data-bs-toggle="modal" data-bs-target="#authModel" class="btn btn-primary opacity-75 rounded-5 px-4 my-4 py-3 fs-4">
                                 Post a meme today!
-                            </a> :
-                                <a data-bs-toggle="modal" data-bs-target="#authModel" class="btn btn-primary opacity-75 rounded-4 px-4 my-4 py-3 fs-4">
-                                    Post a meme today!
-                                </a>}
-                                <AuthModel />
+                            </a>}
+                        <AuthModel />
 
-                        </div>
+                    </div>
+                    <div class="carousel-item">
 
 
+                        {(auth) ? <a href="/compose" className="btn btn-primary opacity-75 rounded-5 px-4 my-4 py-3 fs-4">
+                            Post a meme today!
+                        </a> :
+                            <a data-bs-toggle="modal" data-bs-target="#authModel" class="btn btn-primary opacity-75 rounded-5 px-4 my-4 py-3 fs-4">
+                                Post a  today!
+                            </a>}
+                        <AuthModel />
+
+                    </div>
+                    <div className="fixed-bottom">
+
+                    <button id="register-button" data-bs-target="#carouselControls-main" data-bs-slide="prev" class="btn btn-danger btn-lg w-100 rounded-4"
+                          type="button">Prev
+
+                    </button>
+                    <button id="register-button" data-bs-target="#carouselControls-main" data-bs-slide="next" class="btn btn-danger btn-lg w-100 rounded-4"
+                          type="button">Next
+
+                    </button>
                     </div>
 
 
-                    {/* <div className="">
-                            <div class="rounded-5 m-3 ms-md-0 bg-info">
-
-
-                                <div class="rounded-5 p-5 text-white">
-
-
-                                    hui
-                                </div>
-                                <div class="rounded-5 p-5 text-white">
-
-
-                                    hui
-                                </div>
-                                <div class="rounded-5 p-5 text-white">
-
-
-                                    hui
-                                </div>
-                                <div class="rounded-5 p-5 text-white">
-
-
-                                    hui
-                                </div>
-                            </div> */}
 
 
 
-                    {/* </div> */}
+
 
                 </div>
             </div>
+
+
 
         </div>
     )
