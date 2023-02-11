@@ -25,7 +25,7 @@ const Nav = () => {
 
 
                 <a class="ps-2 me-2 me-md-3" type="button" data-bs-toggle="collapse" href="#collapseExample">
-                    <i class="bi bi-list text-light fs-4 px-1"></i>
+                    <i class="bi bi-list text-light fs-5 px-1"></i>
                 </a>
                 <div className="w-100">
                     <div class="collapse" id="collapseExample">

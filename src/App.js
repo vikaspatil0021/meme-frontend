@@ -11,7 +11,7 @@ import People from './components/people/people.js';
 import Person from './components/people/person/person.js';
 import Nav from './components/Header/header.js';
 import Memes from './components/stories/stories.js';
-
+import Main from './components/main/main';
 function App() {
   const [recievedData, setRecievedData] = useState('');
 
@@ -21,13 +21,14 @@ function App() {
 
   setTimeout(function () {
     document.getElementById('refresh-button').style.visibility = "visible";
-  }, 5000);
+  }, 10000);
 
   return (
     <div>
       <Nav />
       <Router>
         <Routes>
+          <Route path="/" exact element={<Main />} />
           <Route path='/login' exact element={<Login />} />
           <Route path='/register' exact element={<Register />} />
           <Route path='/compose' exact element={<Compose />} />

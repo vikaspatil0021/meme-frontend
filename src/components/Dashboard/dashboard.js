@@ -278,7 +278,7 @@ const Dashboard = (props) => {
 
 
                                         <div class="modal fade aniModal" tabindex="-1" id="update-profile-photo">
-                                            <div class="modal-dialog  modal-fullscreen-md-down">
+                                            <div class="modal-dialog  ">
                                                 <div class="modal-content rounded-5">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title ms-3">Edit profile photo</h5>
