@@ -17,13 +17,13 @@ const Nav = () => {
             })
     }, [])
 
-    if(location.pathname==="/"){
-        setTimeout(()=>{
+    // if(location.pathname==="/"){
+    //     setTimeout(()=>{
 
-            document.querySelector("#header").classList.add("d-none")
-        },10)
+    //         document.querySelector("#header").classList.add("d-none")
+    //     },10)
 
-    }
+    // }
     return (
         <div id="header" className="mx-auto justify-content-around nav">
             <div className="navbar p-3" style={{ width: "1410px" }}>

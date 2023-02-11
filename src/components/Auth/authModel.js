@@ -15,8 +15,8 @@ const AuthModel = () => {
                         <div class="modal-body d-flex justify-content-center">
                         <div className="">
 
-                            <a type="button" href="/login" class="btn btn-primary d-block rounded-4 my-2 fs-4">Login</a>
-                            <a type="button" href="/register" class="btn btn-danger rounded-4 my-2 fs-4" >Register</a>
+                            <a type="button" href="/login" class="btn btn-primary d-block rounded-5 my-2 fs-4 px-5">Login</a>
+                            <a type="button" href="/register" class="btn btn-danger rounded-5 my-2 fs-4 px-5" >Register</a>
                         </div>
                         </div>
                     </div>
