@@ -83,7 +83,7 @@ const Main = () => {
 
                         <div class="mx-auto" style={{ width: "1370px" }}>
 
-                            <div class="tab-content pb-2 px-0" id="pills-tabContent">
+                            <div class="tab-content pb-5 mb-4 px-0" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="main-memes" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
 
 
@@ -122,7 +122,7 @@ const Main = () => {
                                     <div className="position-fixed w-100 bottom-0 my-3">
                                     <div className="d-flex justify-content-center">
 
-                                        <a href="/memes" className="btn btn-primary fs-4 py-2 ms-2 rounded-4">Explore memes
+                                        <a href="/memes" className="btn btn-primary fs-4 py-2 ps-3 rounded-5">Explore memes
                                         <i className="bi bi-arrow-right fs-4 mx-2" />
                                         </a>
                                     </div>
