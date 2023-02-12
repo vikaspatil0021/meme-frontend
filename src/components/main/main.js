@@ -38,50 +38,55 @@ const Main = () => {
             </div>
             <AuthModel />
 
+            <div id="main-post-button" className="d-flex justify-content-md-center">
 
+{(auth) ? <a href="/compose" className="btn btn-primary opacity-75 rounded-5 px-4 py-2 m-3 fs-4">
+    Post a meme today!
+</a> :
+    <button data-bs-toggle="modal" data-bs-target="#authModel" class="btn btn-primary opacity-75 rounded-5 px-4 py-2 m-3 fs-4">
+        Post a meme today!
+    </button>}
+</div>
             <div id="carouselControls-main" class="carousel slide">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
 
 
+                        <div className=" m-3 mb-2 d-flex justify-content-md-center">
+                            
+
+                            <h1 className="fw-bolder text-muted mx-3 my-0">Top memes</h1>
+                        </div>
 
 
-                        main page
+                    </div>
+                    <div class="carousel-item">
+
+
+                    <div className=" m-3 d-flex justify-content-md-center">
+                            
+
+                            <h1 className="fw-bolder text-muted mx-3 my-0">Top people</h1>
+                        </div>
+                    </div>
+                    <div className="fixed-bottom d-flex justify-content-center mb-3">
+                        <button className="btn btn-primary rounded-5 rounded-end me-1" type="button" data-bs-target="#carouselControls-main" data-bs-slide="prev">
+                            <i class="fs-4 bi bi-arrow-left" />
+
+                        </button>
+                        <button class="btn btn-primary rounded-5 rounded-start" type="button" data-bs-target="#carouselControls-main" data-bs-slide="next">
+                            <i class="bi bi-arrow-right fs-4" />
+                        </button>
+
+
+
+
+
+
+
 
                     </div>
                 </div>
-
-
-            </div>
-            <div class="carousel-item">
-
-
-                dfdhfg
-
-            </div>
-            <div className="fixed-bottom d-flex justify-content-center mb-3">
-                <button className="btn btn-primary rounded-5 rounded-end me-1" type="button" data-bs-target="#carouselControls-main" data-bs-slide="prev">
-                    <i class="fs-4 bi bi-arrow-left" />
-
-                </button>
-                <button class="btn btn-primary rounded-5 rounded-start" type="button" data-bs-target="#carouselControls-main" data-bs-slide="next">
-                    <i class="bi bi-arrow-right fs-4" />
-                </button>
-                {/* <button id="register-button" data-bs-target="#carouselControls-main" data-bs-slide="prev" class="btn btn-danger btn-lg w-100 rounded-4"
-                            type="button">Prev
-
-                        </button>
-                        <button id="register-button" data-bs-target="#carouselControls-main" data-bs-slide="next" class="btn btn-danger btn-lg w-100 rounded-4"
-                            type="button">Next
-
-                        </button> */}
-
-
-
-
-
-
-
             </div>
 
 
