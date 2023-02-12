@@ -44,60 +44,30 @@ const Main = () => {
                     <div class="carousel-item active">
 
 
-                        <div className="d-flex justify-content-center">
-
-                            <div className="card storyPage rounded-5 m-3 " style={{ width: "1370px" }}>
-
-                                <div className="d-flex flex-wrap justify-content-between mx-3 mt-5 rounded-5">
-                                    <div>
-
-                                    <span className="text-muted  fw-bolder text-left ms-3 ms-md-5" style={{ fontSize: "50px" }}>Welcome to </span>
-                                    <p className="text-dark fw-bolder text-left ms-3 ms-md-5" style={{ fontSize: "60px" }}>IMEME,</p>
-                                    <p className="text-muted fw-bolder text-left ms-3 mb-0 ms-md-5" style={{ fontSize: "25px" }}>Ain't you the meme guy? </p>
-                                    <p className="text-muted fw-bolder text-left ms-3 ms-md-5" style={{ fontSize: "25px" }}></p>
 
 
-                                    </div>
-
-                                    <div id="main-post-button" className="me-md-5 d-flex align-items-end">
-
-                                {(auth) ? <a href="/compose" className="btn btn-primary opacity-75 ms-2 ms-md-5 rounded-5 px-4 mb-4 my-md-4 py-3 fs-4">
-                                    Post a meme today!
-                                </a> :
-                                    <button data-bs-toggle="modal" data-bs-target="#authModel" class="btn btn-primary  ms-2 ms-md-5 opacity-75 rounded-5 px-4 mb-4 my-md-4 py-3 fs-4">
-                                        Post a meme today!
-                                    </button>}
-                                    </div>
-                                    {/* <div className="d-flex justify-content-center">
-
-                                        <a type="button" href="/register" class="btn btn-danger rounded-5 my-2 fs-4 px-5" >Register</a>
-                                    </div>
-                                    <div className="d-flex justify-content-center">
-                                        <span className="text-center text-muted fs-5 me-1 mt-4">Alredy a member?</span>
-                                        <a type="button" href="/login" class="btn btn-primary mt-3 rounded-5 my-2 fs-6 px-4">Login</a>
-                                    </div> */}
-                                </div>
-
-                            </div>
-                        </div>
-
+                        main page
 
                     </div>
-                    <div class="carousel-item">
+                </div>
 
 
-dfdhfg
+            </div>
+            <div class="carousel-item">
 
-                    </div>
-                    <div className="fixed-bottom d-flex justify-content-center mb-3">
-                        <button className="btn btn-primary rounded-5 rounded-end me-1" type="button" data-bs-target="#carouselControls-main" data-bs-slide="prev">
-                            <i class="fs-4 bi bi-arrow-left" />
 
-                        </button>
-                        <button class="btn btn-primary rounded-5 rounded-start" type="button" data-bs-target="#carouselControls-main" data-bs-slide="next">
-                            <i class="bi bi-arrow-right fs-4" />
-                        </button>
-                        {/* <button id="register-button" data-bs-target="#carouselControls-main" data-bs-slide="prev" class="btn btn-danger btn-lg w-100 rounded-4"
+                dfdhfg
+
+            </div>
+            <div className="fixed-bottom d-flex justify-content-center mb-3">
+                <button className="btn btn-primary rounded-5 rounded-end me-1" type="button" data-bs-target="#carouselControls-main" data-bs-slide="prev">
+                    <i class="fs-4 bi bi-arrow-left" />
+
+                </button>
+                <button class="btn btn-primary rounded-5 rounded-start" type="button" data-bs-target="#carouselControls-main" data-bs-slide="next">
+                    <i class="bi bi-arrow-right fs-4" />
+                </button>
+                {/* <button id="register-button" data-bs-target="#carouselControls-main" data-bs-slide="prev" class="btn btn-danger btn-lg w-100 rounded-4"
                             type="button">Prev
 
                         </button>
@@ -112,8 +82,6 @@ dfdhfg
 
 
 
-                    </div>
-                </div>
             </div>
 
 
