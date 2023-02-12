@@ -62,7 +62,7 @@ const Main = () => {
             </div>
             <div className="d-flex">
 
-                <div class="mx-auto mt-3" style={{ width: "1370px" }}>
+                <div class="mx-auto mt-2" style={{ width: "1370px" }}>
                 <div className="d-flex justify-content-center ps-2 ps-md-3">
 
 
@@ -83,18 +83,18 @@ const Main = () => {
 
                         <div class="mx-auto" style={{ width: "1370px" }}>
 
-                            <div class="tab-content py-3 px-0" id="pills-tabContent">
+                            <div class="tab-content pb-2 px-0" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="main-memes" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
 
-                                    <div>
 
 
                                         <div className="mx-auto px-3 d-flex flex-wrap mw-100">
                                             {storiesData.map((story) => {
                                                 return (
-                                                    <div className="p-1 p-md-2 col-12 col-md-6 col-lg-4">
+                                                    <div className="p-2 pb-0 col-12 col-md-6 col-lg-4">
+                                                    <a href={"/memes/" + story._id} class="card-link">
 
-                                                        <div class="card Storycard rounded-5 mb-1">
+                                                        <div class="card Storycard rounded-5">
                                                             <div class="card-content d-flex p-2">
                                                                 <div className="col-4">
                                                                     <img class=" rounded-5 cropped" src={story.imageURL} alt="Card image cap" height="100" width='120' />
@@ -111,6 +111,7 @@ const Main = () => {
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        </a>
                                                     </div>)
                                             })}
 
@@ -118,13 +119,21 @@ const Main = () => {
 
                                         </div>
 
+                                    <div className="position-fixed w-100 bottom-0 my-3">
+                                    <div className="d-flex justify-content-center">
+
+                                        <a href="/memes" className="btn btn-primary fs-4 py-2 ms-2 rounded-4">Explore memes
+                                        <i className="bi bi-arrow-right fs-4 mx-2" />
+                                        </a>
+                                    </div>
+
                                     </div>
 
                                 </div>
 
-                            </div>
                             <div class="tab-pane fade" id="main-people" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
                                 people
+                            </div>
                             </div>
 
                         </div>
