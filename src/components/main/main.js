@@ -54,83 +54,83 @@ const Main = () => {
 
 
             </div>
-            <AuthModel />
-            {loading ? 
-            (<>
-            <div id="main-post-button" className="d-flex justify-content-md-center">
+            <div className="mx-3 mt-3 d-flex justify-content-center">
 
-                {(auth) ? <a href="/compose" className="btn btn-primary opacity-75 rounded-5 px-4 py-2 m-3 fs-4">
-                    Post a meme today!
-                </a> :
-                    <button data-bs-toggle="modal" data-bs-target="#authModel" class="btn btn-primary opacity-75 rounded-5 px-4 py-2 m-3 fs-4">
-                        Post a meme today!
-                    </button>}
+
+                <h1 className="fw-bolder text-muted mx-3 my-0" style={{ fontSize: "30px" }}>TRENDING</h1>
+
             </div>
-            
             <div className="d-flex">
 
-                <div id="carouselControls-main" class="carousel slide mx-auto" style={{ width: "1370px" }}>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
+                <div class="mx-auto mt-3" style={{ width: "1370px" }}>
+                <div className="d-flex justify-content-center ps-2 ps-md-3">
 
 
-                            <div className=" mx-3 mt-3 d-flex justify-content-md-center">
+                    <div class="nav-pills p-2 pt-0 list-group list-group-horizontal" id="pills-main" role="tablist" >
+                        <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-account-tab" data-bs-toggle="pill" data-bs-target="#main-memes" type="button" role="tab" aria-selected="true">Memes</button>
+                        <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-mystories-tab" data-bs-toggle="pill" data-bs-target="#main-people" type="button" role="tab" aria-selected="false">People</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <AuthModel />
+            {loading ?
+                (<>
 
 
-                                <h1 className="fw-bolder text-muted mx-3 my-0">Top memes</h1>
-                                <div class="" type="button" data-bs-target="#carouselControls-main" data-bs-slide="next">
-                                    <i class="bi bi-arrow-right fs-1" />
-                                </div>
-                            </div>
-                            <div className="mx-auto px-3 d-flex flex-wrap mw-100">
-                            {storiesData.map((story) => {
-                                return(
-                                <div className="p-1 p-md-2 col-12 col-md-6 col-lg-4">
+                    <div className="d-flex">
 
-                                    <div class="card Storycard rounded-5 mb-1">
-                                        <div class="card-content d-flex p-2">
-                                            <div className="col-5">
-                                                <img class=" rounded-5 cropped" src={story.imageURL} alt="Card image cap" height="120" width='130' />
+                        <div class="mx-auto" style={{ width: "1370px" }}>
 
-                                            </div>
-                                            <div class="card-body col-7 pt-2 text-dark">
-                                                <h5 class="card-title fw-semibold" style={{ fontSize: "22px" }}>{story.title}</h5>
-                                                
-                                                <div className="card-content d-inline-flex flex-wrap rounded-3" style={{ backgroundColor: "#efefef" }}>
+                            <div class="tab-content py-3 px-0" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="main-memes" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+
+                                    <div>
 
 
-                                                </div>
+                                        <div className="mx-auto px-3 d-flex flex-wrap mw-100">
+                                            {storiesData.map((story) => {
+                                                return (
+                                                    <div className="p-1 p-md-2 col-12 col-md-6 col-lg-4">
 
-                                            </div>
+                                                        <div class="card Storycard rounded-5 mb-1">
+                                                            <div class="card-content d-flex p-2">
+                                                                <div className="col-4">
+                                                                    <img class=" rounded-5 cropped" src={story.imageURL} alt="Card image cap" height="100" width='120' />
+
+                                                                </div>
+                                                                <div class="card-body col-8 p-2 ps-3 text-dark">
+                                                                    <h5 class="card-title fw-semibold opacity-75" style={{ fontSize: "22px" }}>{story.title}</h5>
+
+                                                                    <div className="card-content d-inline-flex flex-wrap rounded-3" style={{ backgroundColor: "#efefef" }}>
+
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>)
+                                            })}
+
+
+
                                         </div>
+
                                     </div>
-                                </div>)
-                            })}
 
-                                
-                                
-                            </div>
-
-
-
-                        </div>
-                        <div class="carousel-item">
-
-
-                            <div className=" m-3 d-flex justify-content-md-center">
-
-
-                                <h1 className="fw-bolder text-muted mx-3 my-0">Top people</h1>
-                                <div class="" type="button" data-bs-target="#carouselControls-main" data-bs-slide="next">
-                                    <i class="bi bi-arrow-right fs-1" />
                                 </div>
+
                             </div>
+                            <div class="tab-pane fade" id="main-people" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                                people
+                            </div>
+
                         </div>
 
                     </div>
-                </div>
-            </div>
-            </>) : <Preloader />}
+                </>) : <Preloader />}
 
 
 
