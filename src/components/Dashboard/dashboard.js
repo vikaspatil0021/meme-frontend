@@ -444,7 +444,7 @@ const Dashboard = (props) => {
                                                             <div class="card-body py-2 text-dark">
                                                                 <h4 class="card-title overflow-text m-0">{story.title}</h4>
                                                                 <div className="">
-                                                                    <a className="btn py-0 px-2 border-0" href={"/memes/" + story._id}><i class="bi bi-arrow-up-right-square text-info fs-4"></i></a>
+                                                                    <a className="btn py-0 px-2 border-0" target="_blank" href={"/memes/" + story._id}><i class="bi bi-arrow-up-right-square text-info fs-4"></i></a>
                                                                     <a className="btn py-0 px-2 border-0" ><i onClick={() => { props.updateStory(story); navigate("/dashboard/update") }} class="bi bi-pencil-square text-info fs-4"></i></a>
                                                                     <a className="btn py-0 px-2 border-0" href="#" data-bs-toggle="modal" data-bs-target={"#a" + story._id}><i class="bi bi-trash3 text-danger fs-4"></i></a>
 
