@@ -20,9 +20,9 @@ const Main = () => {
                 console.log(res.data);
                 setLoading(true)
 
-                // const reverseArr = (res.data.storiesAll).reverse()
+                const reverseArr = res.data.storiesAll.splice(0,10).sort((a, b) => (a.likes.length > b.likes.length) ? -1 : 1)
 
-                setStoriesData(res.data.storiesAll);
+                setStoriesData(reverseArr);
                 console.log(res.data.storiesAll);
                 // setUser(res.data.fUser)
                 // }
@@ -34,7 +34,7 @@ const Main = () => {
         axios.get(process.env.REACT_APP_SERVER_URL + "/people", { withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
-                setPeopleData(res.data);
+                setPeopleData(res.data.splice(0,10));
             }).catch((error) => {
                 console.log(error);
 
@@ -127,11 +127,15 @@ const Main = () => {
 
                                                                 </div>
                                                                 <div class="card-body col-8 p-2 ps-3 text-dark">
-                                                                    <h5 class="card-title fw-semibold opacity-75" style={{ fontSize: "22px" }}>{story.title}</h5>
+                                                                    <h5 class="card-title fw-semibold opacity-75 overflow-text" style={{ fontSize: "22px" }}>{story.title}</h5>
 
-                                                                    <div className="card-content d-inline-flex flex-wrap rounded-3" style={{ backgroundColor: "#efefef" }}>
+                                                                    <div className="card-content d-inline-flex flex-wrap rounded-3">
 
+                                                                        <div className="d-flex mt-2">
 
+                                                                            <i class={"bi bi-heart mx-2 d-inline fs-5 text-danger"} />
+                                                                            <h5 className="fw-lighter">{story.likes.length}</h5>
+                                                                        </div>
                                                                     </div>
 
                                                                 </div>
