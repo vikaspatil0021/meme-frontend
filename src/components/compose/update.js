@@ -77,6 +77,7 @@ const UpdateStory = (props) => {
             await axios.put(process.env.REACT_APP_SERVER_URL + '/updateStory', { Id: _id, ...updatepost }, { withCredentials: true })
                 .then((res) => {
                     console.log(res.data);
+                    window.location.reload()
                 })
                 .catch((error) => {
                     console.log(error);
@@ -176,7 +177,7 @@ const UpdateStory = (props) => {
                                         </div>
                                         <div class="modal-footer">
                                             <a type="button" class="btn btn-secondary rounded-4" data-bs-dismiss="modal">Cancel</a>
-                                            <a href="/dashboard" type="button" class="btn btn-primary rounded-4" onClick={() => { updatePost() }}>Update</a>
+                                            <a type="button" class="btn btn-primary rounded-4" onClick={() => { updatePost() }}>Update</a>
                                         </div>
                                     </div>
                                 </div>
