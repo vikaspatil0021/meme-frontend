@@ -37,7 +37,7 @@ const Story = () => {
 
     console.log(storyContent);
     const { story, user, sessionUser } = storyContent;
-    const { _id: storyId, title, content, imageURL, likes } = story;
+    const { _id: storyId, title, content, imageURL, likes,views } = story;
     const { _id: userId, name, username,profileImgURL } = user;
     const { _id: sessionId } = sessionUser;
 
@@ -82,6 +82,12 @@ const Story = () => {
             });
 
     }
+
+    console.log(views);
+    axios.post(process.env.REACT_APP_SERVER_URL + '/postviews',{storyId: storyId, views:views}, {withCredentials:"include"})
+    .then((res)=>{
+        console.log(res.data);
+    })
 
     //scrolling effect og quicklinks ------CSS available on story.css
     var prevScrollpos = window.pageYOffset;
