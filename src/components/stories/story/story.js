@@ -16,7 +16,7 @@ const Story = () => {
     var [c, setCount] = useState(0);
     useEffect(() => {
 
-        axios.get(process.env.REACT_APP_SERVER_URL+ location.pathname, { withCredentials: "include" })
+        axios.get(process.env.REACT_APP_SERVER_URL + location.pathname, { withCredentials: "include" })
             .then((res) => {
                 setStoryContent(res.data)
                 setLoading(true);
@@ -37,8 +37,8 @@ const Story = () => {
 
     console.log(storyContent);
     const { story, user, sessionUser } = storyContent;
-    const { _id: storyId, title, content, imageURL, likes,views } = story;
-    const { _id: userId, name, username,profileImgURL } = user;
+    const { _id: storyId, title, content, imageURL, likes, views } = story;
+    const { _id: userId, name, username, profileImgURL } = user;
     const { _id: sessionId } = sessionUser;
 
     //setting the likes state for the first time 
@@ -61,7 +61,7 @@ const Story = () => {
             updatePostLikes(likesArray);
         } else {
             element.classList.replace("bi-heart", "bi-heart-fill");
-            if(!(likes.includes(sessionId))){
+            if (!(likes.includes(sessionId))) {
                 likes.push(sessionId);
             }
             setCount(likes.length)
@@ -84,23 +84,23 @@ const Story = () => {
     }
 
     console.log(views);
-    axios.post(process.env.REACT_APP_SERVER_URL + '/postviews',{storyId: storyId, views:views}, {withCredentials:"include"})
-    .then((res)=>{
-        console.log(res.data);
-    })
+    axios.post(process.env.REACT_APP_SERVER_URL + '/postviews', { storyId: storyId, views: views }, { withCredentials: "include" })
+        .then((res) => {
+            console.log(res.data);
+        })
 
     //scrolling effect og quicklinks ------CSS available on story.css
     var prevScrollpos = window.pageYOffset;
-      window.onscroll = function () {
-          var currentScrollPos = window.pageYOffset;
-          if (prevScrollpos > currentScrollPos) {
-              document.getElementById("sticky-top-story").style.top = "0";
-          } else {
-              document.getElementById("sticky-top-story").style.top = "-155px";
-          }
-          prevScrollpos = currentScrollPos;
-      }
-  
+    window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("sticky-top-story").style.top = "0";
+        } else {
+            document.getElementById("sticky-top-story").style.top = "-155px";
+        }
+        prevScrollpos = currentScrollPos;
+    }
+
 
 
     return (
@@ -111,8 +111,8 @@ const Story = () => {
                         <div className="mx-auto" style={{ width: "1370px" }}>
 
                             <a href="/" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold"><i class=" my-1 bi bi-house-door" /></a>
-                            {(auth)?<a href="/dashboard" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold">Dashboard</a>:
-                            <button data-bs-toggle="modal" data-bs-target="#authModel"  class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold">Dashboard</button>}
+                            {(auth) ? <a href="/dashboard" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold">Dashboard</a> :
+                                <button data-bs-toggle="modal" data-bs-target="#authModel" class="btn btn-primary me-1 rounded-4 opacity-75 px-3 fw-semibold">Dashboard</button>}
                             <a href="/memes" class="btn btn-primary rounded-4 opacity-75 px-3 fw-semibold"><i class="my-1 pe-1 bi bi-arrow-left" />Memes</a>
 
                         </div>
@@ -130,13 +130,19 @@ const Story = () => {
                                 <span className="text-secondary fs-6">June 20, 2022</span>
 
                             </div>
-                            <div className="me-md-4 me-2 d-flex align-items-center">
-                                {(auth) ? 
-                                <div onClick={likeAndDislike} className="d-inline-flex likeBorder rounded-4 p-2 px-3">
 
-                                    <i id="like-dislike-button" class={"fs-4 d-inline bi " + like + " text-danger float-end me-2"} ></i>
-                                    <h4 className="">{c}</h4>
-                                </div> :
+                            <div className="me-md-4 me-2 d-flex align-items-center">
+                                <div className="d-inline-flex float-end likeBorder rounded-4 p-2 px-3 me-1">
+
+                                    <i id="like-dislike-button" class={"fs-4 d-inline bi-eye text-primary float-end me-2"} ></i>
+                                    <h4 className="">{views || 0}</h4>
+                                </div>
+                                {(auth) ?
+                                    <div onClick={likeAndDislike} className="d-inline-flex likeBorder rounded-4 p-2 px-3">
+
+                                        <i id="like-dislike-button" class={"fs-4 d-inline bi " + like + " text-danger float-end me-2"} ></i>
+                                        <h4 className="">{c}</h4>
+                                    </div> :
                                     <div data-bs-toggle="modal" data-bs-target="#authModel" className="d-inline-flex likeBorder rounded-4 p-2 px-3">
 
                                         <i id="like-dislike-button" class={"fs-4 d-inline bi " + like + " text-danger float-end me-2"} ></i>
@@ -181,7 +187,7 @@ const Story = () => {
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div>
                                 <Comments user={sessionUser} storyId={storyId} auth={auth} />
                             </div>
