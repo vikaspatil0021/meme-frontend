@@ -20,7 +20,7 @@ const Main = () => {
                 console.log(res.data);
                 setLoading(true)
 
-                const reverseArr = res.data.storiesAll.splice(0,10).sort((a, b) => (a.likes.length > b.likes.length) ? -1 : 1)
+                const reverseArr = res.data.storiesAll.splice(0, 10).sort((a, b) => (a.likes.length > b.likes.length) ? -1 : 1)
 
                 setStoriesData(reverseArr);
                 console.log(res.data.storiesAll);
@@ -34,7 +34,7 @@ const Main = () => {
         axios.get(process.env.REACT_APP_SERVER_URL + "/people", { withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
-                setPeopleData(res.data.splice(0,10));
+                setPeopleData(res.data.splice(0, 10));
             }).catch((error) => {
                 console.log(error);
 
@@ -130,7 +130,11 @@ const Main = () => {
                                                                     <h5 class="card-title fw-semibold opacity-75 overflow-text" style={{ fontSize: "22px" }}>{story.title}</h5>
 
                                                                     <div className="card-content d-inline-flex flex-wrap rounded-3">
+                                                                        <div className="d-flex float-end rounded-4 p-2 px-3 me-1">
 
+                                                                            <i id="like-dislike-button" class={"fs-4 d-inline bi-eye text-primary float-end me-2"} ></i>
+                                                                            <h4 className="">{story.views || 0}</h4>
+                                                                        </div>
                                                                         <div className="d-flex mt-2">
 
                                                                             <i class={"bi bi-heart mx-2 d-inline fs-5 text-danger"} />

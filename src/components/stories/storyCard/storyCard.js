@@ -4,7 +4,7 @@ import "./storyCard.css"
 
 const StoryCard = (props) => {
 
-    const { _id, title, imageURL, likes } = props.sentStory;
+    const { _id, title, imageURL, likes, views } = props.sentStory;
     if (props.user) {
 
         var { _id: sessionId } = props.user;
@@ -32,7 +32,7 @@ const StoryCard = (props) => {
             <a href={"/memes/" + _id} class="card-link">
                 <div class="card Storycard rounded-5 mb-2">
                     <div class="card-content p-3 pb-0">
-                        <img class="card-img rounded-5 cropped" src={imageURL}  height="300" />
+                        <img class="card-img rounded-5 cropped" src={imageURL} height="300" />
                         <div class="card-body text-dark">
                             <h4 class="card-title overflow-text">{title}</h4>
                             <div className="d-flex justify-content-between py-2">
@@ -43,8 +43,11 @@ const StoryCard = (props) => {
 
                                     <span className="text-muted fs-5 fw-bold">{name}</span>
                                 </div>
-                                <div className="d-flex">
 
+                                <div className="d-flex align-items-center">
+
+                                        <i class="fs-3 d-inline bi-eye text-primary me-2" ></i>
+                                        <h4 className="me-2">{views || 0}</h4>
                                     <i class={"bi " + like + " mx-2 d-inline fs-5 text-danger"} />
                                     <h5 className="fw-lighter">{likes.length}</h5>
                                 </div>
