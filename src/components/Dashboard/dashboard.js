@@ -340,7 +340,7 @@ const Dashboard = (props) => {
                                         </div>
 
 
-                                        {/* update modals-INFO--asdfghjkl--------------------------------------------------------------------- */}
+                                        {/* update modals-INFO----------------------------------------------------------------------- */}
 
 
 
@@ -359,12 +359,7 @@ const Dashboard = (props) => {
                                                                 <input autoFocus required type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: e.target.value, email: updateDetails.email, instaUsername: updateDetails.instaUsername, bio: updateDetails.bio }) }} value={updateDetails.name} />
 
                                                             </div>
-                                                            {/* <div className="mb-3">
-                                                                <label className="text-muted pb-2">Username</label>
-                                                                <input  type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: updateDetails.name, username: e.target.value,email:updateDetails.email,instaUsername:updateDetails.instaUsername,bio:updateDetails.bio }) }} value={updateDetails.username} />
-                                                                <span className="text-danger">*If username is changed, you will need to log in again</span>
-
-                                                            </div> */}
+                                                          
                                                             <div className="mb-3">
                                                                 <label className="text-muted pb-2">Email</label>
                                                                 <input type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: updateDetails.name, email: e.target.value, instaUsername: updateDetails.instaUsername, bio: updateDetails.bio }) }} value={updateDetails.email} />
