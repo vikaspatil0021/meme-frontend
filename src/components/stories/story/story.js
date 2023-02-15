@@ -36,13 +36,17 @@ const Story = () => {
         Promise.all([p1,p2])
 
     }, []);
-    axios.post(process.env.REACT_APP_SERVER_URL + '/postviews', { storyId: storyId, views: views }, {mode:"no-cors", withCredentials: "include" })
-    .then((res) => {
-        console.log(res.data);
 
-    }).catch((err)=>{
-        console.log(err.message);
-    })
+    setTimeout(()=>{
+
+        axios.post(process.env.REACT_APP_SERVER_URL + '/postviews', { storyId: storyId, views: views }, {mode:"no-cors", withCredentials: "include" })
+        .then((res) => {
+            console.log(res.data);
+    
+        }).catch((err)=>{
+            console.log(err.message);
+        })
+    },10)
     console.log(storyContent);
     const { story, user, sessionUser } = storyContent;
     const { _id: storyId, title, content, imageURL, likes, views } = story;
