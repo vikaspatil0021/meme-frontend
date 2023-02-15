@@ -101,7 +101,7 @@ const Dashboard = (props) => {
 
 
     // filtering followers array
-    if (accountStories) {
+    if (accountStories.myAccount.followers) {
         var filterFollowers = allUser.filter((each) => {
             return accountStories.myAccount.followers.includes(each.username);
         })
