@@ -33,16 +33,16 @@ const Story = () => {
                 console.log(err);
             })
         
-        const p3 = axios.post(process.env.REACT_APP_SERVER_URL + '/postviews', { storyId: storyId, views: views }, {mode:"no-cors", withCredentials: "include" })
-            .then((res) => {
-                console.log(res.data);
-            }).catch((err)=>{
-                console.log(err.message);
-            })
-        Promise.all([p1,p2,p3])
+        Promise.all([p1,p2])
 
     }, []);
+    axios.post(process.env.REACT_APP_SERVER_URL + '/postviews', { storyId: storyId, views: views }, {mode:"no-cors", withCredentials: "include" })
+    .then((res) => {
+        console.log(res.data);
 
+    }).catch((err)=>{
+        console.log(err.message);
+    })
     console.log(storyContent);
     const { story, user, sessionUser } = storyContent;
     const { _id: storyId, title, content, imageURL, likes, views } = story;
@@ -140,7 +140,7 @@ const Story = () => {
                                 <div className="d-inline-flex float-end likeBorder rounded-4 p-2 px-3 me-1">
 
                                     <i  class={"fs-4 d-inline bi-eye text-primary float-end me-2"} ></i>
-                                    <h4 className="">{views || 0}</h4>
+                                    <h4 className="">{views }</h4>
                                 </div>
                                 {(auth) ?
                                     <div onClick={likeAndDislike} className="d-inline-flex likeBorder rounded-4 p-2 px-3">
