@@ -87,6 +87,7 @@ const Dashboard = (props) => {
         localStorage.removeItem("currentActiveTab");
 
     }
+    var filterFollowers = []
     setTimeout(() => {
 
         var currentActiveTab = localStorage.getItem('currentActiveTab');
@@ -99,7 +100,7 @@ const Dashboard = (props) => {
         
         // filtering followers array
         if (loading) {
-            var filterFollowers = allUser.filter((each) => {
+            filterFollowers = allUser.filter((each) => {
                 return accountStories.myAccount.followers.includes(each.username);
             })
         }
