@@ -223,7 +223,18 @@ const Person = () => {
                                                                     <img class="rounded-5 cropped" src={eachStory.imageURL} alt="Card image cap" height="100" width="130" />
                                                                     <div class="card-body text-dark">
                                                                         <h4 class="card-title overflow-text">{eachStory.title}</h4>
+                                                                        <div className="card-content d-inline-flex flex-wrap rounded-3">
+                                                                        <div className="d-flex float-end rounded-4 p-2 px-3 me-1">
 
+                                                                            <i id="like-dislike-button" class={"fs-4 d-inline bi-eye text-primary float-end me-2"} ></i>
+                                                                            <h4 className="">{eachStory.views || 0}</h4>
+                                                                        </div>
+                                                                        <div className="d-flex mt-2">
+
+                                                                            <i class={"bi bi-heart mx-2 d-inline fs-5 text-danger"} />
+                                                                            <h5 className="fw-lighter">{eachStory.likes.length}</h5>
+                                                                        </div>
+                                                                    </div>
 
                                                                     </div>
                                                                 </div>
@@ -250,6 +261,8 @@ const Person = () => {
                                                             <div class="card-content d-flex p-2">
                                                                 <img class="rounded-5 cropped" src={follower.profileImgURL} alt="Card image cap" height="100" width="130" />
                                                                 <div class="card-body text-dark">
+                                                                <h5 class="card-title fw-semibold" style={{ fontSize: "22px" }}>{follower.name}</h5>
+
                                                                     <h4 class="card-title overflow-text">{follower.username}</h4>
 
 

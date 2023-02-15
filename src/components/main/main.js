@@ -185,10 +185,7 @@ const Main = () => {
 
                                                                         <p className="card-title d-inline fw-semibold text-muted under-line" style={{ fontSize: "19px" }}>{person.username}</p>
                                                                     </div>
-                                                                    <div className="card-content d-inline-flex flex-wrap rounded-3" style={{ backgroundColor: "#efefef" }}>
-
-
-                                                                    </div>
+                                                                    
 
                                                                 </div>
                                                             </div>

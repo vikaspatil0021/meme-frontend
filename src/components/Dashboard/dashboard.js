@@ -486,7 +486,7 @@ const Dashboard = (props) => {
                             <div class="tab-pane fade" id="pills-myfriends" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
                                 <div className="d-flex flex-wrap mw-100">
                                     {allUser.filter((each) => {
-                return accountStories.myAccount.followers.includes(each.username);
+                return accountStories.myAccount.followings.includes(each.username);
             }).map((follower) => {
 
 
@@ -500,6 +500,8 @@ const Dashboard = (props) => {
                                                         <div class="card-content d-flex p-2">
                                                             <img class="rounded-5 cropped" src={follower.profileImgURL} alt="Card image cap" height="100" width="130" />
                                                             <div class="card-body text-dark">
+                                                            <h5 class="card-title fw-semibold" style={{ fontSize: "22px" }}>{follower.name}</h5>
+
                                                                 <h4 class="card-title overflow-text">{follower.username}</h4>
 
 
