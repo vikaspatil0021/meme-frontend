@@ -99,18 +99,16 @@ const Dashboard = (props) => {
         }
         
         // filtering followers array
-        if (loading) {
             filterFollowers = allUser.filter((each) => {
                 return accountStories.myAccount.followers.includes(each.username);
             })
-        }
     }, 1000)
 
 
 
 
 
-
+    console.log(filterFollowers);
     // edit -profile -phtoto --------------------
     // elemnts by ids------------------
     const ele1 = document.getElementById("upload-spinner");
