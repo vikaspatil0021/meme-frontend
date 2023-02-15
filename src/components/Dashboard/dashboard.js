@@ -499,7 +499,7 @@ const Dashboard = (props) => {
 
                                                 <a href={"/people/" + follower.username} class="card-link">
                                                     <div class="card rounded-5 mb-2">
-                                                        <div class="card-content d-flex p-2">
+                                                        <div class="card-content d-flex p-1">
                                                             <img class="rounded-5 cropped" src={follower.profileImgURL} alt="Card image cap" height="100" width="110" />
                                                             <div class="card-body text-dark">
                                                                 <h5 class="card-title fw-semibold" style={{ fontSize: "22px" }}>{follower.name}</h5>
