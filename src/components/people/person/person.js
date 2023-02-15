@@ -99,11 +99,11 @@ const Person = () => {
             })
 
 
-            followers = followerArray
-            sFollowings = followingArray
+            var foll = followerArray
+            var sFoll = followingArray
         }
         console.log(followers, sFollowings);
-        axios.post(process.env.REACT_APP_SERVER_URL + "/followupdate", { followers: followers, user: username, sFollowings: sFollowings, sessionUser: sUsername }, { withCredentials: "include" })
+        axios.post(process.env.REACT_APP_SERVER_URL + "/followupdate", { followers: foll, user: username, sFollowings: sFoll, sessionUser: sUsername }, { withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
             }).catch((err) => {
@@ -235,6 +235,8 @@ const Person = () => {
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="pills-friends" role="tabpanel" aria-labelledby="pills-friends-tab" tabindex="0">
+                                    <div className="d-flex flex-wrap mw-100">
+
                                         {filterFollowers.map((follower) => {
 
 
@@ -258,6 +260,7 @@ const Person = () => {
                                                 </div>
                                             )
                                         })}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

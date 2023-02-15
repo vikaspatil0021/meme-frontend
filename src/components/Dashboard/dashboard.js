@@ -10,6 +10,7 @@ const Dashboard = (props) => {
     const [loading, setLoading] = useState(false);
 
     const [file, selectedFile] = useState('');
+    const [allUser, setAllUser] = useState([]);
 
     const [accountStories, setAccountStories] = useState({
         myAccount: {},
@@ -43,14 +44,23 @@ const Dashboard = (props) => {
 
             });
 
-   
+        axios.get(process.env.REACT_APP_SERVER_URL + "/people", { mode: "no-cors", withCredentials: "include" })
+            .then((res) => {
+                console.log(res.data);
+                setAllUser(res.data)
+            }).catch((error) => {
+                console.log(error);
+
+            });
+
+
 
     }, [])
     const deleteStory = async (storyId) => {
 
         localStorage.setItem('currentActiveTab', $("#pills-mystories-tab").attr('data-bs-target'));
 
-       
+
         await axios.delete(process.env.REACT_APP_SERVER_URL + "/delete", { data: { Id: storyId }, withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
@@ -58,38 +68,45 @@ const Dashboard = (props) => {
             }).catch((err) => {
                 console.log(err);
             });
-            
-        }
-        //controlling the dashboard pills via js-------
-    const currentTab = ()=>{
+
+    }
+    //controlling the dashboard pills via js-------
+    const currentTab = () => {
         const tabB1 = document.getElementById('pills-account-tab');
         const tabB2 = document.getElementById("pills-mystories-tab");
-    
+
         const tabC1 = document.getElementById("pills-account");
         const tabC2 = document.getElementById("pills-mystories");
-    
+
         tabB1.classList.remove("active");
         tabB2.classList.add("active");
-    
-        tabC1.classList.remove("show","active");
-        tabC2.classList.add("show","active");
+
+        tabC1.classList.remove("show", "active");
+        tabC2.classList.add("show", "active");
 
         localStorage.removeItem("currentActiveTab");
 
     }
-    setTimeout(()=>{
+    setTimeout(() => {
 
         var currentActiveTab = localStorage.getItem('currentActiveTab');
-        if(currentActiveTab){
+        if (currentActiveTab) {
 
             currentTab()
 
 
         }
 
-    },1300)
+    }, 1000)
 
-     
+
+    // filtering followers array
+    if (loading) {
+        var filterFollowers = allUser.filter((each) => {
+            return accountStories.myAccount.followers.includes(each.username);
+        })
+    }
+
 
 
 
@@ -177,8 +194,8 @@ const Dashboard = (props) => {
 
 
     }
-    
-        
+
+
     //scrolling effect og quicklinks ------CSS available on story.css
 
     var prevScrollpos = window.pageYOffset;
@@ -230,9 +247,9 @@ const Dashboard = (props) => {
 
 
                         <div class="nav-pills p-2 pt-0 list-group list-group-horizontal mx-auto" id="pills-tab" role="tablist" style={{ width: "1370px" }}>
-                            <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-account-tab" data-bs-toggle="pill" data-bs-target="#pills-account" type="button" role="tab" aria-controls="pills-account" aria-selected="true">Account</button>
-                            <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-mystories-tab" data-bs-toggle="pill" data-bs-target="#pills-mystories" type="button" role="tab" aria-controls="pills-mystories" aria-selected="false">My Memes</button>
-                            <button class="list-group-item opacity-75 me-2 rounded-4" id="pills-myfriends-tab" data-bs-toggle="pill" data-bs-target="#pills-myfriends" type="button" role="tab" aria-controls="pills-myfriends" aria-selected="false">My Friends</button>
+                            <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-account-tab" data-bs-toggle="pill" data-bs-target="#pills-account" type="button" role="tab" aria-controls="pills-account" aria-selected="true"><i class="bi bi-person-fill"></i></button>
+                            <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-mystories-tab" data-bs-toggle="pill" data-bs-target="#pills-mystories" type="button" role="tab" aria-controls="pills-mystories" aria-selected="false">Memes</button>
+                            <button class="list-group-item opacity-75 me-2 rounded-4" id="pills-myfriends-tab" data-bs-toggle="pill" data-bs-target="#pills-myfriends" type="button" role="tab" aria-controls="pills-myfriends" aria-selected="false">Following</button>
                         </div>
                     </div> : null}
 
@@ -478,7 +495,30 @@ const Dashboard = (props) => {
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-myfriends" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
-                                gfgxfb
+                                <div className="d-flex flex-wrap mw-100">
+                                    {filterFollowers.map((follower) => {
+
+
+
+                                        return (
+                                            <div className="col-12 col-md-5  me-3">
+
+
+                                                <a href={"/people/" + follower.username} class="card-link">
+                                                    <div class="card rounded-5 mb-2">
+                                                        <div class="card-content d-flex p-2">
+                                                            <img class="rounded-5 cropped" src={follower.profileImgURL} alt="Card image cap" height="100" width="130" />
+                                                            <div class="card-body text-dark">
+                                                                <h4 class="card-title overflow-text">{follower.username}</h4>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        )
+                                    })}                            </div>
                             </div>
 
                         </div>
