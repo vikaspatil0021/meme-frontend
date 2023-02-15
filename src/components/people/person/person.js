@@ -263,7 +263,7 @@ const Person = () => {
                                                                 <div class="card-body text-dark">
                                                                 <h5 class="card-title fw-semibold" style={{ fontSize: "22px" }}>{follower.name}</h5>
 
-                                                                    <h4 class="card-title overflow-text">{follower.username}</h4>
+                                                                    <h4 class="card-title overflow-text text-muted">{follower.username}</h4>
 
 
                                                                 </div>
