@@ -35,7 +35,7 @@ const Main = () => {
         axios.get(process.env.REACT_APP_SERVER_URL + "/people", {mode:"no-cors", withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
-                setPeopleData(res.data.splice(0, 10));
+                setPeopleData(res.data.splice(0, 10)).sort((a, b) => (a.followers.length > b.followers.length) ? -1 : 1);
             }).catch((error) => {
                 console.log(error);
 
