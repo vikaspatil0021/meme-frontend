@@ -104,7 +104,6 @@ const Dashboard = (props) => {
 
 
 
-    console.log(filterFollowers);
     // edit -profile -phtoto --------------------
     // elemnts by ids------------------
     const ele1 = document.getElementById("upload-spinner");
