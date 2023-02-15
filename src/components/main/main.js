@@ -15,7 +15,7 @@ const Main = () => {
     const [peopleData, setPeopleData] = useState([])
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + "/memes", { withCredentials: "include" })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/memes", {mode:"no-cors", withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
                 setLoading(true)
@@ -30,8 +30,9 @@ const Main = () => {
                 console.log(error);
 
             });
+            
 
-        axios.get(process.env.REACT_APP_SERVER_URL + "/people", { withCredentials: "include" })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/people", {mode:"no-cors", withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
                 setPeopleData(res.data.splice(0, 10));
@@ -40,7 +41,7 @@ const Main = () => {
 
             });
 
-        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", {mode:"no-cors", withCredentials: "include" })
             .then((res) => {
                 setAuth(res.data.isAuth)
             }).catch((err) => {

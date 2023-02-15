@@ -16,7 +16,7 @@ const Story = () => {
     var [c, setCount] = useState(0);
     useEffect(() => {
 
-        axios.get(process.env.REACT_APP_SERVER_URL + location.pathname, { withCredentials: "include" })
+        axios.get(process.env.REACT_APP_SERVER_URL + location.pathname, {mode:"no-cors", withCredentials: "include" })
             .then((res) => {
                 setStoryContent(res.data)
                 setLoading(true);
@@ -26,11 +26,18 @@ const Story = () => {
 
             });
 
-        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", {mode:"no-cors", withCredentials: "include" })
             .then((res) => {
                 setAuth(res.data.isAuth)
             }).catch((err) => {
                 console.log(err);
+            })
+        
+            axios.post(process.env.REACT_APP_SERVER_URL + '/postviews', { storyId: storyId, views: views }, { withCredentials: "include" })
+            .then((res) => {
+                console.log(res.data);
+            }).catch((err)=>{
+                console.log(err.message);
             })
 
     }, []);
@@ -72,7 +79,7 @@ const Story = () => {
 
     const updatePostLikes = async (likesCount) => {
         console.log(likes);
-        await axios.put(process.env.REACT_APP_SERVER_URL + '/updateLikes', { storyId: storyId, likesArray: likesCount }, { withCredentials: "include" })
+        await axios.put(process.env.REACT_APP_SERVER_URL + '/updateLikes', { storyId: storyId, likesArray: likesCount }, {mode:"no-cors", withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
             })
@@ -84,10 +91,7 @@ const Story = () => {
     }
 
     console.log(views);
-    axios.post(process.env.REACT_APP_SERVER_URL + '/postviews', { storyId: storyId, views: views }, { withCredentials: "include" })
-        .then((res) => {
-            console.log(res.data);
-        })
+    
 
     //scrolling effect og quicklinks ------CSS available on story.css
     var prevScrollpos = window.pageYOffset;
@@ -134,7 +138,7 @@ const Story = () => {
                             <div className="me-md-4 me-2 d-flex align-items-center">
                                 <div className="d-inline-flex float-end likeBorder rounded-4 p-2 px-3 me-1">
 
-                                    <i id="like-dislike-button" class={"fs-4 d-inline bi-eye text-primary float-end me-2"} ></i>
+                                    <i  class={"fs-4 d-inline bi-eye text-primary float-end me-2"} ></i>
                                     <h4 className="">{views || 0}</h4>
                                 </div>
                                 {(auth) ?

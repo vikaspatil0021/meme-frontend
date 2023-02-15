@@ -89,6 +89,12 @@ const Person = () => {
 
                                         <h2 className="fw-semibold text-dark">{name}</h2>
                                         <h4 className="text-muted">({username})</h4>
+                                        <div>
+                                        <button className="btn btn-dark m-2 opacity-75 rounded-4 fw-semibold pe-3">
+                                        <i class="my-1 pe-1 bi bi-plus" />
+                                        Follow
+                                        </button>
+                                        </div>
                                     </div>
 
 
@@ -106,7 +112,7 @@ const Person = () => {
                                 <div class="nav-pills mb-4 list-group list-group-horizontal" id="pills-tab" role="tablist" >
                                     <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true">About</button>
                                     <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-stories-tab" data-bs-toggle="pill" data-bs-target="#pills-stories" type="button" role="tab" aria-controls="pills-stories" aria-selected="true">Memes ({lengths})</button>
-                                    <button class="list-group-item opacity-75 me-2 rounded-4" id="pills-friends-tab" data-bs-toggle="pill" data-bs-target="#pills-friends" type="button" role="tab" aria-controls="pills-friends" aria-selected="false">Friends(20)</button>
+                                    <button class="list-group-item opacity-75 me-2 rounded-4" id="pills-friends-tab" data-bs-toggle="pill" data-bs-target="#pills-friends" type="button" role="tab" aria-controls="pills-friends" aria-selected="false">Followers(20)</button>
 
 
 

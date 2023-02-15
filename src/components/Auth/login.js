@@ -21,7 +21,7 @@ const Login = () => {
 
     //-----------Current Auth status-----------
     useEffect(() => {
-        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { withCredentials: "include" })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", { mode:"no-cors",withCredentials: "include" })
             .then((res) => {
                 
                 if (res.data.isAuth) {
@@ -42,7 +42,7 @@ const Login = () => {
             ele2.classList.remove("d-none");
             ele3.classList.add("d-none");
 
-            await axios.post(process.env.REACT_APP_SERVER_URL + '/login', user, { withCredentials: "include" })
+            await axios.post(process.env.REACT_APP_SERVER_URL + '/login', user, { mode:"no-cors",withCredentials: "include" })
                 .then((res) => {
                     ele2.classList.add("d-none");
                     ele3.classList.remove("d-none");

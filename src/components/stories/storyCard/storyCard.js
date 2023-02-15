@@ -15,7 +15,7 @@ const StoryCard = (props) => {
 
     useEffect(() => {
 
-        axios.get(process.env.REACT_APP_SERVER_URL + "/memes/" + _id, { withCredentials: "include" })
+        axios.get(process.env.REACT_APP_SERVER_URL + "/memes/" + _id, {mode:"no-cors", withCredentials: "include" })
             .then((res) => {
                 setfUser(res.data.user)
 

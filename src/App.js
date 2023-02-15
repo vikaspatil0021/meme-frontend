@@ -21,7 +21,7 @@ function App() {
 
   setTimeout(function () {
     document.getElementById('refresh-button').style.visibility = "visible";
-  }, 10000);
+  }, 5000);
 
   return (
     <div className="h-100">
