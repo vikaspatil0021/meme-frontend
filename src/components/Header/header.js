@@ -45,7 +45,7 @@ const Nav = () => {
                                     <div>
                                         <li className="nav-item"><a class="nav-link text-white fs-5" href="/dashboard">Dashboard</a></li>
                                         <li className="nav-item"><a class="nav-link text-white fs-5" href="/compose">Compose</a></li>
-                                        <li className="nav-item"><a class="nav-link text-danger fs-5" href="https://meme-backend-0021.onrender.com/logout">Log out</a></li>
+                                        <li className="nav-item"><a class="nav-link text-danger fs-5" href="https://meme-backend-0021.vercel.app/logout">Log out</a></li>
                                     </div> :
                                     <div>
                                         <li className="nav-item"><a class="nav-link text-white fs-5" href="/login">Log in</a></li>
