@@ -96,8 +96,8 @@ const Dashboard = (props) => {
 
 
         }
-        
-         
+
+
     }, 1000)
 
 
@@ -202,6 +202,8 @@ const Dashboard = (props) => {
         }
         prevScrollpos = currentScrollPos;
     }
+
+    const fData = accountStories.myAccount.followings || []
 
     return (
         <div>
@@ -353,7 +355,7 @@ const Dashboard = (props) => {
                                                                 <input autoFocus required type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: e.target.value, email: updateDetails.email, instaUsername: updateDetails.instaUsername, bio: updateDetails.bio }) }} value={updateDetails.name} />
 
                                                             </div>
-                                                          
+
                                                             <div className="mb-3">
                                                                 <label className="text-muted pb-2">Email</label>
                                                                 <input type="text" name="postName" id="formPostName" class="form-control form-control-lg" onChange={(e) => { setUpdateDetails({ name: updateDetails.name, email: e.target.value, instaUsername: updateDetails.instaUsername, bio: updateDetails.bio }) }} value={updateDetails.email} />
@@ -486,8 +488,8 @@ const Dashboard = (props) => {
                             <div class="tab-pane fade" id="pills-myfriends" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
                                 <div className="d-flex flex-wrap mw-100">
                                     {allUser.filter((each) => {
-                return accountStories.myAccount.followings.includes(each.username);
-            }).map((follower) => {
+                                        return fData.includes(each.username);
+                                    }).map((follower) => {
 
 
 
@@ -498,9 +500,9 @@ const Dashboard = (props) => {
                                                 <a href={"/people/" + follower.username} class="card-link">
                                                     <div class="card rounded-5 mb-2">
                                                         <div class="card-content d-flex p-2">
-                                                            <img class="rounded-5 cropped" src={follower.profileImgURL} alt="Card image cap" height="100" width="130" />
+                                                            <img class="rounded-5 cropped" src={follower.profileImgURL} alt="Card image cap" height="100" width="110" />
                                                             <div class="card-body text-dark">
-                                                            <h5 class="card-title fw-semibold" style={{ fontSize: "22px" }}>{follower.name}</h5>
+                                                                <h5 class="card-title fw-semibold" style={{ fontSize: "22px" }}>{follower.name}</h5>
 
                                                                 <h4 class="card-title overflow-text">{follower.username}</h4>
 
