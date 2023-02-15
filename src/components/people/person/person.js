@@ -99,11 +99,11 @@ const Person = () => {
             })
 
 
-            var foll = followerArray
-            var sFoll = followingArray
+            followers = followerArray
+            sFollowings = followingArray
         }
         console.log(followers, sFollowings);
-        axios.post(process.env.REACT_APP_SERVER_URL + "/followupdate", { followers: foll, user: username, sFollowings: sFoll, sessionUser: sUsername }, { withCredentials: "include" })
+        axios.post(process.env.REACT_APP_SERVER_URL + "/followupdate", { followers: followers, user: username, sFollowings: sFollowings, sessionUser: sUsername }, { withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
             }).catch((err) => {
