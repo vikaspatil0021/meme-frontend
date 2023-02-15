@@ -6,7 +6,7 @@ import p1 from "./../../img/p1.png"
 const PersonCard = (props) => {
     const [lengths, setLengths] = useState(0);
 
-    const { _id, name, username,profileImgURL } = props.sentPerson;
+    const { _id, name, username,profileImgURL,followers } = props.sentPerson;
     useEffect(() => {
         axios.get(process.env.REACT_APP_SERVER_URL + "/people/" + username, { withCredentials: "include" })
             .then((res) => {
@@ -31,7 +31,7 @@ const PersonCard = (props) => {
                             <img class="card-img rounded-5 cropped" src={profileImgURL||p1} alt="Card image cap" height="150" />
 
                         </div>
-                        <div class="card-body col-7 py-0 text-dark">
+                        <div class="card-body col-7 py-0 pe-0 text-dark">
                             <h5 class="card-title fw-semibold" style={{fontSize:"22px"}}>{name}</h5>
                             <div className="d-block">
 
@@ -48,10 +48,10 @@ const PersonCard = (props) => {
                                 </div>
                                 <div className="me-2">
                                     <p className="fw-semibold text-muted m-0">
-                                        Friends
+                                        Followers
                                     </p>
                                     <p className="py-0 my-0 ps-1 fw-semibold">
-                                        34
+                                        {followers.length}
                                     </p>
                                 </div>
                             </div>
