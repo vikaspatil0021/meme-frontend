@@ -101,11 +101,12 @@ const Dashboard = (props) => {
 
 
     // filtering followers array
-    if (accountStories.myAccount.followers) {
+    setTimeout(()=>{
+
         var filterFollowers = allUser.filter((each) => {
             return accountStories.myAccount.followers.includes(each.username);
         })
-    }
+    },1)
 
 
 
