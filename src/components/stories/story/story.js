@@ -16,7 +16,7 @@ const Story = () => {
     var [c, setCount] = useState(0);
     useEffect(() => {
 
-        axios.get(process.env.REACT_APP_SERVER_URL + location.pathname, {mode:"no-cors", withCredentials: "include" })
+        const p1 = axios.get(process.env.REACT_APP_SERVER_URL + location.pathname, {mode:"no-cors", withCredentials: "include" })
             .then((res) => {
                 setStoryContent(res.data)
                 setLoading(true);
@@ -26,19 +26,20 @@ const Story = () => {
 
             });
 
-        axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", {mode:"no-cors", withCredentials: "include" })
+        const p2 = axios.get(process.env.REACT_APP_SERVER_URL + "/isauth", {mode:"no-cors", withCredentials: "include" })
             .then((res) => {
                 setAuth(res.data.isAuth)
             }).catch((err) => {
                 console.log(err);
             })
         
-            axios.post(process.env.REACT_APP_SERVER_URL + '/postviews', { storyId: storyId, views: views }, { withCredentials: "include" })
+        const p3 = axios.post(process.env.REACT_APP_SERVER_URL + '/postviews', { storyId: storyId, views: views }, {mode:"no-cors", withCredentials: "include" })
             .then((res) => {
                 console.log(res.data);
             }).catch((err)=>{
                 console.log(err.message);
             })
+        Promise.all([p1,p2,p3])
 
     }, []);
 
