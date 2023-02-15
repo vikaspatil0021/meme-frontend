@@ -101,13 +101,11 @@ const Dashboard = (props) => {
 
 
     // filtering followers array
-    setTimeout(()=>{
-
+    if (loading) {
         var filterFollowers = allUser.filter((each) => {
             return accountStories.myAccount.followers.includes(each.username);
         })
-        setAllUser(filterFollowers)
-    },1)
+    }
 
 
 
@@ -498,7 +496,7 @@ const Dashboard = (props) => {
                             </div>
                             <div class="tab-pane fade" id="pills-myfriends" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
                                 <div className="d-flex flex-wrap mw-100">
-                                    {allUser.map((follower) => {
+                                    {filterFollowers.map((follower) => {
 
 
 
