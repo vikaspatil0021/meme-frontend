@@ -101,7 +101,7 @@ const Dashboard = (props) => {
 
 
     // filtering followers array
-    if (loading) {
+    if (accountStories) {
         var filterFollowers = allUser.filter((each) => {
             return accountStories.myAccount.followers.includes(each.username);
         })
@@ -437,7 +437,7 @@ const Dashboard = (props) => {
 
 
                                         <div className="d-flex mt-4">
-                                            <a href="https://my-blog-backend-1ict.onrender.com/logout" class="btn btn-danger rounded-4 px-5">Log out
+                                            <a href="https://meme-backend-0021.onrender.com/logout" class="btn btn-danger rounded-4 px-5">Log out
                                                 <i class="mx-2 pe-1 bi bi-arrow-right " />
                                             </a>
                                         </div>

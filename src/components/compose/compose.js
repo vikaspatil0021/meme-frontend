@@ -67,7 +67,7 @@ const Compose = () => {
             })
             .catch((error) => {
                 ele1.classList.add("d-none");
-
+                uploadImage()
                 console.log(error);
 
             });
@@ -100,7 +100,7 @@ const Compose = () => {
                 })
                 .catch((error) => {
                     ele1.classList.add("d-none");
-
+                    createPost()
                     console.log(error);
 
                 });
