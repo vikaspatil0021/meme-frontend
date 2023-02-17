@@ -244,8 +244,10 @@ const Dashboard = (props) => {
 
                         <div class="nav-pills p-2 pt-0 list-group list-group-horizontal mx-auto" id="pills-tab" role="tablist" style={{ width: "1370px" }}>
                             <button class="active list-group-item opacity-75 rounded-4 me-2" id="pills-account-tab" data-bs-toggle="pill" data-bs-target="#pills-account" type="button" role="tab" aria-controls="pills-account" aria-selected="true"><i class="bi bi-person-fill"></i></button>
-                            <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-mystories-tab" data-bs-toggle="pill" data-bs-target="#pills-mystories" type="button" role="tab" aria-controls="pills-mystories" aria-selected="false">Memes</button>
-                            <button class="list-group-item opacity-75 me-2 rounded-4" id="pills-myfriends-tab" data-bs-toggle="pill" data-bs-target="#pills-myfriends" type="button" role="tab" aria-controls="pills-myfriends" aria-selected="false">Following</button>
+                            <button class="list-group-item opacity-75 rounded-4 me-2" id="pills-mystories-tab" data-bs-toggle="pill" data-bs-target="#pills-mystories" type="button" role="tab" aria-controls="pills-mystories" aria-selected="false">Memes( accountStories.myStories.length)</button>
+                            <button class="list-group-item opacity-75 me-2 rounded-4" id="pills-myfriends-tab" data-bs-toggle="pill" data-bs-target="#pills-myfriends" type="button" role="tab" aria-controls="pills-myfriends" aria-selected="false">Following({allUser.filter((each) => {
+                                        return fData.includes(each.username);
+                                    }).length})</button>
                         </div>
                     </div> : null}
 
