@@ -134,7 +134,7 @@ const Main = () => {
                                                                         <div className="d-flex float-end rounded-4 p-2 px-3 me-1">
 
                                                                             <i id="like-dislike-button" class={"fs-4 d-inline bi-eye text-primary float-end me-2"} ></i>
-                                                                            <h4 className="">{story.views || 0}</h4>
+                                                                            <h5 className="">{story.views || 0}</h5>
                                                                         </div>
                                                                         <div className="d-flex mt-2">
 

@@ -47,7 +47,7 @@ const StoryCard = (props) => {
                                 <div className="d-flex align-items-center">
 
                                         <i class="fs-3 d-inline bi-eye text-primary me-2" ></i>
-                                        <h4 className="me-2">{views || 0}</h4>
+                                        <h5 className="me-2">{views || 0}</h5>
                                     <i class={"bi " + like + " mx-2 d-inline fs-5 text-danger"} />
                                     <h5 className="fw-lighter">{likes.length}</h5>
                                 </div>
