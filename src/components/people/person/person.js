@@ -221,7 +221,7 @@ const Person = () => {
                                                             <div class="card rounded-5 mb-2">
                                                                 <div class="card-content d-flex p-2">
                                                                     <img class="rounded-5 cropped" src={eachStory.imageURL} alt="Card image cap" height="100" width="110" />
-                                                                    <div class="card-body text-dark">
+                                                                    <div class="card-body p-0 text-dark">
                                                                         <h4 class="card-title overflow-text px-3">{eachStory.title}</h4>
                                                                         <div className="card-content d-inline-flex flex-wrap rounded-3">
                                                                         <div className="d-flex float-end rounded-4 p-2 px-3 me-1">
