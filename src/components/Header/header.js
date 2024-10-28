@@ -29,7 +29,7 @@ const Nav = () => {
             <div className="navbar p-3" style={{ width: "1410px" }}>
 
                 <div>
-                    <a href="/" className="navbar-brand fs-5 fw-bolder ms-2 ms-md-3">IMEME0021</a>
+                    <a href="/" className="navbar-brand fs-5 fw-bolder ms-2 ms-md-3">IMEME</a>
                 </div>
 
 
